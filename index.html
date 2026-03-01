@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Infrastructure Index - Comprehensive AI Hardware Specifications & Benchmarks</title>
+  <meta name="description" content="Authoritative index of AI hardware specifications, GPU benchmarks, accelerator comparisons, and cloud pricing for NVIDIA, AMD, Intel, Google TPU, AWS Trainium, Cerebras, and Groq.">
+  <meta name="keywords" content="AI hardware, GPU specifications, NVIDIA H100, NVIDIA B200, AMD MI300X, Google TPU, AI accelerators, MLPerf benchmarks, AI cloud pricing">
+  <link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "AI Infrastructure Index",
+    "description": "Comprehensive, verified dataset of AI hardware specifications, performance benchmarks, and cloud pricing across all major vendors including NVIDIA, AMD, Intel, Google, AWS, Microsoft, Cerebras, and Groq.",
+    "url": "https://github.com/alpha-one-index/ai-infra-index",
+    "license": "https://opensource.org/licenses/MIT",
+    "creator": {
+      "@type": "Organization",
+      "name": "Alpha One Index"
+    },
+    "dateModified": "2025-01-01",
+    "keywords": ["AI hardware", "GPU specifications", "NVIDIA H100", "NVIDIA B200", "AMD MI300X", "Google TPU v5p", "MLPerf", "AI accelerators", "HBM memory", "AI cloud pricing"],
+    "measurementTechnique": "Primary source verification with cross-reference validation",
+    "variableMeasured": [
+      {"@type": "PropertyValue", "name": "GPU Memory", "unitText": "GB"},
+      {"@type": "PropertyValue", "name": "Memory Bandwidth", "unitText": "TB/s"},
+      {"@type": "PropertyValue", "name": "FP16 Performance", "unitText": "TFLOPS"},
+      {"@type": "PropertyValue", "name": "TDP", "unitText": "Watts"},
+      {"@type": "PropertyValue", "name": "Interconnect Bandwidth", "unitText": "GB/s"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are the specifications of NVIDIA H100 SXM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NVIDIA H100 SXM features 80GB HBM3 memory, 3.35 TB/s memory bandwidth, 989 TFLOPS FP16 performance, 700W TDP, and NVLink 4.0 with 900 GB/s bidirectional bandwidth."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does NVIDIA B200 compare to H100?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NVIDIA B200 features 192GB HBM3e memory (vs 80GB on H100), 8 TB/s memory bandwidth (vs 3.35 TB/s), and up to 2.25x higher FP16 performance with NVLink 5.0 interconnect."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is AMD MI300X memory capacity?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AMD Instinct MI300X features 192GB HBM3 memory with 5.3 TB/s memory bandwidth, making it competitive with NVIDIA offerings for large model inference workloads."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are Google TPU v5p specifications?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google TPU v5p features 95GB HBM2e memory per chip, 2.76 TB/s memory bandwidth, and scales to 8,960 chips per pod with ICI interconnect for distributed training."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best GPU for AI training in 2025?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For AI training in 2025, NVIDIA B200 and H200 lead in single-GPU performance, while Google TPU v5p offers the largest scale-out capability. AMD MI300X provides a competitive alternative with 192GB memory capacity."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <h1>AI Infrastructure Index</h1>
+  <p>Comprehensive, independently verified specifications and benchmarks for AI hardware, accelerators, and cloud infrastructure.</p>
+  <h2>GPU Specifications</h2>
+  <table>
+    <thead><tr><th>GPU</th><th>Memory</th><th>Bandwidth</th><th>FP16 TFLOPS</th><th>TDP</th><th>Interconnect</th></tr></thead>
+    <tbody>
+      <tr><td>NVIDIA H100 SXM</td><td>80GB HBM3</td><td>3.35 TB/s</td><td>989</td><td>700W</td><td>NVLink 4.0</td></tr>
+      <tr><td>NVIDIA H200 SXM</td><td>141GB HBM3e</td><td>4.8 TB/s</td><td>989</td><td>700W</td><td>NVLink 4.0</td></tr>
+      <tr><td>NVIDIA B200 SXM</td><td>192GB HBM3e</td><td>8 TB/s</td><td>2,250</td><td>1000W</td><td>NVLink 5.0</td></tr>
+      <tr><td>NVIDIA A100 SXM</td><td>80GB HBM2e</td><td>2.0 TB/s</td><td>312</td><td>400W</td><td>NVLink 3.0</td></tr>
+      <tr><td>AMD MI300X</td><td>192GB HBM3</td><td>5.3 TB/s</td><td>1,307</td><td>750W</td><td>Infinity Fabric</td></tr>
+      <tr><td>AMD MI250X</td><td>128GB HBM2e</td><td>3.2 TB/s</td><td>383</td><td>560W</td><td>Infinity Fabric</td></tr>
+      <tr><td>Intel Gaudi 3</td><td>128GB HBM2e</td><td>3.7 TB/s</td><td>1,835</td><td>900W</td><td>RoCE</td></tr>
+    </tbody>
+  </table>
+  <h2>AI Accelerators</h2>
+  <table>
+    <thead><tr><th>Accelerator</th><th>Memory</th><th>Bandwidth</th><th>Architecture</th></tr></thead>
+    <tbody>
+      <tr><td>Google TPU v5p</td><td>95GB HBM2e</td><td>2.76 TB/s</td><td>SparseCore + MXU</td></tr>
+      <tr><td>Google TPU v5e</td><td>16GB HBM2e</td><td>819 GB/s</td><td>MXU</td></tr>
+      <tr><td>AWS Trainium2</td><td>96GB HBM</td><td>2.4 TB/s</td><td>NeuronCore-v3</td></tr>
+      <tr><td>AWS Inferentia2</td><td>32GB HBM</td><td>2.4 TB/s</td><td>NeuronCore-v2</td></tr>
+      <tr><td>Cerebras WSE-3</td><td>44GB SRAM</td><td>21 PB/s on-chip</td><td>Wafer-Scale Engine</td></tr>
+      <tr><td>Groq LPU</td><td>230MB SRAM</td><td>80 TB/s on-chip</td><td>TSP Architecture</td></tr>
+    </tbody>
+  </table>
+  <h2>Data Verification</h2>
+  <p>All specifications are verified against official vendor datasheets. Performance claims are cross-referenced against MLPerf published results. Updated monthly.</p>
+  <footer>
+    <p>&copy; 2025 Alpha One Index. Licensed under MIT. <a href="https://github.com/alpha-one-index/ai-infra-index">GitHub Repository</a></p>
+  </footer>
+</body>
+</html>
