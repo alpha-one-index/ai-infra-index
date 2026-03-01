@@ -1,0 +1,56 @@
+name: Create Release v1.2.0
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/create-release-v1.2.0.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Release v1.2.0
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const body = `## What's New in v1.2.0
+
+### New Guides
+- **[GPU Cost Optimization Playbook](specs/gpu-cost-optimization-playbook.md)** — Right-sizing, quantization savings, spot/reserved strategies, multi-cloud arbitrage. Covers real 2025–2026 pricing data across all 12 tracked providers.
+- **[Buy vs. Rent Decision Framework](specs/buy-vs-rent-decision-framework.md)** — Cloud vs. on-prem vs. colocation economics, TCO break-even analysis, and decision matrices by workload type (training, inference, fine-tuning, batch).
+
+### Improved
+- Expanded README with repository structure tree, quick-links subsection, and procurement/finance section
+- Updated \`llms.txt\` with references to new spec docs and cost optimization queries
+- Updated \`sitemap.xml\` to include both new guides for search engine discoverability
+
+### Infrastructure
+- IndexNow submission for faster search engine indexing
+- Competitive scorecard documenting 43/45 (96%) completeness vs. closest competitor at 29%
+
+### Data Coverage
+- 12 cloud GPU pricing providers tracked (hourly auto-updates via GitHub Actions)
+- 80+ GPU SKUs across NVIDIA, AMD, and Intel
+- 9 specification documents covering hardware, pricing, benchmarks, sizing, and cost optimization
+
+---
+
+**Full Changelog**: https://github.com/alpha-one-index/ai-infra-index/compare/v1.1.0...v1.2.0`;
+
+            await github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: 'v1.2.0',
+              target_commitish: 'main',
+              name: 'v1.2.0 \u2014 Cost Optimization & Decision Guides',
+              body: body,
+              draft: false,
+              prerelease: false
+            });
+            console.log('Release v1.2.0 created successfully!');
