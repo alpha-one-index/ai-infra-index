@@ -1,0 +1,254 @@
+{
+  "metadata": {
+    "title": "Cloud GPU Pricing Index",
+    "description": "Real-time pricing data for GPU instances across major cloud providers",
+    "version": "1.0.0",
+    "last_updated": "2026-02-28T21:00:00Z",
+    "update_frequency": "hourly",
+    "currency": "USD",
+    "schema_version": "1.0"
+  },
+  "providers": [
+    {
+      "provider": "AWS",
+      "instances": [
+        {
+          "instance_type": "p5.48xlarge",
+          "gpu_model": "NVIDIA H100",
+          "gpu_count": 8,
+          "gpu_memory_gb": 640,
+          "vcpus": 192,
+          "ram_gb": 2048,
+          "on_demand_hourly": 98.32,
+          "spot_hourly": null,
+          "reserved_1yr_hourly": 60.96,
+          "reserved_3yr_hourly": 40.13,
+          "region": "us-east-1",
+          "availability": "limited",
+          "interconnect": "EFA v2",
+          "storage": "8x 3.84TB NVMe"
+        },
+        {
+          "instance_type": "p4d.24xlarge",
+          "gpu_model": "NVIDIA A100",
+          "gpu_count": 8,
+          "gpu_memory_gb": 320,
+          "vcpus": 96,
+          "ram_gb": 1152,
+          "on_demand_hourly": 32.77,
+          "spot_hourly": 13.11,
+          "reserved_1yr_hourly": 20.32,
+          "reserved_3yr_hourly": 13.37,
+          "region": "us-east-1",
+          "availability": "available",
+          "interconnect": "EFA",
+          "storage": "8x 1TB NVMe"
+        },
+        {
+          "instance_type": "g6.48xlarge",
+          "gpu_model": "NVIDIA L4",
+          "gpu_count": 8,
+          "gpu_memory_gb": 192,
+          "vcpus": 192,
+          "ram_gb": 768,
+          "on_demand_hourly": 13.35,
+          "spot_hourly": 4.01,
+          "reserved_1yr_hourly": 8.28,
+          "reserved_3yr_hourly": 5.45,
+          "region": "us-east-1",
+          "availability": "available",
+          "interconnect": null,
+          "storage": "2x 7.6TB NVMe"
+        }
+      ]
+    },
+    {
+      "provider": "Google Cloud",
+      "instances": [
+        {
+          "instance_type": "a3-highgpu-8g",
+          "gpu_model": "NVIDIA H100",
+          "gpu_count": 8,
+          "gpu_memory_gb": 640,
+          "vcpus": 208,
+          "ram_gb": 1872,
+          "on_demand_hourly": 98.45,
+          "spot_hourly": 29.54,
+          "reserved_1yr_hourly": 62.10,
+          "reserved_3yr_hourly": 38.59,
+          "region": "us-central1",
+          "availability": "limited",
+          "interconnect": "GPUDirect-TCPXO",
+          "storage": "6TB Local SSD"
+        },
+        {
+          "instance_type": "a2-ultragpu-8g",
+          "gpu_model": "NVIDIA A100 80GB",
+          "gpu_count": 8,
+          "gpu_memory_gb": 640,
+          "vcpus": 96,
+          "ram_gb": 1360,
+          "on_demand_hourly": 40.22,
+          "spot_hourly": 12.07,
+          "reserved_1yr_hourly": 25.34,
+          "reserved_3yr_hourly": 15.71,
+          "region": "us-central1",
+          "availability": "available",
+          "interconnect": "NVLink",
+          "storage": "3TB Local SSD"
+        },
+        {
+          "instance_type": "g2-standard-96",
+          "gpu_model": "NVIDIA L4",
+          "gpu_count": 8,
+          "gpu_memory_gb": 192,
+          "vcpus": 96,
+          "ram_gb": 384,
+          "on_demand_hourly": 11.74,
+          "spot_hourly": 3.52,
+          "reserved_1yr_hourly": 7.40,
+          "reserved_3yr_hourly": 4.59,
+          "region": "us-central1",
+          "availability": "available",
+          "interconnect": null,
+          "storage": "6TB Local SSD"
+        }
+      ]
+    },
+    {
+      "provider": "Microsoft Azure",
+      "instances": [
+        {
+          "instance_type": "Standard_ND96isr_H100_v5",
+          "gpu_model": "NVIDIA H100",
+          "gpu_count": 8,
+          "gpu_memory_gb": 640,
+          "vcpus": 96,
+          "ram_gb": 1900,
+          "on_demand_hourly": 97.98,
+          "spot_hourly": null,
+          "reserved_1yr_hourly": 60.75,
+          "reserved_3yr_hourly": 39.98,
+          "region": "eastus",
+          "availability": "limited",
+          "interconnect": "InfiniBand NDR",
+          "storage": "8x 3.84TB NVMe"
+        },
+        {
+          "instance_type": "Standard_ND96amsr_A100_v4",
+          "gpu_model": "NVIDIA A100 80GB",
+          "gpu_count": 8,
+          "gpu_memory_gb": 640,
+          "vcpus": 96,
+          "ram_gb": 1900,
+          "on_demand_hourly": 32.77,
+          "spot_hourly": 9.83,
+          "reserved_1yr_hourly": 20.32,
+          "reserved_3yr_hourly": 13.37,
+          "region": "eastus",
+          "availability": "available",
+          "interconnect": "InfiniBand HDR",
+          "storage": "8x 1TB NVMe"
+        }
+      ]
+    },
+    {
+      "provider": "Lambda",
+      "instances": [
+        {
+          "instance_type": "gpu_8x_h100_sxm5",
+          "gpu_model": "NVIDIA H100 SXM",
+          "gpu_count": 8,
+          "gpu_memory_gb": 640,
+          "vcpus": 208,
+          "ram_gb": 1877,
+          "on_demand_hourly": 23.84,
+          "spot_hourly": null,
+          "reserved_1yr_hourly": null,
+          "reserved_3yr_hourly": null,
+          "region": "us-south-1",
+          "availability": "waitlist",
+          "interconnect": "NVLink + NVSwitch",
+          "storage": "24TB NVMe"
+        },
+        {
+          "instance_type": "gpu_8x_a100_80gb_sxm4",
+          "gpu_model": "NVIDIA A100 80GB SXM",
+          "gpu_count": 8,
+          "gpu_memory_gb": 640,
+          "vcpus": 124,
+          "ram_gb": 1800,
+          "on_demand_hourly": 14.32,
+          "spot_hourly": null,
+          "reserved_1yr_hourly": null,
+          "reserved_3yr_hourly": null,
+          "region": "us-south-1",
+          "availability": "available",
+          "interconnect": "NVLink + NVSwitch",
+          "storage": "17.1TB NVMe"
+        }
+      ]
+    },
+    {
+      "provider": "CoreWeave",
+      "instances": [
+        {
+          "instance_type": "h100-80gb-sxm-8x",
+          "gpu_model": "NVIDIA H100 SXM",
+          "gpu_count": 8,
+          "gpu_memory_gb": 640,
+          "vcpus": 160,
+          "ram_gb": 1800,
+          "on_demand_hourly": 27.44,
+          "spot_hourly": null,
+          "reserved_1yr_hourly": 20.58,
+          "reserved_3yr_hourly": null,
+          "region": "us-east",
+          "availability": "limited",
+          "interconnect": "InfiniBand NDR",
+          "storage": "configurable"
+        }
+      ]
+    },
+    {
+      "provider": "Together AI",
+      "instances": [
+        {
+          "instance_type": "h100-cluster",
+          "gpu_model": "NVIDIA H100 SXM",
+          "gpu_count": 8,
+          "gpu_memory_gb": 640,
+          "vcpus": null,
+          "ram_gb": null,
+          "on_demand_hourly": 28.80,
+          "spot_hourly": null,
+          "reserved_1yr_hourly": null,
+          "reserved_3yr_hourly": null,
+          "region": "us",
+          "availability": "available",
+          "interconnect": "InfiniBand NDR",
+          "storage": "configurable"
+        }
+      ]
+    }
+  ],
+  "price_history": {
+    "description": "Historical average on-demand pricing for 8x GPU instances (per hour)",
+    "h100_8x": [
+      {"date": "2024-01", "avg_price": 32.50},
+      {"date": "2024-06", "avg_price": 29.80},
+      {"date": "2025-01", "avg_price": 27.10},
+      {"date": "2025-06", "avg_price": 25.40},
+      {"date": "2026-01", "avg_price": 24.20},
+      {"date": "2026-02", "avg_price": 23.90}
+    ],
+    "a100_8x": [
+      {"date": "2024-01", "avg_price": 24.80},
+      {"date": "2024-06", "avg_price": 21.50},
+      {"date": "2025-01", "avg_price": 18.30},
+      {"date": "2025-06", "avg_price": 16.10},
+      {"date": "2026-01", "avg_price": 14.80},
+      {"date": "2026-02", "avg_price": 14.50}
+    ]
+  }
+}
