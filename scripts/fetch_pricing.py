@@ -6,10 +6,6 @@ Runs hourly via GitHub Actions to update data/cloud-pricing.json
 Sources:
 - Azure Retail Prices API (public, no auth required)
 - Lambda Labs API (public instance-types endpoint)
-
-Note: AWS and GCP bulk pricing APIs require large downloads or auth.
-We fetch from Azure and Lambda directly, and maintain manual data for
-AWS/GCP/CoreWeave/Together AI from their published pricing pages.
 """
 
 import json
@@ -20,11 +16,9 @@ import urllib.error
 from datetime import datetime, timezone
 from pathlib import Path
 
-# Config
 DATA_DIR = Path(__file__).parent.parent / "data"
 PRICING_FILE = DATA_DIR / "cloud-pricing.json"
 
-# Azure VM SKUs to query - maps SKU name to GPU info
 AZURE_SKUS = {
     "Standard_ND96isr_H100_v5": {
         "gpu_model": "NVIDIA H100 SXM",
@@ -45,7 +39,7 @@ AZURE_SKUS = {
 
 
 def fetch_url(url, timeout=30):
-    """Fetch URL content with error handling."""
+    """Fetch JSON from URL with error handling."""
     try:
         req = urllib.request.Request(
             url, headers={"User-Agent": "ai-infra-index/1.0"}
@@ -63,7 +57,6 @@ def fetch_azure_pricing():
     results = []
 
     for sku_name, gpu_info in AZURE_SKUS.items():
-        # Build filter with proper URL encoding
         odata_filter = (
             f"serviceName eq 'Virtual Machines' "
             f"and armSkuName eq '{sku_name}' "
@@ -79,7 +72,8 @@ def fetch_azure_pricing():
 
         if data and data.get("Items"):
             for item in data["Items"]:
-                if item.get("type") == "Consumption" and "Spot" not in item.get("skuName", "") and "Low" not in item.get("skuName", ""):
+                sku = item.get("skuName", "")
+                if item.get("type") == "Consumption" and "Spot" not in sku and "Low" not in sku:
                     results.append({
                         "provider": "azure",
                         "instance_type": sku_name,
@@ -89,10 +83,9 @@ def fetch_azure_pricing():
                         "price_per_hour_usd": item["retailPrice"],
                         "region": item.get("armRegionName", "eastus"),
                         "currency": item.get("currencyCode", "USD"),
-                        "meter": item.get("meterName", ""),
                         "source_url": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/",
                     })
-                    break  # Take first matching non-spot price
+                    break
 
     print(f"  Azure: {len(results)} instances fetched")
     return results
@@ -111,28 +104,13 @@ def fetch_lambda_pricing():
             specs = info.get("instance_type", {})
             price = specs.get("price_cents_per_hour")
             if price is not None:
-                gpu_desc = specs.get("description", instance_id)
                 gpu_count = specs.get("specs", {}).get("gpus", 0)
                 results.append({
                     "provider": "lambda",
                     "instance_type": instance_id,
-                    "gpu_model": gpu_desc,
+                    "gpu_model": specs.get("description", instance_id),
                     "gpu_count": gpu_count,
                     "price_per_hour_usd": round(price / 100, 2),
-                    "region": "us-east-1",
-                    "currency": "USD",
-                    "source_url": "https://lambdalabs.com/service/gpu-cloud#pricing",
-                })
-    elif data and isinstance(data, dict):
-        # Try alternate response format
-        for key, val in data.items():
-            if isinstance(val, dict) and "price_cents_per_hour" in val:
-                results.append({
-                    "provider": "lambda",
-                    "instance_type": key,
-                    "gpu_model": val.get("description", key),
-                    "gpu_count": val.get("specs", {}).get("gpus", 0),
-                    "price_per_hour_usd": round(val["price_cents_per_hour"] / 100, 2),
                     "region": "us-east-1",
                     "currency": "USD",
                     "source_url": "https://lambdalabs.com/service/gpu-cloud#pricing",
@@ -148,28 +126,20 @@ def main():
     print(f"Data directory: {DATA_DIR}")
     print(f"Pricing file: {PRICING_FILE}")
 
-    # Load existing pricing data
-    if PRICING_FILE.exists():
-        with open(PRICING_FILE) as f:
-            pricing_data = json.load(f)
-    else:
-        pricing_data = {
-            "metadata": {"description": "Live GPU cloud pricing data"},
-            "providers": {},
-        }
-
     # Fetch from all sources
     azure_instances = fetch_azure_pricing()
     lambda_instances = fetch_lambda_pricing()
 
-    total_fetched = len(azure_instances) + len(lambda_instances)
-    print(f"\nFetched {total_fetched} live instance pricing records")
+    total = len(azure_instances) + len(lambda_instances)
+    print(f"\nFetched {total} live instance pricing records")
 
     providers_updated = []
 
-    # Update Azure
+    # Build fresh providers dict from fetched data
+    providers = {}
+
     if azure_instances:
-        pricing_data["providers"]["azure"] = {
+        providers["azure"] = {
             "name": "Microsoft Azure",
             "last_api_fetch": now,
             "fetch_method": "azure_retail_prices_api",
@@ -177,9 +147,8 @@ def main():
         }
         providers_updated.append("azure")
 
-    # Update Lambda
     if lambda_instances:
-        pricing_data["providers"]["lambda"] = {
+        providers["lambda"] = {
             "name": "Lambda Labs",
             "last_api_fetch": now,
             "fetch_method": "lambda_api_v1",
@@ -187,11 +156,18 @@ def main():
         }
         providers_updated.append("lambda")
 
-    # Update metadata
-    pricing_data["metadata"]["last_updated"] = now
-    pricing_data["metadata"]["update_frequency"] = "hourly"
-    pricing_data["metadata"]["sources_fetched"] = total_fetched
-    pricing_data["metadata"]["providers_with_live_data"] = providers_updated
+    # Build output structure (always fresh to avoid schema conflicts)
+    pricing_data = {
+        "metadata": {
+            "description": "Live GPU cloud pricing - updated hourly via GitHub Actions",
+            "last_updated": now,
+            "update_frequency": "hourly",
+            "sources_fetched": total,
+            "providers_with_live_data": providers_updated,
+            "repository": "https://github.com/alpha-one-index/ai-infra-index",
+        },
+        "providers": providers,
+    }
 
     print(f"Providers updated: {providers_updated}")
 
@@ -200,8 +176,7 @@ def main():
     with open(PRICING_FILE, "w") as f:
         json.dump(pricing_data, f, indent=2)
     print(f"Updated {PRICING_FILE}")
-
-    print(f"\nDone in {datetime.now(timezone.utc).isoformat()}")
+    print(f"Done at {datetime.now(timezone.utc).isoformat()}")
 
 
 if __name__ == "__main__":
