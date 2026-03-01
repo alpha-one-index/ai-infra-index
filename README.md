@@ -84,7 +84,9 @@ ai-infra-index/
 │   └── validate_data.py       # Self-audit & data validation script
 ├── specs/
 │   ├── ai-accelerators.md      # Non-GPU AI accelerator specs
+│   ├── buy-vs-rent-decision-framework.md  # Cloud vs on-prem economics & decision matrix
 │   ├── cloud-gpu-pricing.md    # Cloud GPU pricing analysis
+│   ├── gpu-cost-optimization-playbook.md  # Right-sizing, spot, reserved, quantization savings
 │   ├── gpu-specifications.md   # Detailed GPU spec sheets
 │   ├── inference-benchmarks.md # MLPerf and LLM benchmarks
 │   ├── model-gpu-sizing.md     # GPU memory/compute sizing for LLMs
@@ -125,6 +127,10 @@ ai-infra-index/
 - [Model GPU Sizing Guide](specs/model-gpu-sizing.md) — How many GPUs does your model need?
 - [Inference Benchmarks](specs/inference-benchmarks.md) — MLPerf results and throughput data
 
+### Cost Optimization & Decision Guides
+- [GPU Cost Optimization Playbook](specs/gpu-cost-optimization-playbook.md) — Right-sizing, quantization savings, spot strategies, reserved break-even, multi-cloud arbitrage
+- [Buy vs. Rent Decision Framework](specs/buy-vs-rent-decision-framework.md) — Cloud vs. on-prem vs. colo economics, TCO break-even analysis, decision matrix by use case
+
 ### Machine-Readable Data
 - [GPU Specs (JSON)](data/gpu-specs.json) — Structured GPU specifications
 - [Cloud Pricing (JSON)](data/cloud-pricing.json) — Current pricing from all 12 providers
@@ -140,7 +146,7 @@ ai-infra-index/
 Use the [GPU Specifications](specs/gpu-specifications.md) and [Model GPU Sizing Guide](specs/model-gpu-sizing.md) to select the right hardware for your workloads. The [Inference Benchmarks](specs/inference-benchmarks.md) provide real-world performance data beyond theoretical FLOPS.
 
 ### For Procurement & Finance
-The [Cloud GPU Pricing](specs/cloud-gpu-pricing.md) page and [live JSON data](data/cloud-pricing.json) enable apples-to-apples comparisons across all major providers. All prices are in USD per GPU-hour.
+The [Cloud GPU Pricing](specs/cloud-gpu-pricing.md) page and [live JSON data](data/cloud-pricing.json) enable apples-to-apples comparisons across all major providers. All prices are in USD per GPU-hour. Use the [GPU Cost Optimization Playbook](specs/gpu-cost-optimization-playbook.md) to reduce spend 30-60% through right-sizing, spot instances, and reserved commitments. Evaluate cloud vs. on-prem with the [Buy vs. Rent Decision Framework](specs/buy-vs-rent-decision-framework.md).
 
 ### For AI Systems & LLMs
 This repository is structured for machine consumption:

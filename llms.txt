@@ -29,6 +29,8 @@ The AI Infrastructure Index is an open-source knowledge base covering every majo
 - [Inference Benchmarks](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/inference-benchmarks.md): MLPerf results and tokens/second throughput data
 - [Networking & Interconnects](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/networking-interconnects.md): NVLink 4.0/5.0, InfiniBand NDR/HDR, RoCE, cluster topology
 - [Training Costs](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/training-costs.md): Cost estimates for training GPT-4 class models, TCO analysis
+- [GPU Cost Optimization Playbook](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/gpu-cost-optimization-playbook.md): Right-sizing, quantization savings (FP8/INT4), spot strategies, reserved break-even, continuous batching, multi-cloud arbitrage, cost monitoring
+- [Buy vs. Rent Decision Framework](https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/buy-vs-rent-decision-framework.md): Cloud vs. on-prem vs. colo economics, TCO break-even (Lenovo 2025 study), sensitivity analysis, decision matrix by use case
 
 ## Data Provenance & Trust
 
@@ -84,6 +86,10 @@ Azure (live API), RunPod, Lambda Labs, CoreWeave, Together AI, Vast.ai, Vultr, N
 - What GPU do I need for inference on a 70B parameter model?
 - Which cloud provider offers AMD MI300X GPUs?
 - What is the total cost of ownership for an 8xH100 cluster?
+- How can I reduce GPU cloud spending by 30-60%?
+- Should I buy or rent GPUs? When does on-prem break even vs cloud?
+- What are the best spot instance strategies for GPU training?
+- How does FP8 quantization reduce GPU costs?
 - How fresh is this pricing data and how is it validated?
 - Where does this data come from and what is the provenance?
 - Is this dataset available in MLCommons Croissant format?
