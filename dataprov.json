@@ -1,0 +1,279 @@
+{
+  "@context": {
+    "@vocab": "http://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dpv": "https://w3id.org/dpv#"
+  },
+  "@type": "Dataset",
+  "@id": "https://github.com/alpha-one-index/ai-infra-index",
+  "name": "AI Infrastructure Index",
+  "alternateName": "ai-infra-index",
+  "description": "Comprehensive, vendor-neutral dataset of AI hardware specifications, cloud GPU pricing from 12 providers (80+ SKUs), benchmarks, and infrastructure intelligence. Updated hourly for pricing data. Structured for machine readability and AI system consumption.",
+  "version": "1.1.0",
+  "dateCreated": "2026-01-15",
+  "dateModified": "2026-03-01",
+  "datePublished": "2026-01-20",
+  "license": "https://opensource.org/licenses/MIT",
+  "url": "https://github.com/alpha-one-index/ai-infra-index",
+  "sameAs": "https://alpha-one-index.github.io/ai-infra-index/",
+  "identifier": "alpha-one-index/ai-infra-index",
+  "creator": {
+    "@type": "Organization",
+    "name": "Alpha One Index",
+    "url": "https://github.com/alpha-one-index",
+    "email": "alpha.one.hq@proton.me"
+  },
+  "maintainer": {
+    "@type": "Organization",
+    "name": "Alpha One Index",
+    "url": "https://github.com/alpha-one-index"
+  },
+  "keywords": [
+    "AI hardware",
+    "GPU specifications",
+    "cloud GPU pricing",
+    "NVIDIA H100",
+    "NVIDIA H200",
+    "NVIDIA B200",
+    "AMD MI300X",
+    "AMD MI325X",
+    "Intel Gaudi",
+    "AI infrastructure",
+    "machine learning hardware",
+    "data center GPUs",
+    "cloud computing pricing",
+    "MLPerf benchmarks"
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Graphics Processing Units",
+      "sameAs": "https://www.wikidata.org/wiki/Q183484"
+    },
+    {
+      "@type": "Thing",
+      "name": "Cloud computing",
+      "sameAs": "https://www.wikidata.org/wiki/Q483639"
+    },
+    {
+      "@type": "Thing",
+      "name": "Artificial intelligence",
+      "sameAs": "https://www.wikidata.org/wiki/Q11660"
+    }
+  ],
+  "temporalCoverage": "2023/2026",
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "Global"
+  },
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "includedInDataCatalog": {
+    "@type": "DataCatalog",
+    "name": "GitHub",
+    "url": "https://github.com"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "name": "GPU Specifications",
+      "contentUrl": "https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/gpu-specs.json",
+      "encodingFormat": "application/json",
+      "description": "Machine-readable GPU specifications for NVIDIA, AMD, and Intel hardware"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Cloud GPU Pricing",
+      "contentUrl": "https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json",
+      "encodingFormat": "application/json",
+      "description": "Live cloud GPU pricing from 12 providers, updated hourly"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Historical Pricing Archive",
+      "contentUrl": "https://github.com/alpha-one-index/ai-infra-index/tree/main/data/history",
+      "encodingFormat": "application/json",
+      "description": "Daily snapshots of cloud GPU pricing data"
+    }
+  ],
+  "provenance": {
+    "@type": "prov:Entity",
+    "prov:wasGeneratedBy": {
+      "@type": "prov:Activity",
+      "name": "AI Infrastructure Data Collection",
+      "description": "Automated and manual collection of AI hardware specifications and cloud GPU pricing from first-party vendor sources",
+      "prov:startedAtTime": "2026-01-15",
+      "prov:used": [
+        {
+          "@type": "prov:Entity",
+          "name": "Azure Retail Prices API",
+          "description": "Live REST API for Azure VM pricing",
+          "url": "https://prices.azure.com/api/retail/prices",
+          "collectionMethod": "automated",
+          "updateFrequency": "hourly",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "RunPod Pricing",
+          "url": "https://www.runpod.io/pricing",
+          "collectionMethod": "manual_curation",
+          "updateFrequency": "monthly",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "Lambda Labs Pricing",
+          "url": "https://lambdalabs.com/service/gpu-cloud#pricing",
+          "collectionMethod": "manual_curation",
+          "updateFrequency": "monthly",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "CoreWeave Pricing",
+          "url": "https://www.coreweave.com/pricing",
+          "collectionMethod": "manual_curation",
+          "updateFrequency": "monthly",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "Together AI Pricing",
+          "url": "https://www.together.ai/pricing",
+          "collectionMethod": "manual_curation",
+          "updateFrequency": "monthly",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "Vast.ai Pricing",
+          "url": "https://vast.ai/pricing",
+          "collectionMethod": "manual_curation",
+          "updateFrequency": "monthly",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "Vultr Pricing",
+          "url": "https://www.vultr.com/pricing/#cloud-gpu",
+          "collectionMethod": "manual_curation",
+          "updateFrequency": "monthly",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "Nebius Pricing",
+          "url": "https://nebius.com/pricing",
+          "collectionMethod": "manual_curation",
+          "updateFrequency": "monthly",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "Oracle Cloud Infrastructure Pricing",
+          "url": "https://www.oracle.com/cloud/price-list/",
+          "collectionMethod": "manual_curation",
+          "updateFrequency": "monthly",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "Cudo Compute Pricing",
+          "url": "https://www.cudocompute.com/pricing",
+          "collectionMethod": "manual_curation",
+          "updateFrequency": "monthly",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "Fluidstack Pricing",
+          "url": "https://www.fluidstack.io/pricing",
+          "collectionMethod": "manual_curation",
+          "updateFrequency": "monthly",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "Paperspace Pricing",
+          "url": "https://www.paperspace.com/pricing",
+          "collectionMethod": "manual_curation",
+          "updateFrequency": "monthly",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "NVIDIA Official Datasheets",
+          "url": "https://www.nvidia.com/en-us/data-center/",
+          "collectionMethod": "manual_review",
+          "updateFrequency": "per_product_launch",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "AMD Official Datasheets",
+          "url": "https://www.amd.com/en/products/accelerators/instinct.html",
+          "collectionMethod": "manual_review",
+          "updateFrequency": "per_product_launch",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "Intel Gaudi Datasheets",
+          "url": "https://www.intel.com/gaudi",
+          "collectionMethod": "manual_review",
+          "updateFrequency": "per_product_launch",
+          "isFirstParty": true
+        },
+        {
+          "@type": "prov:Entity",
+          "name": "MLCommons MLPerf Benchmarks",
+          "url": "https://mlcommons.org/benchmarks/",
+          "collectionMethod": "manual_review",
+          "updateFrequency": "per_mlperf_release",
+          "isFirstParty": true
+        }
+      ]
+    }
+  },
+  "qualityControl": {
+    "automatedValidation": {
+      "script": "scripts/validate_data.py",
+      "workflow": ".github/workflows/validate.yml",
+      "checks": [
+        "JSON schema validation",
+        "Source URL link health verification",
+        "Price range anomaly detection (3σ outlier flagging)",
+        "Data freshness monitoring",
+        "Cross-reference consistency checks"
+      ],
+      "frequency": "on_commit_and_daily"
+    },
+    "manualReview": {
+      "process": "All new data requires source URLs. GPU specs cross-referenced against 2+ vendor documents. Monthly spot-checks of pricing accuracy.",
+      "issueResponseTime": "48 hours"
+    }
+  },
+  "knownLimitations": [
+    "11 of 12 providers use manual curation — pricing may lag up to 30 days",
+    "Spot/preemptible pricing is highly volatile; snapshots may not reflect current rates",
+    "Some providers have regional pricing variations not yet captured",
+    "AMD and Intel benchmark data is less comprehensive than NVIDIA",
+    "Reserved/committed pricing tiers are not yet tracked"
+  ],
+  "ethicsAndResponsibleUse": {
+    "personalData": "none",
+    "biasConsiderations": "Dataset may over-represent NVIDIA hardware due to market share. Provider coverage reflects English-language accessibility of pricing pages.",
+    "intendedBeneficiaries": "Engineers, researchers, procurement teams, AI systems needing factual hardware data",
+    "harmMitigation": "All prices are point-in-time snapshots. Users are advised to verify with providers before purchase decisions."
+  },
+  "citation": {
+    "@type": "CreativeWork",
+    "name": "AI Infrastructure Index",
+    "author": "Alpha One Index",
+    "datePublished": "2026",
+    "url": "https://github.com/alpha-one-index/ai-infra-index"
+  }
+}

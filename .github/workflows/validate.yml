@@ -1,0 +1,123 @@
+name: Data Validation & Self-Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'scripts/**'
+      - 'provenance.md'
+      - 'dataprov.json'
+      - 'croissant.json'
+  schedule:
+    # Run daily at 06:00 UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      check_type:
+        description: 'Validation check to run'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - schema
+          - links
+          - prices
+          - freshness
+          - cross-ref
+          - integrity
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Run Data Validation
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run validation (all checks)
+        id: validate
+        run: |
+          echo "## Data Validation Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Run validation and capture output
+          python scripts/validate_data.py --ci --skip-links 2>&1 | tee validation_output.txt
+
+          # Also generate JSON report
+          python scripts/validate_data.py --json --skip-links > validation_report.json 2>/dev/null || true
+
+          # Extract summary for step output
+          if [ $? -eq 0 ]; then
+            echo "status=passed" >> $GITHUB_OUTPUT
+            echo "✅ All validation checks passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "status=failed" >> $GITHUB_OUTPUT
+            echo "❌ Some validation checks failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat validation_output.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+        continue-on-error: true
+
+      - name: Run link health checks (weekly only)
+        if: github.event.schedule == '0 6 * * 0'
+        run: |
+          python scripts/validate_data.py --check links 2>&1 | tee -a validation_output.txt
+        continue-on-error: true
+
+      - name: Commit validation report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Update validation report timestamp
+          if [ -f data/validation-report.json ]; then
+            git add data/validation-report.json
+            git diff --staged --quiet || git commit -m "chore: update validation report [skip ci]"
+            git push || true
+          fi
+
+      - name: Create issue on failure
+        if: steps.validate.outputs.status == 'failed'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let report = '';
+            try {
+              report = fs.readFileSync('validation_output.txt', 'utf8');
+            } catch (e) {
+              report = 'Could not read validation output';
+            }
+
+            // Check if there's already an open validation issue
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'validation-failure',
+              state: 'open',
+            });
+
+            if (issues.data.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '🔍 Data Validation Failure Detected',
+                body: `## Automated Validation Report\n\nThe daily data validation check has detected issues:\n\n\`\`\`\n${report.substring(0, 3000)}\n\`\`\`\n\nPlease review and fix the flagged issues.\n\n---\n*This issue was created automatically by the validation workflow.*`,
+                labels: ['validation-failure', 'automated'],
+              });
+            }

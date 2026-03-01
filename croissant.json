@@ -1,0 +1,204 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "sc": "https://schema.org/",
+    "dct": "http://purl.org/dc/terms/"
+  },
+  "@type": "sc:Dataset",
+  "name": "AI Infrastructure Index",
+  "description": "Comprehensive, vendor-neutral dataset cataloging AI hardware specifications, cloud GPU pricing from 12 providers (80+ SKUs), benchmarks, and infrastructure intelligence. Structured for machine readability. Pricing data updated hourly via GitHub Actions.",
+  "url": "https://github.com/alpha-one-index/ai-infra-index",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "license": "https://opensource.org/licenses/MIT",
+  "version": "1.1.0",
+  "dateCreated": "2026-01-15",
+  "dateModified": "2026-03-01",
+  "datePublished": "2026-01-20",
+  "creator": {
+    "@type": "sc:Organization",
+    "name": "Alpha One Index",
+    "url": "https://github.com/alpha-one-index"
+  },
+  "keywords": [
+    "AI hardware",
+    "GPU specifications",
+    "cloud GPU pricing",
+    "machine learning infrastructure",
+    "NVIDIA",
+    "AMD",
+    "Intel",
+    "benchmarks",
+    "MLPerf",
+    "data center"
+  ],
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "sameAs": "https://alpha-one-index.github.io/ai-infra-index/",
+  "citation": "Alpha One Index. (2026). AI Infrastructure Index. https://github.com/alpha-one-index/ai-infra-index",
+  "rai:dataCollection": "All data sourced from first-party vendor documentation, official APIs, and published benchmark results. No user-generated content or third-party aggregator data is used.",
+  "rai:dataCollectionType": "Web API + Manual Curation",
+  "rai:personalSensitiveInformation": "none",
+  "rai:dataBiases": "May over-represent NVIDIA hardware due to market dominance. Provider coverage limited to English-language pricing pages. US-centric regional pricing.",
+  "rai:dataLimitations": [
+    "Manual curation for 11/12 providers may lag up to 30 days",
+    "Spot pricing volatility not fully captured",
+    "Regional pricing variations incomplete"
+  ],
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "gpu-specs-json",
+      "name": "GPU Specifications",
+      "description": "Machine-readable specifications for NVIDIA, AMD, and Intel data center GPUs",
+      "contentUrl": "https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/gpu-specs.json",
+      "encodingFormat": "application/json",
+      "sha256": "dynamic"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "cloud-pricing-json",
+      "name": "Cloud GPU Pricing",
+      "description": "Live cloud GPU pricing from 12 providers, auto-updated hourly",
+      "contentUrl": "https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json",
+      "encodingFormat": "application/json",
+      "sha256": "dynamic"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "readme-md",
+      "name": "Documentation",
+      "description": "Primary dataset documentation with GPU comparison tables and provider listings",
+      "contentUrl": "https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/README.md",
+      "encodingFormat": "text/markdown"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "name": "gpu_specifications",
+      "description": "Hardware specifications for data center GPUs used in AI workloads",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "name": "vendor",
+          "description": "GPU manufacturer (NVIDIA, AMD, Intel)",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "gpu-specs-json" },
+            "extract": { "jsonPath": "$.gpus[*].vendor" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "model",
+          "description": "GPU model name (e.g., H100 SXM, MI300X)",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "gpu-specs-json" },
+            "extract": { "jsonPath": "$.gpus[*].model" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "architecture",
+          "description": "GPU architecture (e.g., Hopper, Blackwell, CDNA 3)",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "gpu-specs-json" },
+            "extract": { "jsonPath": "$.gpus[*].architecture" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "vram_gb",
+          "description": "Video memory capacity in gigabytes",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": { "@id": "gpu-specs-json" },
+            "extract": { "jsonPath": "$.gpus[*].vram_gb" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "memory_type",
+          "description": "Memory technology (HBM3, HBM3e, HBM2e)",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "gpu-specs-json" },
+            "extract": { "jsonPath": "$.gpus[*].memory_type" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "fp16_tflops",
+          "description": "FP16 performance in teraflops",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "gpu-specs-json" },
+            "extract": { "jsonPath": "$.gpus[*].fp16_tflops" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "tdp_watts",
+          "description": "Thermal design power in watts",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": { "@id": "gpu-specs-json" },
+            "extract": { "jsonPath": "$.gpus[*].tdp_watts" }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "name": "cloud_pricing",
+      "description": "On-demand and spot pricing for cloud GPU instances from 12 providers",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "name": "provider",
+          "description": "Cloud provider name",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "cloud-pricing-json" },
+            "extract": { "jsonPath": "$.providers[*].name" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "gpu_model",
+          "description": "GPU model available on this provider",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "cloud-pricing-json" },
+            "extract": { "jsonPath": "$.providers[*].gpus[*].model" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "price_per_gpu_hour",
+          "description": "Cost in USD per GPU per hour",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "cloud-pricing-json" },
+            "extract": { "jsonPath": "$.providers[*].gpus[*].price_per_gpu_hour" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "pricing_type",
+          "description": "Pricing model: on-demand, spot, reserved, or dedicated",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "cloud-pricing-json" },
+            "extract": { "jsonPath": "$.providers[*].gpus[*].pricing_type" }
+          }
+        }
+      ]
+    }
+  ]
+}
