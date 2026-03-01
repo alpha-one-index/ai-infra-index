@@ -28,21 +28,16 @@ jobs:
         env:
           PYTHONUNBUFFERED: '1'
 
-      - name: Check for changes
-        id: changes
-        run: |
-          git diff --quiet data/cloud-pricing.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
-
-      - name: Commit and push
-        if: steps.changes.outputs.changed == 'true'
+      - name: Commit and push if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add data/cloud-pricing.json
-          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
-          git commit -m "chore: auto-update cloud pricing data [${TIMESTAMP}]"
-          git push
-
-      - name: No changes
-        if: steps.changes.outputs.changed != 'true'
-        run: echo "No pricing changes detected"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
+            git commit -m "chore: auto-update cloud pricing data [${TIMESTAMP}]"
+            git push
+            echo "Changes committed and pushed"
+          fi
