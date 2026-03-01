@@ -18,11 +18,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
       - name: Run pricing fetcher
         run: python scripts/fetch_pricing.py
         env:
@@ -32,7 +27,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/cloud-pricing.json
+          git add data/cloud-pricing.json data/history/
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
