@@ -1,11 +1,26 @@
 {
   "metadata": {
-    "updated": "2026-03-01T07:47:21Z",
+    "updated": "2026-03-01T08:59:12Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
-    "providers_count": 5,
-    "total_skus": 32,
-    "methodology": "Azure via Retail Prices API; others curated monthly"
+    "providers_count": 11,
+    "total_skus": 57,
+    "methodology": "Azure via Retail Prices API (live); all others curated monthly from official pricing pages",
+    "last_curated": "2026-02",
+    "pricing_sources": {
+      "Azure": "https://prices.azure.com/api/retail/prices",
+      "RunPod": "https://www.runpod.io/pricing",
+      "Lambda": "https://lambdalabs.com/service/gpu-cloud#pricing",
+      "CoreWeave": "https://www.coreweave.com/pricing",
+      "Together AI": "https://www.together.ai/pricing",
+      "Vast.ai": "https://vast.ai/pricing",
+      "Vultr": "https://www.vultr.com/pricing/#cloud-gpu",
+      "Nebius": "https://nebius.com/pricing",
+      "OCI": "https://www.oracle.com/cloud/price-list/",
+      "Cudo Compute": "https://www.cudocompute.com/pricing",
+      "Fluidstack": "https://www.fluidstack.io/pricing",
+      "Paperspace": "https://www.paperspace.com/pricing"
+    }
   },
   "providers": {
     "RunPod": [
@@ -221,6 +236,168 @@
         "mem": 24,
         "on_demand": 0.15,
         "spot": 0.08
+      }
+    ],
+    "Vultr": [
+      {
+        "gpu": "H100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 2.99
+      },
+      {
+        "gpu": "B200",
+        "cnt": 1,
+        "mem": 192,
+        "on_demand": 2.99
+      },
+      {
+        "gpu": "A100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 2.6
+      },
+      {
+        "gpu": "A100 PCIe",
+        "cnt": 1,
+        "mem": 40,
+        "on_demand": 1.29
+      },
+      {
+        "gpu": "L40S",
+        "cnt": 1,
+        "mem": 48,
+        "on_demand": 1.67
+      },
+      {
+        "gpu": "MI300X",
+        "cnt": 1,
+        "mem": 192,
+        "on_demand": 1.85
+      },
+      {
+        "gpu": "MI325X",
+        "cnt": 1,
+        "mem": 256,
+        "on_demand": 2.0
+      },
+      {
+        "gpu": "A16",
+        "cnt": 1,
+        "mem": 64,
+        "on_demand": 0.51
+      }
+    ],
+    "Nebius": [
+      {
+        "gpu": "H100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 2.0
+      },
+      {
+        "gpu": "H200 SXM",
+        "cnt": 1,
+        "mem": 141,
+        "on_demand": 2.3
+      }
+    ],
+    "OCI": [
+      {
+        "gpu": "H100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 4.1
+      },
+      {
+        "gpu": "A100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 2.95
+      },
+      {
+        "gpu": "A100 SXM 40GB",
+        "cnt": 1,
+        "mem": 40,
+        "on_demand": 2.95
+      },
+      {
+        "gpu": "L40S",
+        "cnt": 1,
+        "mem": 48,
+        "on_demand": 2.39
+      },
+      {
+        "gpu": "A10",
+        "cnt": 1,
+        "mem": 24,
+        "on_demand": 1.5
+      }
+    ],
+    "Cudo Compute": [
+      {
+        "gpu": "H100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 2.5
+      },
+      {
+        "gpu": "A100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 1.2
+      },
+      {
+        "gpu": "RTX 4090",
+        "cnt": 1,
+        "mem": 24,
+        "on_demand": 0.35
+      }
+    ],
+    "Fluidstack": [
+      {
+        "gpu": "H100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 2.21
+      },
+      {
+        "gpu": "A100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 1.15
+      },
+      {
+        "gpu": "A100 PCIe",
+        "cnt": 1,
+        "mem": 40,
+        "on_demand": 0.8
+      },
+      {
+        "gpu": "L40S",
+        "cnt": 1,
+        "mem": 48,
+        "on_demand": 0.59
+      }
+    ],
+    "Paperspace": [
+      {
+        "gpu": "H100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 3.09
+      },
+      {
+        "gpu": "A100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 1.89
+      },
+      {
+        "gpu": "RTX A4000",
+        "cnt": 1,
+        "mem": 16,
+        "on_demand": 0.56
       }
     ]
   }
