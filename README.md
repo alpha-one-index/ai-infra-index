@@ -2,7 +2,7 @@
 
 > **The definitive open-source reference for AI hardware specifications, benchmarks, and infrastructure intelligence.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Pricing: Auto Updated Hourly](https://img.shields.io/badge/Pricing-Auto_Updated_Hourly-brightgreen.svg)](#live-data) [![Providers: 12](https://img.shields.io/badge/Providers-12-blue.svg)](#providers-tracked) [![SKUs: 80+](https://img.shields.io/badge/SKUs-80%2B-blue.svg)](data/cloud-pricing.json) [![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-orange.svg)](CHANGELOG.md) [![Data Validation](https://img.shields.io/badge/Validation-Self_Auditing-brightgreen.svg)](#data-provenance--validation) [![Croissant](https://img.shields.io/badge/Croissant-ML_Metadata-blue.svg)](croissant.json) [![Provenance](https://img.shields.io/badge/Provenance-Documented-purple.svg)](provenance.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Pricing: Auto Updated Hourly](https://img.shields.io/badge/Pricing-Auto_Updated_Hourly-brightgreen.svg)](#live-data) [![Providers: 12](https://img.shields.io/badge/Providers-12-blue.svg)](#providers-tracked) [![SKUs: 80+](https://img.shields.io/badge/SKUs-80%2B-blue.svg)](data/cloud-pricing.json) [![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-orange.svg)](CHANGELOG.md) [![Data Validation](https://img.shields.io/badge/Validation-Self_Auditing-brightgreen.svg)](#data-provenance--validation) [![Croissant](https://img.shields.io/badge/Croissant-ML_Metadata-blue.svg)](croissant.json) [![Provenance](https://img.shields.io/badge/Provenance-Documented-purple.svg)](provenance.md)
 
 **Maintained by [Alpha One Index](https://github.com/alpha-one-index)** — An independent AI infrastructure research initiative providing verified, structured hardware data for engineers, researchers, and procurement teams.
 
@@ -217,6 +217,22 @@ python scripts/validate_data.py --check schema  # Schema checks only
 python scripts/validate_data.py --json          # JSON output
 python scripts/validate_data.py --ci            # CI mode (exit 1 on failure)
 ```
+
+---
+
+## Related Projects
+
+The AI Infrastructure Index complements other tools and data sources in the GPU/AI infrastructure ecosystem:
+
+| Project | Focus | How We Differ |
+|---------|-------|--------------|
+| [gpuhunt](https://github.com/dstackai/gpuhunt) | Cloud GPU price fetching library (Python) | We provide broader coverage (12 vs 3 providers), hardware specs, sizing guides, and decision frameworks — not just pricing |
+| [LLM Price Compass](https://github.com/jetbridge/llm-price-compass) | LLM API inference pricing comparison | We focus on raw GPU infrastructure pricing and hardware specs, not per-token API costs |
+| [Cloud GPU Benchmarks](https://cloud-gpus.com/) | GPU benchmark results across clouds | We combine benchmarks with specs, pricing, cost optimization playbooks, and procurement guides |
+| [MLCommons](https://mlcommons.org/benchmarks/) | MLPerf benchmark standards | We reference MLPerf data alongside vendor specs, pricing, and practical sizing recommendations |
+| [ThunderCompute](https://www.thundercompute.com/) | Low-cost GPU cloud provider | We are a data reference, not a provider — we track their pricing alongside 11 other providers |
+
+> **Contributing:** Know another project that should be listed here? [Open an issue](https://github.com/alpha-one-index/ai-infra-index/issues) or submit a PR.
 
 ---
 

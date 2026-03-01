@@ -4,6 +4,25 @@ All notable changes to the AI Infrastructure Index will be documented here.
 
 This project follows [Semantic Versioning](https://semver.org/).
 
+## [1.2.0] - 2026-03-01
+
+### Added
+- **GPU Cost Optimization Playbook** (`specs/gpu-cost-optimization-playbook.md`) — right-sizing, quantization savings, spot/reserved strategies, multi-cloud arbitrage with real 2025–2026 pricing
+- **Buy vs. Rent Decision Framework** (`specs/buy-vs-rent-decision-framework.md`) — cloud vs. on-prem vs. colocation economics, TCO break-even analysis, decision matrices by workload type
+- Related Projects section in README linking to complementary tools in the ecosystem
+- GitHub Release tagging for version discoverability
+
+### Improved
+- README reorganized with repository structure tree, Quick Links subsection, and Procurement/Finance section
+- Updated `llms.txt` with new spec doc references and cost optimization query patterns
+- Updated `sitemap.xml` with new guide URLs for search engine discoverability
+- Version badge updated to 1.2.0
+
+### Infrastructure
+- IndexNow key deployed for accelerated search engine indexing
+- Submitted to awesome-lists for ecosystem discoverability (awesome-mlops, awesome-production-machine-learning, awesome-machine-learning)
+- Competitive scorecard: 43/45 (96%) completeness vs closest competitor at 29%
+
 ## [1.1.0] - 2026-03-01
 
 ### Added
