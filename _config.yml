@@ -1,0 +1,18 @@
+# GitHub Pages configuration
+title: AI Infrastructure Index
+description: >-
+  Open-source reference for AI hardware specifications, cloud GPU pricing
+  from 12 providers, inference benchmarks, and training cost estimates.
+  Updated hourly via automated pipelines.
+url: https://alpha-one-index.github.io
+baseurl: /ai-infra-index
+theme: null
+plugins: []
+include:
+  - llms.txt
+  - llms-full.txt
+  - robots.txt
+  - sitemap.xml
+  - a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6.txt
+  - croissant.json
+  - dataprov.json
