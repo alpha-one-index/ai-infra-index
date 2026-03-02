@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Accelerator Specifications: Google TPU, AWS Trainium, Cerebras WSE, Groq LPU — AI Infrastructure Index</title>
+  <meta name="description" content="Complete specifications for custom AI accelerators: Google TPU v5p/v5e/v4, AWS Trainium2/Inferentia2, Cerebras WSE-3, and Groq LPU. Performance, memory, and architecture comparison.">
+  <link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/specs/ai-accelerators.html">
+  <link rel="sitemap" type="application/xml" href="/ai-infra-index/sitemap.xml">
+  <style>:root{--bg:#0d1117;--bg-secondary:#161b22;--bg-tertiary:#21262d;--border:#30363d;--text:#e6edf3;--text-muted:#8b949e;--accent:#58a6ff;--accent-hover:#79c0ff;--green:#3fb950;--orange:#f0883e;--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;--radius:6px;--max-width:1200px;}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{font-size:16px;scroll-behavior:smooth;}body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;}a{color:var(--accent);text-decoration:none;}a:hover{color:var(--accent-hover);text-decoration:underline;}.container{max-width:var(--max-width);margin:0 auto;padding:0 24px;}.site-header{background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100;}.site-header .container{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}.site-logo{font-weight:700;font-size:1rem;color:var(--text);white-space:nowrap;}.site-logo span{color:var(--accent);}.site-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1;}.site-nav a{color:var(--text-muted);font-size:0.875rem;padding:4px 8px;border-radius:var(--radius);transition:color .15s,background .15s;}.site-nav a:hover,.site-nav a.active{color:var(--text);background:var(--bg-tertiary);text-decoration:none;}.breadcrumbs{padding:12px 0;font-size:0.8125rem;color:var(--text-muted);}.breadcrumbs a{color:var(--text-muted);}.page-header{padding:32px 0 24px;border-bottom:1px solid var(--border);}.page-header h1{font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;margin-bottom:10px;}.page-header .description{color:var(--text-muted);font-size:0.9375rem;max-width:800px;line-height:1.65;margin-top:8px;}.page-header .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8125rem;color:var(--text-muted);margin-top:12px;}.section{padding:36px 0;border-bottom:1px solid var(--border);}.section h2{font-size:1.25rem;font-weight:700;margin-bottom:12px;}.section h3{font-size:1.0625rem;font-weight:700;margin:24px 0 10px;}.section p{font-size:0.9375rem;color:var(--text-muted);line-height:1.7;margin-bottom:14px;max-width:800px;}.section p strong{color:var(--text);}.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:20px;}table{width:100%;border-collapse:collapse;font-size:0.875rem;}thead{background:var(--bg-tertiary);}th{padding:10px 14px;text-align:left;font-weight:600;color:var(--text-muted);font-size:0.8125rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;border-bottom:1px solid var(--border);}td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}tbody tr:last-child td{border-bottom:none;}tbody tr:hover{background:var(--bg-secondary);}.faq-list{display:flex;flex-direction:column;gap:16px;}.faq-item{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;}.faq-q{font-weight:700;font-size:1rem;margin-bottom:10px;}.faq-a{color:var(--text-muted);font-size:0.9375rem;line-height:1.65;}.faq-a strong{color:var(--text);}.answer-box{background:var(--bg-secondary);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;margin-bottom:20px;font-size:0.9375rem;color:var(--text-muted);line-height:1.65;}.answer-box strong{color:var(--text);}.site-footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding:32px 0;}.footer-inner{display:flex;gap:32px;flex-wrap:wrap;justify-content:space-between;}.footer-col h4{font-size:0.8125rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:12px;}.footer-col a{display:block;color:var(--text-muted);font-size:0.875rem;margin-bottom:6px;}.footer-col a:hover{color:#58a6ff;}.footer-bottom{margin-top:24px;padding-top:20px;border-top:1px solid var(--border);font-size:0.8125rem;color:var(--text-muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"AI Accelerator Specifications: Google TPU, AWS Trainium, Cerebras WSE, Groq LPU","dateModified":"2026-02-28","url":"https://alpha-one-index.github.io/ai-infra-index/specs/ai-accelerators.html","author":{"@type":"Organization","name":"Alpha One Index"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://alpha-one-index.github.io/ai-infra-index/"},{"@type":"ListItem","position":2,"name":"AI Accelerators","item":"https://alpha-one-index.github.io/ai-infra-index/specs/ai-accelerators.html"}]}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are Google TPU v5p specifications?","acceptedAnswer":{"@type":"Answer","text":"Google TPU v5p: 95 GB HBM2e, 2.76 TB/s, 459 TFLOPS BF16, max pod 8,960 chips. Google Cloud only."}},{"@type":"Question","name":"What is the Cerebras WSE-3?","acceptedAnswer":{"@type":"Answer","text":"Cerebras WSE-3: 4 trillion transistors, 900,000 AI cores, 44 GB SRAM, 21 PB/s on-chip bandwidth, TSMC 5nm."}},{"@type":"Question","name":"What is Groq LPU used for?","acceptedAnswer":{"@type":"Answer","text":"Groq LPU achieves 500+ tokens/second for Llama 2 70B. Optimized for low-latency deterministic inference."}},{"@type":"Question","name":"How does AWS Trainium2 compare to H100?","acceptedAnswer":{"@type":"Answer","text":"AWS Trainium2 is 20-40% cheaper than H100 P5 for training on AWS, requiring the Neuron SDK."}}]}]}</script>
+</head>
+<body>
+<header class="site-header" role="banner"><div class="container">
+  <div class="site-logo"><a href="/ai-infra-index/" style="color:inherit;text-decoration:none;">AI <span>Infra</span> Index</a></div>
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <a href="/ai-infra-index/">Home</a>
+    <a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specs</a>
+    <a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Pricing</a>
+    <a href="/ai-infra-index/specs/ai-accelerators.html" class="active">Accelerators</a>
+    <a href="/ai-infra-index/specs/inference-benchmarks.html">Benchmarks</a>
+    <a href="/ai-infra-index/specs/model-gpu-sizing.html">Sizing Guide</a>
+    <a href="/ai-infra-index/specs/training-costs.html">Training Costs</a>
+    <a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a>
+    <a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a>
+    <a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a>
+  </nav>
+</div></header>
+<main id="main-content">
+  <div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/ai-infra-index/">Home</a> &rsaquo; <span>AI Accelerators</span></nav></div>
+  <div class="page-header"><div class="container">
+    <h1>AI Accelerator Specifications</h1>
+    <p class="description">Complete specifications for custom AI accelerators: Google TPU v5p/v5e/v4, AWS Trainium2/Inferentia2, Cerebras WSE-3, and Groq LPU.</p>
+    <div class="meta"><span>Last updated: <time datetime="2026-02-28">February 28, 2026</time></span><span>Related: <a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specs</a> · <a href="/ai-infra-index/specs/inference-benchmarks.html">Benchmarks</a></span></div>
+  </div></div>
+  <section class="section" aria-labelledby="comparison-heading"><div class="container">
+    <h2 id="comparison-heading">AI Accelerator Comparison: Which Is Best for Your Workload?</h2>
+    <div class="answer-box"><strong>Google TPU v5p</strong> — best for large-scale Google Cloud training (8,960 chips). <strong>AWS Trainium2</strong> — 20–40% cheaper than H100 for AWS training. <strong>Cerebras WSE-3</strong> — eliminates HBM bottleneck. <strong>Groq LPU</strong> — 500+ tokens/sec inference.</div>
+    <div class="table-wrap"><table><thead><tr><th>Accelerator</th><th>Memory</th><th>Bandwidth</th><th>Peak Performance</th><th>Architecture</th><th>Best For</th></tr></thead><tbody>
+      <tr><td><strong>Google TPU v5p</strong></td><td>95 GB HBM2e</td><td>2.76 TB/s</td><td>459 TFLOPS BF16</td><td>SparseCore + MXU</td><td>Large-scale training</td></tr>
+      <tr><td><strong>Google TPU v5e</strong></td><td>16 GB HBM2e</td><td>819 GB/s</td><td>—</td><td>MXU</td><td>Cost-efficient inference</td></tr>
+      <tr><td><strong>AWS Trainium2</strong></td><td>96 GB HBM</td><td>2.4 TB/s</td><td>~500 TFLOPS BF16</td><td>NeuronCore-v3</td><td>AWS-native training</td></tr>
+      <tr><td><strong>AWS Inferentia2</strong></td><td>32 GB HBM2e</td><td>2.4 TB/s</td><td>—</td><td>NeuronCore-v2</td><td>AWS-native inference</td></tr>
+      <tr><td><strong>Cerebras WSE-3</strong></td><td>44 GB SRAM</td><td>21 PB/s on-chip</td><td>—</td><td>Wafer-scale</td><td>Ultra-large model training</td></tr>
+      <tr><td><strong>Groq LPU</strong></td><td>230 MB SRAM</td><td>80 TB/s on-chip</td><td>—</td><td>TSP</td><td>Low-latency inference</td></tr>
+    </tbody></table></div>
+  </div></section>
+  <section class="section" aria-labelledby="tpu-heading"><div class="container">
+    <h2 id="tpu-heading">Google TPU Specifications</h2>
+    <h3>What are Google TPU v5p specifications?</h3>
+    <p>TPU v5p: <strong>459 TFLOPS BF16</strong> per chip, pods scaling to 8,960 chips via ICI interconnect. Available exclusively on Google Cloud.</p>
+    <div class="table-wrap"><table><thead><tr><th>Specification</th><th>TPU v5p</th><th>TPU v5e</th><th>TPU v4</th></tr></thead><tbody>
+      <tr><td>Memory per Chip</td><td>95 GB HBM2e</td><td>16 GB HBM2e</td><td>32 GB HBM2e</td></tr>
+      <tr><td>Memory Bandwidth</td><td>2.76 TB/s</td><td>819 GB/s</td><td>1.2 TB/s</td></tr>
+      <tr><td>Peak BF16</td><td>459 TFLOPS</td><td>—</td><td>275 TFLOPS</td></tr>
+      <tr><td>Max Pod Size</td><td>8,960 chips</td><td>256 chips</td><td>4,096 chips</td></tr>
+      <tr><td>Availability</td><td colspan="3">Google Cloud only</td></tr>
+    </tbody></table></div>
+    <p>Source: <a href="https://cloud.google.com/tpu/docs/v5p">Google Cloud TPU v5p documentation</a></p>
+  </div></section>
+  <section class="section" aria-labelledby="aws-heading"><div class="container">
+    <h2 id="aws-heading">AWS Custom Silicon: Trainium2 and Inferentia2</h2>
+    <h3>What are AWS Trainium2 specifications?</h3>
+    <p>AWS Trainium2 is <strong>20–40% cheaper than P5 (H100)</strong> for equivalent training throughput. Requires AWS Neuron SDK.</p>
+    <div class="table-wrap"><table><thead><tr><th>Specification</th><th>Trainium2</th><th>Inferentia2</th></tr></thead><tbody>
+      <tr><td>Compute Cores</td><td>NeuronCore-v3</td><td>2x NeuronCore-v2</td></tr>
+      <tr><td>Memory</td><td>96 GB HBM</td><td>32 GB HBM2e</td></tr>
+      <tr><td>Memory Bandwidth</td><td>2.4 TB/s</td><td>2.4 TB/s</td></tr>
+      <tr><td>Supported Precisions</td><td>FP32, BF16, FP8</td><td>FP32, BF16, FP8</td></tr>
+      <tr><td>Instance Type</td><td>trn2.48xlarge (16 chips)</td><td>inf2.48xlarge (12 chips)</td></tr>
+    </tbody></table></div>
+    <p>Source: <a href="https://aws.amazon.com/machine-learning/trainium/">AWS Trainium product page</a></p>
+  </div></section>
+  <section class="section" aria-labelledby="cerebras-heading"><div class="container">
+    <h2 id="cerebras-heading">Cerebras WSE-3: Wafer-Scale AI Training</h2>
+    <p>Cerebras WSE-3: <strong>4 trillion transistors</strong>, <strong>900,000 AI cores</strong>, 21 PB/s on-chip bandwidth. Keeps entire model in SRAM, eliminating HBM bandwidth bottleneck.</p>
+    <div class="table-wrap"><table><thead><tr><th>Specification</th><th>WSE-3</th><th>WSE-2</th></tr></thead><tbody>
+      <tr><td>Transistors</td><td>4 trillion</td><td>2.6 trillion</td></tr>
+      <tr><td>AI Cores</td><td>900,000</td><td>850,000</td></tr>
+      <tr><td>On-Chip Memory</td><td>44 GB SRAM</td><td>40 GB SRAM</td></tr>
+      <tr><td>On-Chip Bandwidth</td><td>21 PB/s</td><td>20 PB/s</td></tr>
+      <tr><td>Process Node</td><td>TSMC 5nm</td><td>TSMC 7nm</td></tr>
+      <tr><td>External Memory</td><td>Up to 1.5 TB (MemoryX)</td><td>—</td></tr>
+    </tbody></table></div>
+  </div></section>
+  <section class="section" aria-labelledby="groq-heading"><div class="container">
+    <h2 id="groq-heading">Groq LPU: Fastest LLM Inference</h2>
+    <p>Groq LPU achieves <strong>500+ tokens/second</strong> for Llama 2 70B on GroqCloud via deterministic TSP architecture.</p>
+    <div class="table-wrap"><table><thead><tr><th>Specification</th><th>Value</th></tr></thead><tbody>
+      <tr><td>Architecture</td><td>TSP (Tensor Streaming Processor)</td></tr>
+      <tr><td>On-Chip Memory</td><td>230 MB SRAM</td></tr>
+      <tr><td>On-Chip Bandwidth</td><td>80 TB/s</td></tr>
+      <tr><td>Execution</td><td>Deterministic (no stochastic latency)</td></tr>
+      <tr><td>LLM Throughput</td><td>500+ tokens/sec (Llama 2 70B)</td></tr>
+    </tbody></table></div>
+  </div></section>
+  <section class="section" aria-labelledby="faq-heading"><div class="container">
+    <h2 id="faq-heading">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">What is Google TPU v5p memory capacity?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">Google TPU v5p has <strong>95 GB HBM2e per chip</strong>, 2.76 TB/s bandwidth, 459 TFLOPS BF16. Pods scale to 8,960 chips. Google Cloud only.</p></div>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">What is the Groq LPU inference speed for Llama 70B?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">Groq LPU achieves <strong>500+ tokens/second</strong> for Llama 2 70B — vs ~85–155 tokens/second on H100/H200 with vLLM. Deterministic, jitter-free latency.</p></div>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">Is AWS Trainium cheaper than H100 for training?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">AWS Trainium2 is typically <strong>20–40% cheaper than P5 (H100)</strong> for equivalent AWS training throughput. Requires AWS Neuron SDK migration (2–4 weeks for most PyTorch models).</p></div>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">TPU vs GPU: when should I use Google TPU instead of H100?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">Use Google TPU when: on Google Cloud, training with JAX/TensorFlow, running large-scale pretraining (pods to 8,960 chips). Use H100 for PyTorch workloads requiring maximum flexibility.</p></div>
+      </div>
+    </div>
+  </div></section>
+</main>
+<footer class="site-footer" role="contentinfo"><div class="container">
+  <div class="footer-inner">
+    <div class="footer-col"><h4>Hardware Specs</h4><a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specifications</a><a href="/ai-infra-index/specs/ai-accelerators.html">AI Accelerators</a><a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a></div>
+    <div class="footer-col"><h4>Pricing &amp; Costs</h4><a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud GPU Pricing</a><a href="/ai-infra-index/specs/training-costs.html">Training Costs</a><a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a></div>
+    <div class="footer-col"><h4>Sizing &amp; Benchmarks</h4><a href="/ai-infra-index/specs/model-gpu-sizing.html">Model GPU Sizing</a><a href="/ai-infra-index/specs/inference-benchmarks.html">Inference Benchmarks</a><a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a></div>
+    <div class="footer-col"><h4>Data &amp; Repo</h4><a href="https://github.com/alpha-one-index/ai-infra-index">GitHub Repository</a><a href="/ai-infra-index/llms.txt">llms.txt</a><a href="/ai-infra-index/sitemap.xml">Sitemap</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Alpha One Index — MIT License. Sources: <a href="https://cloud.google.com/tpu/docs/v5p">Google TPU</a>, <a href="https://aws.amazon.com/machine-learning/trainium/">AWS Trainium</a>, <a href="https://www.cerebras.net">Cerebras</a>, <a href="https://groq.com">Groq</a>.</span><span>Last updated: <time datetime="2026-02-28">February 28, 2026</time></span></div>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Inference Benchmarks: MLPerf Results, Tokens/Sec, H100 vs H200 — AI Infrastructure Index</title>
+  <meta name="description" content="AI inference benchmark results: MLPerf v4.1 data, tokens-per-second for Llama 2 70B, GPT-J 6B, Stable Diffusion XL across H100, H200, A100, B200. vLLM and TensorRT-LLM results.">
+  <link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/specs/inference-benchmarks.html">
+  <link rel="sitemap" type="application/xml" href="/ai-infra-index/sitemap.xml">
+  <style>:root{--bg:#0d1117;--bg-secondary:#161b22;--bg-tertiary:#21262d;--border:#30363d;--text:#e6edf3;--text-muted:#8b949e;--accent:#58a6ff;--accent-hover:#79c0ff;--green:#3fb950;--orange:#f0883e;--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;--radius:6px;--max-width:1200px;}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{font-size:16px;scroll-behavior:smooth;}body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;}a{color:var(--accent);text-decoration:none;}a:hover{color:var(--accent-hover);text-decoration:underline;}.container{max-width:var(--max-width);margin:0 auto;padding:0 24px;}.site-header{background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100;}.site-header .container{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}.site-logo{font-weight:700;font-size:1rem;color:var(--text);white-space:nowrap;}.site-logo span{color:var(--accent);}.site-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1;}.site-nav a{color:var(--text-muted);font-size:0.875rem;padding:4px 8px;border-radius:var(--radius);transition:color .15s,background .15s;}.site-nav a:hover,.site-nav a.active{color:var(--text);background:var(--bg-tertiary);text-decoration:none;}.breadcrumbs{padding:12px 0;font-size:0.8125rem;color:var(--text-muted);}.breadcrumbs a{color:var(--text-muted);}.page-header{padding:32px 0 24px;border-bottom:1px solid var(--border);}.page-header h1{font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;margin-bottom:10px;}.page-header .description{color:var(--text-muted);font-size:0.9375rem;max-width:800px;line-height:1.65;margin-top:8px;}.page-header .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8125rem;color:var(--text-muted);margin-top:12px;}.section{padding:36px 0;border-bottom:1px solid var(--border);}.section h2{font-size:1.25rem;font-weight:700;margin-bottom:12px;}.section h3{font-size:1.0625rem;font-weight:700;margin:24px 0 10px;}.section p{font-size:0.9375rem;color:var(--text-muted);line-height:1.7;margin-bottom:14px;max-width:800px;}.section p strong{color:var(--text);}.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:20px;}table{width:100%;border-collapse:collapse;font-size:0.875rem;}thead{background:var(--bg-tertiary);}th{padding:10px 14px;text-align:left;font-weight:600;color:var(--text-muted);font-size:0.8125rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;border-bottom:1px solid var(--border);}td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}tbody tr:last-child td{border-bottom:none;}tbody tr:hover{background:var(--bg-secondary);}.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:0.75rem;font-weight:600;}.badge-green{background:rgba(63,185,80,.15);color:#3fb950;}.faq-list{display:flex;flex-direction:column;gap:16px;}.faq-item{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;}.faq-q{font-weight:700;font-size:1rem;margin-bottom:10px;}.faq-a{color:var(--text-muted);font-size:0.9375rem;line-height:1.65;}.faq-a strong{color:var(--text);}.answer-box{background:var(--bg-secondary);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;margin-bottom:20px;font-size:0.9375rem;color:var(--text-muted);line-height:1.65;}.answer-box strong{color:var(--text);}.price-low{color:#3fb950;font-weight:700;}.site-footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding:32px 0;}.footer-inner{display:flex;gap:32px;flex-wrap:wrap;justify-content:space-between;}.footer-col h4{font-size:0.8125rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:12px;}.footer-col a{display:block;color:var(--text-muted);font-size:0.875rem;margin-bottom:6px;}.footer-col a:hover{color:#58a6ff;}.footer-bottom{margin-top:24px;padding-top:20px;border-top:1px solid var(--border);font-size:0.8125rem;color:var(--text-muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"AI Inference Benchmarks: MLPerf v4.1, Tokens/Sec H100 H200 A100","dateModified":"2026-02-28","url":"https://alpha-one-index.github.io/ai-infra-index/specs/inference-benchmarks.html","author":{"@type":"Organization","name":"Alpha One Index"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://alpha-one-index.github.io/ai-infra-index/"},{"@type":"ListItem","position":2,"name":"Inference Benchmarks","item":"https://alpha-one-index.github.io/ai-infra-index/specs/inference-benchmarks.html"}]}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How fast is H100 inference for Llama 2 70B?","acceptedAnswer":{"@type":"Answer","text":"NVIDIA H100 SXM: ~85 tokens/sec with vLLM, ~110 tokens/sec with TensorRT-LLM for Llama 2 70B at FP16 batch=1."}},{"@type":"Question","name":"What is the fastest GPU for LLM inference?","acceptedAnswer":{"@type":"Answer","text":"NVIDIA H200 is fastest single GPU: 155 tokens/sec for Llama 2 70B. Groq LPU achieves 500+ tokens/sec but requires model compilation."}},{"@type":"Question","name":"Is FP8 quantization worth using for inference?","acceptedAnswer":{"@type":"Answer","text":"Yes. FP8 delivers ~155 tokens/sec vs ~85 FP16 (1.8x) on H100, using only 70 GB (fits 1 GPU). Quality loss less than 1% perplexity."}}]}]}</script>
+</head>
+<body>
+<header class="site-header" role="banner"><div class="container">
+  <div class="site-logo"><a href="/ai-infra-index/" style="color:inherit;text-decoration:none;">AI <span>Infra</span> Index</a></div>
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <a href="/ai-infra-index/">Home</a>
+    <a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specs</a>
+    <a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Pricing</a>
+    <a href="/ai-infra-index/specs/ai-accelerators.html">Accelerators</a>
+    <a href="/ai-infra-index/specs/inference-benchmarks.html" class="active">Benchmarks</a>
+    <a href="/ai-infra-index/specs/model-gpu-sizing.html">Sizing Guide</a>
+    <a href="/ai-infra-index/specs/training-costs.html">Training Costs</a>
+    <a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a>
+    <a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a>
+    <a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a>
+  </nav>
+</div></header>
+<main id="main-content">
+  <div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/ai-infra-index/">Home</a> &rsaquo; <span>Inference Benchmarks</span></nav></div>
+  <div class="page-header"><div class="container">
+    <h1>AI Inference Benchmark Index</h1>
+    <p class="description">Performance benchmarks for AI inference. MLPerf v4.1 official results, tokens-per-second for Llama 2 70B/13B, GPT-J 6B, Stable Diffusion XL. Quantization impact and performance-per-dollar comparison.</p>
+    <div class="meta"><span>Last verified: <time datetime="2026-02-28">February 28, 2026</time></span><span>Source: <a href="https://mlcommons.org/benchmarks/inference/">MLCommons</a>, NVIDIA, independent testing</span></div>
+  </div></div>
+  <section class="section" aria-labelledby="mlperf-heading"><div class="container">
+    <h2 id="mlperf-heading">MLPerf Inference v4.1 — Official Results</h2>
+    <p>MLPerf Inference v4.1 published by <a href="https://mlcommons.org/benchmarks/inference/">MLCommons</a>, November 2024.</p>
+    <h3>Data Center Offline Scenario — Llama 2 70B</h3>
+    <div class="answer-box">Best result: <strong>NVIDIA B200 at ~210 samples/second</strong>. H200 achieves 118.5 (40% faster than H100's 84.2). A100 achieves 32.1 — 2.6x slower than H100.</div>
+    <div class="table-wrap"><table><thead><tr><th>Accelerator</th><th>Model</th><th>Samples/Second</th><th>System</th><th>Submitter</th></tr></thead><tbody>
+      <tr><td><strong>B200 SXM (8×)</strong> <span class="badge badge-green">Best</span></td><td>Llama 2 70B</td><td>~210</td><td>DGX B200</td><td>NVIDIA</td></tr>
+      <tr><td><strong>H200 SXM (8×)</strong></td><td>Llama 2 70B</td><td>118.5</td><td>HGX H200</td><td>NVIDIA</td></tr>
+      <tr><td><strong>H100 SXM (8×)</strong></td><td>Llama 2 70B</td><td>84.2</td><td>DGX H100</td><td>NVIDIA</td></tr>
+      <tr><td>TPU v5e (8×)</td><td>Llama 2 70B</td><td>45.3</td><td>Cloud TPU</td><td>Google</td></tr>
+      <tr><td><strong>A100 SXM (8×)</strong></td><td>Llama 2 70B</td><td>32.1</td><td>DGX A100</td><td>NVIDIA</td></tr>
+    </tbody></table></div>
+    <p>Source: <a href="https://mlcommons.org/benchmarks/inference/">MLCommons official results</a>, November 2024.</p>
+  </div></section>
+  <section class="section" aria-labelledby="tokens-heading"><div class="container">
+    <h2 id="tokens-heading">What Is H100 Inference Speed in Tokens Per Second?</h2>
+    <div class="answer-box">NVIDIA H100 SXM: <strong>~85 tokens/sec</strong> with vLLM (FP16, batch=1), <strong>~110 tokens/sec</strong> with TensorRT-LLM for Llama 2 70B. H200: 120–155 tokens/sec. INT4 quantization: ~190–195 tokens/sec on single H100.</div>
+    <div class="table-wrap"><table><thead><tr><th>GPU</th><th>Framework</th><th>Tokens/sec</th><th>Batch Size</th><th>Precision</th></tr></thead><tbody>
+      <tr><td>H200 SXM 141GB</td><td>TensorRT-LLM</td><td>155</td><td>1</td><td>FP16</td></tr>
+      <tr><td>H200 SXM 141GB</td><td>vLLM</td><td>~120</td><td>1</td><td>FP16</td></tr>
+      <tr><td>H100 SXM 80GB</td><td>TensorRT-LLM</td><td>~110</td><td>1</td><td>FP16</td></tr>
+      <tr><td>H100 SXM 80GB</td><td>vLLM</td><td>~85</td><td>1</td><td>FP16</td></tr>
+      <tr><td>A100 SXM 80GB</td><td>vLLM</td><td>~35</td><td>1</td><td>FP16</td></tr>
+    </tbody></table></div>
+  </div></section>
+  <section class="section" aria-labelledby="quant-heading"><div class="container">
+    <h2 id="quant-heading">How Does Quantization Affect Inference Performance?</h2>
+    <p>FP8 roughly doubles throughput vs FP16 with &lt;1% quality degradation. INT4 (AWQ) allows Llama 2 70B on a single H100 80GB.</p>
+    <div class="table-wrap"><table><thead><tr><th>Precision</th><th>Tokens/sec (H100 SXM)</th><th>Memory (Llama 2 70B)</th><th>Quality Loss</th></tr></thead><tbody>
+      <tr><td>FP16 (baseline)</td><td>~85</td><td>~140 GB (2 GPUs)</td><td>Baseline</td></tr>
+      <tr><td>FP8 (E4M3)</td><td>~155</td><td>~70 GB (1 GPU)</td><td>&lt;1% perplexity</td></tr>
+      <tr><td>INT8 (W8A8)</td><td>~140</td><td>~70 GB (1 GPU)</td><td>~1% perplexity</td></tr>
+      <tr><td>INT4 (GPTQ)</td><td>~190</td><td>~35 GB (1 GPU)</td><td>2–3% perplexity</td></tr>
+      <tr><td>INT4 (AWQ)</td><td>~195</td><td>~35 GB (1 GPU)</td><td>1–2% perplexity</td></tr>
+    </tbody></table></div>
+  </div></section>
+  <section class="section" aria-labelledby="perf-dollar-heading"><div class="container">
+    <h2 id="perf-dollar-heading">Which Cloud GPU Has the Best Performance Per Dollar?</h2>
+    <div class="answer-box">Best performance-per-dollar: <strong>H200 on Lambda Labs ($3.29/hr)</strong> at 169,600 tokens/dollar — 1.28× better than H100 on Lambda Labs (132,400 tokens/dollar).</div>
+    <div class="table-wrap"><table><thead><tr><th>GPU</th><th>Cloud &amp; Rate</th><th>Tokens/sec</th><th>Tokens/Dollar</th><th>Relative Value</th></tr></thead><tbody>
+      <tr><td>H200 (Lambda)</td><td>$3.29/hr</td><td>~155</td><td class="price-low">~169,600</td><td class="price-low">1.28×</td></tr>
+      <tr><td>H100 (Lambda)</td><td>$2.99/hr</td><td>~110</td><td>~132,400</td><td>1.0× (baseline)</td></tr>
+      <tr><td>H100 (AWS P5)</td><td>$3.93/hr</td><td>~110</td><td>~100,800</td><td>0.76×</td></tr>
+      <tr><td>A100 (Lambda)</td><td>$1.79/hr</td><td>~35</td><td>~70,400</td><td>0.53×</td></tr>
+    </tbody></table></div>
+  </div></section>
+  <section class="section" aria-labelledby="faq-heading"><div class="container">
+    <h2 id="faq-heading">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">How many tokens per second does H100 generate for Llama 2 70B?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">NVIDIA H100 SXM: <strong>~85 tokens/sec with vLLM</strong>, <strong>~110 tokens/sec with TensorRT-LLM</strong> for Llama 2 70B at FP16 batch=1. FP8 quantization improves this to ~155 tokens/sec.</p></div>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">Which inference framework is fastest: vLLM or TensorRT-LLM?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text"><strong>TensorRT-LLM is fastest</strong> for single-GPU throughput (110 vs 85 tokens/sec — 29% faster). vLLM is better for multi-model serving and flexible deployment.</p></div>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">How does H200 compare to H100 for inference speed?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">H200 is <strong>~40% faster than H100</strong> for Llama 2 70B — 155 vs 110 tokens/sec with TensorRT-LLM. Speedup comes from 43% more bandwidth (4.8 vs 3.35 TB/s).</p></div>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">Is FP8 quantization worth using for inference?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">Yes. FP8 delivers <strong>~155 tokens/sec vs ~85 for FP16</strong> (1.8× improvement) on H100, using only 70 GB — fits on a single GPU. Quality loss is &lt;1% perplexity.</p></div>
+      </div>
+    </div>
+  </div></section>
+</main>
+<footer class="site-footer" role="contentinfo"><div class="container">
+  <div class="footer-inner">
+    <div class="footer-col"><h4>Hardware Specs</h4><a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specifications</a><a href="/ai-infra-index/specs/ai-accelerators.html">AI Accelerators</a><a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a></div>
+    <div class="footer-col"><h4>Pricing &amp; Costs</h4><a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud GPU Pricing</a><a href="/ai-infra-index/specs/training-costs.html">Training Costs</a><a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a></div>
+    <div class="footer-col"><h4>Sizing &amp; Benchmarks</h4><a href="/ai-infra-index/specs/model-gpu-sizing.html">Model GPU Sizing</a><a href="/ai-infra-index/specs/inference-benchmarks.html">Inference Benchmarks</a><a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a></div>
+    <div class="footer-col"><h4>Data &amp; Repo</h4><a href="https://github.com/alpha-one-index/ai-infra-index">GitHub Repository</a><a href="/ai-infra-index/llms.txt">llms.txt</a><a href="/ai-infra-index/sitemap.xml">Sitemap</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Alpha One Index — MIT License. MLPerf results from <a href="https://mlcommons.org/benchmarks/inference/">MLCommons</a>.</span><span>Last updated: <time datetime="2026-02-28">February 28, 2026</time></span></div>
+</div></footer>
+</body>
+</html>

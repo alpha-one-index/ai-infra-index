@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud GPU Pricing: H100, H200, A100 Prices from 12 Providers — AI Infrastructure Index</title>
+  <meta name="description" content="Cloud GPU pricing comparison for H100, H200, B200, and A100 across 12 providers: AWS, GCP, Azure, CoreWeave, Lambda Labs, RunPod, Vast.ai, and more. On-demand and spot rates in USD/GPU-hour.">
+  <link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/specs/cloud-gpu-pricing.html">
+  <link rel="sitemap" type="application/xml" href="/ai-infra-index/sitemap.xml">
+  <style>:root{--bg:#0d1117;--bg-secondary:#161b22;--bg-tertiary:#21262d;--border:#30363d;--text:#e6edf3;--text-muted:#8b949e;--accent:#58a6ff;--accent-hover:#79c0ff;--green:#3fb950;--orange:#f0883e;--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;--radius:6px;--max-width:1200px;}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{font-size:16px;scroll-behavior:smooth;}body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;}a{color:var(--accent);text-decoration:none;}a:hover{color:var(--accent-hover);text-decoration:underline;}.container{max-width:var(--max-width);margin:0 auto;padding:0 24px;}.site-header{background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100;}.site-header .container{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}.site-logo{font-weight:700;font-size:1rem;color:var(--text);white-space:nowrap;}.site-logo span{color:var(--accent);}.site-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1;}.site-nav a{color:var(--text-muted);font-size:0.875rem;padding:4px 8px;border-radius:var(--radius);transition:color .15s,background .15s;}.site-nav a:hover,.site-nav a.active{color:var(--text);background:var(--bg-tertiary);text-decoration:none;}.breadcrumbs{padding:12px 0;font-size:0.8125rem;color:var(--text-muted);}.breadcrumbs a{color:var(--text-muted);}.page-header{padding:32px 0 24px;border-bottom:1px solid var(--border);}.page-header h1{font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;margin-bottom:10px;}.page-header .description{color:var(--text-muted);font-size:0.9375rem;max-width:800px;line-height:1.65;margin-top:8px;}.page-header .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8125rem;color:var(--text-muted);margin-top:12px;}.section{padding:36px 0;border-bottom:1px solid var(--border);}.section h2{font-size:1.25rem;font-weight:700;margin-bottom:12px;}.section h3{font-size:1.0625rem;font-weight:700;margin:24px 0 10px;}.section p{font-size:0.9375rem;color:var(--text-muted);line-height:1.7;margin-bottom:14px;max-width:800px;}.section p strong{color:var(--text);}.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:20px;}table{width:100%;border-collapse:collapse;font-size:0.875rem;}thead{background:var(--bg-tertiary);}th{padding:10px 14px;text-align:left;font-weight:600;color:var(--text-muted);font-size:0.8125rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;border-bottom:1px solid var(--border);}td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}tbody tr:last-child td{border-bottom:none;}tbody tr:hover{background:var(--bg-secondary);}.faq-list{display:flex;flex-direction:column;gap:16px;}.faq-item{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;}.faq-q{font-weight:700;font-size:1rem;margin-bottom:10px;}.faq-a{color:var(--text-muted);font-size:0.9375rem;line-height:1.65;}.faq-a strong{color:var(--text);}.answer-box{background:var(--bg-secondary);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;margin-bottom:20px;font-size:0.9375rem;color:var(--text-muted);line-height:1.65;}.answer-box strong{color:var(--text);}.price-low{color:#3fb950;font-weight:700;}.price-high{color:#f0883e;}.site-footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding:32px 0;}.footer-inner{display:flex;gap:32px;flex-wrap:wrap;justify-content:space-between;}.footer-col h4{font-size:0.8125rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:12px;}.footer-col a{display:block;color:var(--text-muted);font-size:0.875rem;margin-bottom:6px;}.footer-col a:hover{color:#58a6ff;}.footer-bottom{margin-top:24px;padding-top:20px;border-top:1px solid var(--border);font-size:0.8125rem;color:var(--text-muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Cloud GPU Pricing: H100, H200, A100 from 12 Providers","dateModified":"2026-02-28","url":"https://alpha-one-index.github.io/ai-infra-index/specs/cloud-gpu-pricing.html","author":{"@type":"Organization","name":"Alpha One Index"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://alpha-one-index.github.io/ai-infra-index/"},{"@type":"ListItem","position":2,"name":"Cloud GPU Pricing","item":"https://alpha-one-index.github.io/ai-infra-index/specs/cloud-gpu-pricing.html"}]}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the cheapest H100 GPU cloud provider?","acceptedAnswer":{"@type":"Answer","text":"The cheapest H100 cloud provider is Vast.ai at $1.87/hr. RunPod offers $2.49/hr, Lambda Labs $2.99/hr, GMI Cloud $2.10/hr. AWS spot ~$2.50/hr. Data as of March 2026."}},{"@type":"Question","name":"How much does an H100 cost per hour on AWS?","acceptedAnswer":{"@type":"Answer","text":"AWS H100 (p5.48xlarge) costs $3.93/GPU-hour on-demand in us-east-1 as of February 2026. Spot pricing is approximately $2.50/hr."}},{"@type":"Question","name":"Should I use H100 or H200 for cloud inference?","acceptedAnswer":{"@type":"Answer","text":"For models above 50B parameters, H200 is almost always better value. Lambda Labs H200 ($3.29/hr) vs H100 ($2.99/hr) — 10% premium for 76% more memory."}}]}]}</script>
+</head>
+<body>
+<header class="site-header" role="banner"><div class="container">
+  <div class="site-logo"><a href="/ai-infra-index/" style="color:inherit;text-decoration:none;">AI <span>Infra</span> Index</a></div>
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <a href="/ai-infra-index/">Home</a>
+    <a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specs</a>
+    <a href="/ai-infra-index/specs/cloud-gpu-pricing.html" class="active">Pricing</a>
+    <a href="/ai-infra-index/specs/ai-accelerators.html">Accelerators</a>
+    <a href="/ai-infra-index/specs/inference-benchmarks.html">Benchmarks</a>
+    <a href="/ai-infra-index/specs/model-gpu-sizing.html">Sizing Guide</a>
+    <a href="/ai-infra-index/specs/training-costs.html">Training Costs</a>
+    <a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a>
+    <a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a>
+    <a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a>
+  </nav>
+</div></header>
+<main id="main-content">
+  <div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/ai-infra-index/">Home</a> &rsaquo; <span>Cloud GPU Pricing</span></nav></div>
+  <div class="page-header"><div class="container">
+    <h1>Cloud GPU Pricing Index</h1>
+    <p class="description">Per-GPU-hour pricing for H100, H200, B200, A100, and L40S across 12 cloud providers. On-demand and spot rates in USD. Verified monthly. H100 on-demand range: <strong style="color:#3fb950;">$1.87–$6.15/hr</strong> as of March 2026.</p>
+    <div class="meta"><span>Last verified: <time datetime="2026-02-28">February 28, 2026</time></span><span>Related: <a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a> · <a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a></span></div>
+  </div></div>
+  <section class="section" aria-labelledby="h100-heading"><div class="container">
+    <h2 id="h100-heading">What Is the Cheapest Cloud Provider for H100 GPUs?</h2>
+    <div class="answer-box">The cheapest H100 cloud provider is <strong>Vast.ai at $1.87–$3.50/hr</strong> (marketplace). Best on-demand options: <strong>RunPod ($2.49/hr)</strong>, <strong>Lambda Labs ($2.99/hr)</strong>, <strong>GMI Cloud ($2.10/hr)</strong>. Hyperscalers: AWS $3.93/hr, GCP $3.67/hr. CoreWeave highest at $6.15/hr.</div>
+    <div class="table-wrap"><table><thead><tr><th>Provider</th><th>Instance</th><th>On-Demand $/GPU-hr</th><th>Spot $/GPU-hr</th><th>Min GPUs</th><th>Region</th><th>Verified</th></tr></thead><tbody>
+      <tr><td>Vast.ai</td><td>Marketplace</td><td class="price-low">$1.87–$3.50</td><td>—</td><td>1</td><td>Various</td><td>2026-02-28</td></tr>
+      <tr><td>GMI Cloud</td><td>H100 SXM Container</td><td class="price-low">$2.10</td><td>—</td><td>1</td><td>US</td><td>2026-02-28</td></tr>
+      <tr><td>RunPod</td><td>Community Cloud</td><td class="price-low">$2.49</td><td>$1.89</td><td>1</td><td>Various</td><td>2026-02-28</td></tr>
+      <tr><td>Lambda Labs</td><td>On-demand</td><td>$2.99</td><td>—</td><td>8</td><td>us-west</td><td>2026-02-28</td></tr>
+      <tr><td>Google Cloud (A3-High)</td><td>a3-highgpu-8g</td><td>$3.67</td><td>$2.25</td><td>8</td><td>us-central1</td><td>2026-02-28</td></tr>
+      <tr><td>AWS (P5)</td><td>p5.48xlarge</td><td>$3.93</td><td>$2.50</td><td>8</td><td>us-east-1</td><td>2026-02-28</td></tr>
+      <tr><td>Azure ND H100 v5</td><td>Standard_ND96isr_H100_v5</td><td class="price-high">$3.50–$5.00</td><td>—</td><td>8</td><td>East US</td><td>2026-02-28</td></tr>
+      <tr><td>CoreWeave</td><td>HGX H100</td><td class="price-high">$6.15</td><td>—</td><td>8</td><td>US-East</td><td>2026-02-28</td></tr>
+    </tbody></table></div>
+  </div></section>
+  <section class="section" aria-labelledby="h200-heading"><div class="container">
+    <h2 id="h200-heading">NVIDIA H200 141GB — Cloud Pricing</h2>
+    <p>H200 pricing is only 10–25% higher than H100, yet offers 1.76x more memory and 1.43x more bandwidth — almost always better value for 70B+ parameter models.</p>
+    <div class="table-wrap"><table><thead><tr><th>Provider</th><th>Instance</th><th>On-Demand $/GPU-hr</th><th>Min GPUs</th><th>Verified</th></tr></thead><tbody>
+      <tr><td>Lambda Labs</td><td>H200 On-demand</td><td class="price-low">$3.29</td><td>1</td><td>2026-02-28</td></tr>
+      <tr><td>GMI Cloud</td><td>H200 Container</td><td>$3.35</td><td>1</td><td>2026-02-28</td></tr>
+      <tr><td>RunPod</td><td>Community Cloud</td><td>$3.59</td><td>1</td><td>2026-02-28</td></tr>
+      <tr><td>CoreWeave</td><td>HGX H200</td><td class="price-high">$6.31</td><td>8</td><td>2026-02-28</td></tr>
+    </tbody></table></div>
+  </div></section>
+  <section class="section" aria-labelledby="a100-heading"><div class="container">
+    <h2 id="a100-heading">NVIDIA A100 80GB — Cloud Pricing</h2>
+    <div class="table-wrap"><table><thead><tr><th>Provider</th><th>Instance</th><th>On-Demand $/GPU-hr</th><th>Spot $/GPU-hr</th><th>Min GPUs</th><th>Verified</th></tr></thead><tbody>
+      <tr><td>Vast.ai</td><td>Marketplace</td><td class="price-low">$0.80–$1.50</td><td>—</td><td>1</td><td>2026-02-28</td></tr>
+      <tr><td>RunPod</td><td>A100 SXM</td><td class="price-low">$1.39</td><td>$0.79</td><td>1</td><td>2026-02-28</td></tr>
+      <tr><td>Lambda Labs</td><td>A100 On-demand</td><td>$1.79</td><td>—</td><td>8</td><td>2026-02-28</td></tr>
+      <tr><td>AWS (P4d)</td><td>p4d.24xlarge</td><td>$2.75</td><td>$1.40</td><td>8</td><td>2026-02-28</td></tr>
+    </tbody></table></div>
+  </div></section>
+  <section class="section" aria-labelledby="faq-heading"><div class="container">
+    <h2 id="faq-heading">Frequently Asked Questions About Cloud GPU Pricing</h2>
+    <div class="faq-list">
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">What is the cheapest H100 cloud provider?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">The cheapest H100 cloud provider is <strong>Vast.ai at $1.87–$3.50/hr</strong>. For reliable on-demand: <strong>RunPod at $2.49/hr</strong> and <strong>Lambda Labs at $2.99/hr</strong>. Data verified February 2026.</p></div>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">How much does AWS charge for H100 GPUs?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">AWS charges <strong>$3.93/GPU-hour on-demand</strong> for H100 (P5, us-east-1). AWS cut H100 pricing by <strong>44% in June 2025</strong>. Spot: ~<strong>$2.50/hr</strong>. 1-year reservation: <strong>$1.90–$2.10/hr</strong>.</p></div>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">Should I use H100 or H200 for cloud inference?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">For models above 50B parameters, <strong>H200 is almost always better value</strong>. Lambda Labs H200 ($3.29/hr) vs H100 ($2.99/hr) — 10% premium for 76% more memory. A single H200 fits Llama 3 70B in FP16 vs 2× H100 required.</p></div>
+      </div>
+    </div>
+  </div></section>
+</main>
+<footer class="site-footer" role="contentinfo"><div class="container">
+  <div class="footer-inner">
+    <div class="footer-col"><h4>Hardware Specs</h4><a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specifications</a><a href="/ai-infra-index/specs/ai-accelerators.html">AI Accelerators</a><a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a></div>
+    <div class="footer-col"><h4>Pricing &amp; Costs</h4><a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud GPU Pricing</a><a href="/ai-infra-index/specs/training-costs.html">Training Costs</a><a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a></div>
+    <div class="footer-col"><h4>Sizing &amp; Benchmarks</h4><a href="/ai-infra-index/specs/model-gpu-sizing.html">Model GPU Sizing</a><a href="/ai-infra-index/specs/inference-benchmarks.html">Inference Benchmarks</a><a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a></div>
+    <div class="footer-col"><h4>Data &amp; Repo</h4><a href="https://github.com/alpha-one-index/ai-infra-index">GitHub Repository</a><a href="/ai-infra-index/llms.txt">llms.txt</a><a href="/ai-infra-index/sitemap.xml">Sitemap</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Alpha One Index — MIT License. Prices from <a href="https://www.runpod.io/pricing">RunPod</a>, <a href="https://lambdalabs.com/service/gpu-cloud#pricing">Lambda Labs</a>, and official provider pages.</span><span>Last updated: <time datetime="2026-02-28">February 28, 2026</time></span></div>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPU Specifications: H100, H200, B200, A100, MI300X, Gaudi 3 — AI Infrastructure Index</title>
+  <meta name="description" content="Complete GPU specifications for NVIDIA H100, H200, B200, A100, AMD MI300X, MI325X, and Intel Gaudi 3. Memory, bandwidth, TFLOPS, TDP, and interconnect data verified against official datasheets.">
+  <link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/specs/gpu-specifications.html">
+  <link rel="sitemap" type="application/xml" href="/ai-infra-index/sitemap.xml">
+  <style>:root{--bg:#0d1117;--bg-secondary:#161b22;--bg-tertiary:#21262d;--border:#30363d;--text:#e6edf3;--text-muted:#8b949e;--accent:#58a6ff;--accent-hover:#79c0ff;--green:#3fb950;--orange:#f0883e;--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;--radius:6px;--max-width:1200px;}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{font-size:16px;scroll-behavior:smooth;}body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;}a{color:var(--accent);text-decoration:none;}a:hover{color:var(--accent-hover);text-decoration:underline;}.container{max-width:var(--max-width);margin:0 auto;padding:0 24px;}.site-header{background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100;}.site-header .container{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}.site-logo{font-weight:700;font-size:1rem;color:var(--text);white-space:nowrap;}.site-logo span{color:var(--accent);}.site-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1;}.site-nav a{color:var(--text-muted);font-size:0.875rem;padding:4px 8px;border-radius:var(--radius);transition:color .15s,background .15s;}.site-nav a:hover,.site-nav a.active{color:var(--text);background:var(--bg-tertiary);text-decoration:none;}.breadcrumbs{padding:12px 0;font-size:0.8125rem;color:var(--text-muted);}.breadcrumbs a{color:var(--text-muted);}.page-header{padding:32px 0 24px;border-bottom:1px solid var(--border);}.page-header h1{font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;margin-bottom:10px;}.page-header .description{color:var(--text-muted);font-size:0.9375rem;max-width:800px;line-height:1.65;margin-top:8px;}.page-header .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8125rem;color:var(--text-muted);margin-top:12px;}.section{padding:36px 0;border-bottom:1px solid var(--border);}.section h2{font-size:1.25rem;font-weight:700;margin-bottom:12px;}.section h3{font-size:1.0625rem;font-weight:700;margin:24px 0 10px;}.section p{font-size:0.9375rem;color:var(--text-muted);line-height:1.7;margin-bottom:14px;max-width:800px;}.section p strong{color:var(--text);}.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:20px;}table{width:100%;border-collapse:collapse;font-size:0.875rem;}thead{background:var(--bg-tertiary);}th{padding:10px 14px;text-align:left;font-weight:600;color:var(--text-muted);font-size:0.8125rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;border-bottom:1px solid var(--border);}td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}tbody tr:last-child td{border-bottom:none;}tbody tr:hover{background:var(--bg-secondary);}.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:0.75rem;font-weight:600;}.badge-green{background:rgba(63,185,80,.15);color:#3fb950;}.badge-blue{background:rgba(88,166,255,.15);color:#58a6ff;}.faq-list{display:flex;flex-direction:column;gap:16px;}.faq-item{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;}.faq-q{font-weight:700;font-size:1rem;margin-bottom:10px;}.faq-a{color:var(--text-muted);font-size:0.9375rem;line-height:1.65;}.faq-a strong{color:var(--text);}.answer-box{background:var(--bg-secondary);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;margin-bottom:20px;font-size:0.9375rem;color:var(--text-muted);line-height:1.65;}.answer-box strong{color:var(--text);}.site-footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding:32px 0;}.footer-inner{display:flex;gap:32px;flex-wrap:wrap;justify-content:space-between;}.footer-col h4{font-size:0.8125rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:12px;}.footer-col a{display:block;color:var(--text-muted);font-size:0.875rem;margin-bottom:6px;}.footer-col a:hover{color:#58a6ff;}.footer-bottom{margin-top:24px;padding-top:20px;border-top:1px solid var(--border);font-size:0.8125rem;color:var(--text-muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"GPU Specifications: H100, H200, B200, A100, MI300X, Gaudi 3","dateModified":"2026-02-28","url":"https://alpha-one-index.github.io/ai-infra-index/specs/gpu-specifications.html","author":{"@type":"Organization","name":"Alpha One Index"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://alpha-one-index.github.io/ai-infra-index/"},{"@type":"ListItem","position":2,"name":"GPU Specifications","item":"https://alpha-one-index.github.io/ai-infra-index/specs/gpu-specifications.html"}]}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are NVIDIA H100 SXM specifications?","acceptedAnswer":{"@type":"Answer","text":"NVIDIA H100 SXM: 80 GB HBM3, 3.35 TB/s, 989 TFLOPS FP16, 700W TDP, NVLink 4.0 (900 GB/s), Hopper architecture."}},{"@type":"Question","name":"What are NVIDIA B200 specifications?","acceptedAnswer":{"@type":"Answer","text":"NVIDIA B200: 192 GB HBM3e, 8.0 TB/s, 4,500 TFLOPS FP16, 1,000W TDP, NVLink 5.0 (1,800 GB/s), Blackwell architecture."}},{"@type":"Question","name":"What are AMD MI300X specifications?","acceptedAnswer":{"@type":"Answer","text":"AMD MI300X: 192 GB HBM3, 5.3 TB/s, 1,307 TFLOPS FP16, 750W TDP, Infinity Fabric (896 GB/s), CDNA 3."}},{"@type":"Question","name":"What is the difference between H200 and H100?","acceptedAnswer":{"@type":"Answer","text":"H200 has 141 GB HBM3e (H100: 80 GB), 4.8 TB/s bandwidth (H100: 3.35 TB/s). Both have identical compute: 989 TFLOPS FP16, 700W TDP."}}]}]}</script>
+</head>
+<body>
+<header class="site-header" role="banner"><div class="container">
+  <div class="site-logo"><a href="/ai-infra-index/" style="color:inherit;text-decoration:none;">AI <span>Infra</span> Index</a></div>
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <a href="/ai-infra-index/">Home</a>
+    <a href="/ai-infra-index/specs/gpu-specifications.html" class="active">GPU Specs</a>
+    <a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Pricing</a>
+    <a href="/ai-infra-index/specs/ai-accelerators.html">Accelerators</a>
+    <a href="/ai-infra-index/specs/inference-benchmarks.html">Benchmarks</a>
+    <a href="/ai-infra-index/specs/model-gpu-sizing.html">Sizing Guide</a>
+    <a href="/ai-infra-index/specs/training-costs.html">Training Costs</a>
+    <a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a>
+    <a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a>
+    <a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a>
+  </nav>
+</div></header>
+<main id="main-content">
+  <div class="container"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/ai-infra-index/">Home</a> &rsaquo; <span>GPU Specifications</span></nav></div>
+  <div class="page-header"><div class="container">
+    <h1>AI Data Center GPU Specifications</h1>
+    <p class="description">Comprehensive specifications for every major AI training and inference GPU. All data verified against official vendor datasheets. Covers NVIDIA Hopper and Blackwell, AMD CDNA 3, and Intel Gaudi architectures.</p>
+    <div class="meta"><span>Last updated: <time datetime="2026-02-28">February 28, 2026</time></span><span>Related: <a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud Pricing</a> · <a href="/ai-infra-index/specs/model-gpu-sizing.html">GPU Sizing Guide</a></span></div>
+  </div></div>
+  <section class="section" aria-labelledby="comparison-heading"><div class="container">
+    <h2 id="comparison-heading">What Are the Best GPUs for AI Training in 2026?</h2>
+    <div class="answer-box">The best AI training GPUs in 2026: <strong>NVIDIA B200</strong> (4,500 TFLOPS FP16, 192 GB HBM3e), <strong>NVIDIA H200</strong> (989 TFLOPS FP16, 141 GB HBM3e), <strong>NVIDIA H100 SXM</strong> (989 TFLOPS FP16, 80 GB HBM3 — most widely available), <strong>AMD MI300X</strong> (1,307 TFLOPS FP16, 192 GB HBM3), and <strong>Intel Gaudi 3</strong> (1,835 TFLOPS FP16, 128 GB).</div>
+    <div class="table-wrap"><table><thead><tr><th>GPU</th><th>Arch</th><th>Memory</th><th>Bandwidth</th><th>FP16 TFLOPS</th><th>FP8 TFLOPS</th><th>TDP</th><th>Interconnect</th><th>Released</th></tr></thead><tbody>
+      <tr><td><strong>NVIDIA B200</strong> <span class="badge badge-green">Newest</span></td><td>Blackwell</td><td>192 GB HBM3e</td><td>8.0 TB/s</td><td>4,500</td><td>9,000</td><td>1,000W</td><td>NVLink 5.0 (1,800 GB/s)</td><td>2025</td></tr>
+      <tr><td><strong>NVIDIA H200 SXM</strong></td><td>Hopper</td><td>141 GB HBM3e</td><td>4.8 TB/s</td><td>989</td><td>1,979</td><td>700W</td><td>NVLink 4.0 (900 GB/s)</td><td>2024</td></tr>
+      <tr><td><strong>NVIDIA H100 SXM</strong> <span class="badge badge-blue">Most Available</span></td><td>Hopper</td><td>80 GB HBM3</td><td>3.35 TB/s</td><td>989</td><td>1,979</td><td>700W</td><td>NVLink 4.0 (900 GB/s)</td><td>2023</td></tr>
+      <tr><td><strong>NVIDIA H100 PCIe</strong></td><td>Hopper</td><td>80 GB HBM3</td><td>2.0 TB/s</td><td>756</td><td>—</td><td>350W</td><td>PCIe Gen 5.0</td><td>2023</td></tr>
+      <tr><td><strong>NVIDIA A100 SXM 80GB</strong></td><td>Ampere</td><td>80 GB HBM2e</td><td>2.0 TB/s</td><td>312</td><td>—</td><td>400W</td><td>NVLink 3.0 (600 GB/s)</td><td>2020</td></tr>
+      <tr><td><strong>AMD MI300X</strong></td><td>CDNA 3</td><td>192 GB HBM3</td><td>5.3 TB/s</td><td>1,307</td><td>2,614</td><td>750W</td><td>Infinity Fabric (896 GB/s)</td><td>2024</td></tr>
+      <tr><td><strong>Intel Gaudi 3</strong></td><td>Custom ASIC</td><td>128 GB HBM2e</td><td>3.7 TB/s</td><td>1,835</td><td>3,670</td><td>900W</td><td>RoCE v2 (24×200GbE)</td><td>2025</td></tr>
+    </tbody></table></div>
+    <p>Data from <a href="https://resources.nvidia.com/en-us-tensor-core">NVIDIA datasheets</a>, <a href="https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html">AMD MI300X</a>, and <a href="https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi3.html">Intel Gaudi 3</a>.</p>
+  </div></section>
+  <section class="section" aria-labelledby="nvidia-heading"><div class="container">
+    <h2 id="nvidia-heading">NVIDIA Data Center GPU Specifications</h2>
+    <h3>What are NVIDIA H100 SXM specifications?</h3>
+    <p>The NVIDIA H100 SXM delivers <strong>989 TFLOPS FP16</strong>, 80 GB HBM3 at 3.35 TB/s, NVLink 4.0 at 900 GB/s, 700W TDP.</p>
+    <div class="table-wrap"><table><thead><tr><th>Specification</th><th>H100 SXM</th><th>H100 PCIe</th></tr></thead><tbody>
+      <tr><td>Memory</td><td>80 GB HBM3</td><td>80 GB HBM3</td></tr>
+      <tr><td>Memory Bandwidth</td><td><strong>3.35 TB/s</strong></td><td>2.0 TB/s</td></tr>
+      <tr><td>FP16 / BF16</td><td><strong>989 TFLOPS</strong></td><td>756 TFLOPS</td></tr>
+      <tr><td>TDP</td><td>700W</td><td>350W</td></tr>
+      <tr><td>Interconnect</td><td>NVLink 4.0 (900 GB/s)</td><td>Optional NVLink Bridge</td></tr>
+      <tr><td>MSRP</td><td>~$30,000</td><td>~$25,000</td></tr>
+    </tbody></table></div>
+    <h3>What are AMD MI300X specifications?</h3>
+    <p>AMD MI300X has <strong>192 GB HBM3</strong> and <strong>5.3 TB/s bandwidth</strong>. MI300X offers 2.4x more memory, 1.58x more bandwidth, and 1.32x more FP16 TFLOPS vs H100 SXM at ~$15,000 MSRP vs H100's ~$30,000.</p>
+    <div class="table-wrap"><table><thead><tr><th>Specification</th><th>MI300X</th><th>H100 SXM</th></tr></thead><tbody>
+      <tr><td>Architecture</td><td>CDNA 3 (TSMC 5nm+6nm)</td><td>Hopper (TSMC 4N)</td></tr>
+      <tr><td>GPU Memory</td><td><strong>192 GB HBM3</strong></td><td>80 GB HBM3</td></tr>
+      <tr><td>Memory Bandwidth</td><td><strong>5.3 TB/s</strong></td><td>3.35 TB/s</td></tr>
+      <tr><td>FP16 Performance</td><td>1,307 TFLOPS</td><td>989 TFLOPS</td></tr>
+      <tr><td>TDP</td><td>750W</td><td>700W</td></tr>
+      <tr><td>MSRP</td><td>~$15,000</td><td>~$30,000</td></tr>
+    </tbody></table></div>
+  </div></section>
+  <section class="section" aria-labelledby="faq-heading"><div class="container">
+    <h2 id="faq-heading">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">How much memory does NVIDIA H100 have?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">NVIDIA H100 SXM has <strong>80 GB of HBM3 memory</strong> with 3.35 TB/s bandwidth. The H200 increases this to 141 GB HBM3e at 4.8 TB/s.</p></div>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">How does AMD MI300X compare to NVIDIA H100?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">AMD MI300X vs H100 SXM: <strong>2.4x more memory</strong> (192 vs 80 GB), <strong>1.58x more bandwidth</strong> (5.3 vs 3.35 TB/s), <strong>1.32x more FP16 TFLOPS</strong> (1,307 vs 989), at ~$15K vs ~$30K MSRP. MI300X excels at memory-bound workloads like large model inference.</p></div>
+      </div>
+      <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <h3 class="faq-q" itemprop="name">What GPU is best for inference workloads?</h3>
+        <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><p itemprop="text">For inference: <strong>Small models (≤13B)</strong>: L40S or L4 — best cost-per-token. <strong>70B models</strong>: single H200 (141 GB fits LLaMA 70B FP16) or 2× H100. <strong>100B+ models</strong>: AMD MI300X (192 GB) or multi-GPU cluster.</p></div>
+      </div>
+    </div>
+  </div></section>
+</main>
+<footer class="site-footer" role="contentinfo"><div class="container">
+  <div class="footer-inner">
+    <div class="footer-col"><h4>Hardware Specs</h4><a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specifications</a><a href="/ai-infra-index/specs/ai-accelerators.html">AI Accelerators</a><a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a></div>
+    <div class="footer-col"><h4>Pricing &amp; Costs</h4><a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud GPU Pricing</a><a href="/ai-infra-index/specs/training-costs.html">Training Costs</a><a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a></div>
+    <div class="footer-col"><h4>Sizing &amp; Benchmarks</h4><a href="/ai-infra-index/specs/model-gpu-sizing.html">Model GPU Sizing</a><a href="/ai-infra-index/specs/inference-benchmarks.html">Inference Benchmarks</a><a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a></div>
+    <div class="footer-col"><h4>Data &amp; Repo</h4><a href="https://github.com/alpha-one-index/ai-infra-index">GitHub Repository</a><a href="/ai-infra-index/llms.txt">llms.txt</a><a href="/ai-infra-index/sitemap.xml">Sitemap</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Alpha One Index — MIT License. Data from <a href="https://resources.nvidia.com/en-us-tensor-core">NVIDIA</a>, <a href="https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html">AMD</a>, <a href="https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi3.html">Intel</a> official datasheets.</span><span>Last updated: <time datetime="2026-02-28">February 28, 2026</time></span></div>
+</div></footer>
+</body>
+</html>
