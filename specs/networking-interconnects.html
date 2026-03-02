@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPU Networking & Interconnects: NVLink, InfiniBand, RoCE Specs — AI Infrastructure Index</title>
+  <meta name="description" content="Technical reference for AI cluster networking: NVLink 1.0–5.0, NVSwitch, InfiniBand HDR/NDR/XDR, RoCE, PCIe, cluster topologies, and DGX SuperPOD specifications. Bandwidth and latency data.">
+  <meta name="keywords" content="NVLink specs, InfiniBand bandwidth, RoCE AI networking, NVSwitch, NDR InfiniBand, AI cluster network, DGX networking, GPU interconnect comparison">
+  <link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/specs/networking-interconnects.html">
+  <meta property="og:title" content="GPU Networking: NVLink, InfiniBand, RoCE Specifications">
+  <meta property="og:description" content="NVLink 5.0, InfiniBand NDR/XDR, RoCE, and cluster topology specs for AI infrastructure.">
+  <meta property="og:url" content="https://alpha-one-index.github.io/ai-infra-index/specs/networking-interconnects.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="sitemap" type="application/xml" href="/ai-infra-index/sitemap.xml">
+  <style>:root{--bg:#0d1117;--bg-secondary:#161b22;--bg-tertiary:#21262d;--border:#30363d;--text:#e6edf3;--text-muted:#8b949e;--accent:#58a6ff;--accent-hover:#79c0ff;--green:#3fb950;--orange:#f0883e;--font:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;--radius:6px;--max-width:1200px;}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{font-size:16px;scroll-behavior:smooth;}body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;}a{color:var(--accent);text-decoration:none;}a:hover{color:var(--accent-hover);text-decoration:underline;}.container{max-width:var(--max-width);margin:0 auto;padding:0 24px;}.site-header{background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100;}.site-header .container{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}.site-logo{font-weight:700;font-size:1rem;color:var(--text);white-space:nowrap;}.site-logo span{color:var(--accent);}.site-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1;}.site-nav a{color:var(--text-muted);font-size:0.875rem;padding:4px 8px;border-radius:var(--radius);transition:color .15s,background .15s;}.site-nav a:hover,.site-nav a.active{color:var(--text);background:var(--bg-tertiary);text-decoration:none;}.breadcrumbs{padding:12px 0;font-size:0.8125rem;color:var(--text-muted);}.breadcrumbs a{color:var(--text-muted);}.page-header{padding:32px 0 24px;border-bottom:1px solid var(--border);}.page-header h1{font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;margin-bottom:10px;}.page-header .description{color:var(--text-muted);font-size:0.9375rem;max-width:800px;line-height:1.65;margin-top:8px;}.page-header .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8125rem;color:var(--text-muted);margin-top:12px;}.section{padding:36px 0;border-bottom:1px solid var(--border);}.section h2{font-size:1.25rem;font-weight:700;margin-bottom:12px;}.section h3{font-size:1.0625rem;font-weight:600;margin:20px 0 8px;}.answer-box{background:var(--bg-secondary);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:0.9375rem;line-height:1.6;}.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;}table{width:100%;border-collapse:collapse;font-size:0.875rem;}th{background:var(--bg-tertiary);color:var(--text-muted);font-weight:600;text-align:left;padding:10px 12px;border-bottom:2px solid var(--border);}td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}tr:last-child td{border-bottom:none;}tr:hover td{background:rgba(88,166,255,.04);}.price-low{color:var(--green);font-weight:600;}.badge{display:inline-block;font-size:0.6875rem;font-weight:600;padding:2px 7px;border-radius:10px;text-transform:uppercase;letter-spacing:.03em;}.badge-green{background:rgba(63,185,80,.15);color:var(--green);}.faq-list{display:flex;flex-direction:column;gap:0;}.faq-item{border-bottom:1px solid var(--border);padding:16px 0;}.faq-item:last-child{border-bottom:none;}.faq-q{font-size:1rem;font-weight:600;margin-bottom:8px;color:var(--text);}.faq-a p{color:var(--text-muted);font-size:0.9375rem;line-height:1.65;}.site-footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding:32px 0 24px;margin-top:0;}.footer-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;margin-bottom:24px;}.footer-col h4{font-size:0.8125rem;font-weight:600;color:var(--text);margin-bottom:8px;}.footer-col a{display:block;color:var(--text-muted);font-size:0.8125rem;margin-bottom:4px;}.footer-bottom{border-top:1px solid var(--border);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:0.8125rem;color:var(--text-muted);}@media(max-width:768px){.footer-inner{grid-template-columns:repeat(2,1fr);}}</style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"GPU Networking and Interconnects: NVLink, InfiniBand, RoCE Specifications","dateModified":"2026-02-28","url":"https://alpha-one-index.github.io/ai-infra-index/specs/networking-interconnects.html","author":{"@type":"Organization","name":"Alpha One Index"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://alpha-one-index.github.io/ai-infra-index/"},{"@type":"ListItem","position":2,"name":"Networking Interconnects","item":"https://alpha-one-index.github.io/ai-infra-index/specs/networking-interconnects.html"}]}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is NVLink 5.0 bandwidth?","acceptedAnswer":{"@type":"Answer","text":"NVLink 5.0 (used in NVIDIA B200/B100/GB200) provides 1,800 GB/s total bidirectional bandwidth per GPU — double NVLink 4.0's 900 GB/s. NVSwitch 4.0 supports 64 ports at 100 GB/s each, totaling 6.4 TB/s switch bandwidth. Used in DGX B200 and GB200 NVL72 configurations."}},{"@type":"Question","name":"What is the difference between InfiniBand HDR, NDR, and XDR?","acceptedAnswer":{"@type":"Answer","text":"InfiniBand generations: HDR = 200 Gb/s per port (48 GB/s effective), NDR = 400 Gb/s per port (96 GB/s effective, 2022, H100/H200 clusters), XDR = 800 Gb/s per port (192 GB/s effective, 2025, B200/GB200 clusters). The Quantum-2 switch provides 51.2 Tb/s total bandwidth for NDR fabric."}},{"@type":"Question","name":"What is NVLink vs InfiniBand and when to use each?","acceptedAnswer":{"@type":"Answer","text":"NVLink is used for scale-up (GPU-to-GPU within a node): 900–1,800 GB/s bandwidth, 1–5 µs latency, max 8 or 72 GPUs per NVLink domain. InfiniBand is used for scale-out (node-to-node): 50–200 GB/s bandwidth, 1–5 µs RDMA latency, scales to thousands of GPUs. Use NVLink for tensor parallelism within a node; use InfiniBand for data and pipeline parallelism across nodes."}}]}]}
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="site-logo"><a href="/ai-infra-index/" style="color:inherit;text-decoration:none;">AI <span>Infra</span> Index</a></div>
+      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <a href="/ai-infra-index/">Home</a>
+        <a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specs</a>
+        <a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Pricing</a>
+        <a href="/ai-infra-index/specs/ai-accelerators.html">Accelerators</a>
+        <a href="/ai-infra-index/specs/inference-benchmarks.html">Benchmarks</a>
+        <a href="/ai-infra-index/specs/model-gpu-sizing.html">Sizing Guide</a>
+        <a href="/ai-infra-index/specs/training-costs.html">Training Costs</a>
+        <a href="/ai-infra-index/specs/networking-interconnects.html" class="active">Networking</a>
+        <a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a>
+        <a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/ai-infra-index/">Home</a> &rsaquo; <span>Networking &amp; Interconnects</span>
+      </nav>
+    </div>
+
+    <div class="page-header">
+      <div class="container">
+        <h1>AI Networking &amp; Interconnect Specifications</h1>
+        <p class="description">Technical reference for GPU-to-GPU, node-to-node, and cluster-scale networking in AI infrastructure. Covers NVLink 1.0–5.0, NVSwitch generations, InfiniBand SDR through XDR, RoCE, PCIe 3.0–6.0, cluster topologies, and DGX SuperPOD configurations.</p>
+        <div class="meta">
+          <span>Last verified: <time datetime="2026-02-28">February 28, 2026</time></span>
+          <span>Source: <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/networking-interconnects.md">networking-interconnects.md</a></span>
+          <span>Related: <a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specs</a> · <a href="/ai-infra-index/specs/model-gpu-sizing.html">Model Sizing</a></span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="nvlink-heading">
+      <div class="container">
+        <h2 id="nvlink-heading">What Is NVLink Bandwidth? Generation-by-Generation Comparison</h2>
+        <div class="answer-box">
+          <strong>NVLink 5.0</strong> (B200/GB200) delivers 1,800 GB/s total bandwidth per GPU — 2× NVLink 4.0's 900 GB/s (H100/H200). NVLink provides ~19× more bandwidth than PCIe 5.0, making it essential for tensor parallelism inference across multiple GPUs.
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Generation</th><th>BW per Link (Bidir)</th><th>Links/GPU</th><th>Total GPU BW</th><th>First Available</th><th>GPUs Supported</th></tr></thead>
+            <tbody>
+              <tr><td>NVLink 1.0</td><td>40 GB/s</td><td>4</td><td>160 GB/s</td><td>2016</td><td>P100</td></tr>
+              <tr><td>NVLink 2.0</td><td>50 GB/s</td><td>6</td><td>300 GB/s</td><td>2017</td><td>V100</td></tr>
+              <tr><td>NVLink 3.0</td><td>50 GB/s</td><td>12</td><td>600 GB/s</td><td>2020</td><td>A100</td></tr>
+              <tr><td>NVLink 4.0</td><td>50 GB/s</td><td>18</td><td>900 GB/s</td><td>2022</td><td>H100, H200</td></tr>
+              <tr><td><strong>NVLink 5.0</strong> <span class="badge badge-green">Latest</span></td><td>100 GB/s</td><td>18</td><td><strong>1,800 GB/s</strong></td><td>2024</td><td>B100, B200, GB200</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>NVSwitch Generations</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Generation</th><th>Ports</th><th>Per-Port BW</th><th>Total Switch BW</th><th>GPU Topology</th></tr></thead>
+            <tbody>
+              <tr><td>NVSwitch 1.0</td><td>18</td><td>50 GB/s</td><td>900 GB/s</td><td>DGX-2 (16× V100)</td></tr>
+              <tr><td>NVSwitch 2.0</td><td>36</td><td>50 GB/s</td><td>1.8 TB/s</td><td>DGX A100 (8× A100)</td></tr>
+              <tr><td>NVSwitch 3.0</td><td>64</td><td>50 GB/s</td><td>3.2 TB/s</td><td>DGX H100 (8× H100)</td></tr>
+              <tr><td><strong>NVSwitch 4.0</strong></td><td>64</td><td>100 GB/s</td><td><strong>6.4 TB/s</strong></td><td>DGX B200, GB200 NVL72</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ib-heading">
+      <div class="container">
+        <h2 id="ib-heading">InfiniBand: What Speed Is Used for H100 and B200 Clusters?</h2>
+        <p>H100/H200 clusters use <strong>NDR 400G InfiniBand</strong> (96 GB/s effective bandwidth, NVIDIA ConnectX-7). B200/GB200 clusters use <strong>XDR 800G InfiniBand</strong> (192 GB/s effective bandwidth, ConnectX-8). Older A100 clusters use HDR 200G.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Standard</th><th>Per-Port Rate</th><th>4× Typical</th><th>Effective BW (Bidir)</th><th>Year</th><th>Used For</th></tr></thead>
+            <tbody>
+              <tr><td>HDR</td><td>50 Gb/s</td><td>200 Gb/s</td><td>48 GB/s</td><td>2018</td><td>A100 clusters</td></tr>
+              <tr><td><strong>NDR</strong></td><td>100 Gb/s</td><td>400 Gb/s</td><td>96 GB/s</td><td>2022</td><td>H100/H200 clusters</td></tr>
+              <tr><td><strong>XDR</strong></td><td>200 Gb/s</td><td>800 Gb/s</td><td>192 GB/s</td><td>2025</td><td>B200/GB200 clusters</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>NVIDIA InfiniBand NICs and Switches</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Product</th><th>Generation</th><th>Bandwidth</th><th>Use Case</th></tr></thead>
+            <tbody>
+              <tr><td>ConnectX-6</td><td>HDR 200G</td><td>200–400 Gb/s</td><td>A100 clusters</td></tr>
+              <tr><td>ConnectX-7</td><td>NDR 400G</td><td>400–800 Gb/s</td><td>H100/H200 clusters</td></tr>
+              <tr><td>ConnectX-8</td><td>XDR 800G</td><td>800–1600 Gb/s</td><td>B200/GB200 clusters</td></tr>
+              <tr><td>Quantum-2 (QM9700)</td><td>NDR</td><td>51.2 Tb/s switch</td><td>Spine/leaf switches</td></tr>
+              <tr><td>Quantum-3 (QM9790)</td><td>XDR</td><td>102.4 Tb/s switch</td><td>Next-gen fabric</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="pcie-heading">
+      <div class="container">
+        <h2 id="pcie-heading">PCIe Bandwidth by Generation</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Generation</th><th>x16 Bandwidth</th><th>Per Lane</th><th>Available</th><th>GPU Examples</th></tr></thead>
+            <tbody>
+              <tr><td>PCIe 3.0</td><td>16 GB/s</td><td>1 GB/s</td><td>2010</td><td>P100, V100</td></tr>
+              <tr><td>PCIe 4.0</td><td>32 GB/s</td><td>2 GB/s</td><td>2017</td><td>A100</td></tr>
+              <tr><td>PCIe 5.0</td><td>64 GB/s</td><td>4 GB/s</td><td>2021</td><td>H100 PCIe, L40S</td></tr>
+              <tr><td>PCIe 6.0</td><td>128 GB/s</td><td>8 GB/s</td><td>2024</td><td>B200</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>PCIe bandwidth is <strong>negligible compared to NVLink</strong> for multi-GPU communication: PCIe 5.0 provides 64 GB/s vs NVLink 4.0's 900 GB/s — a 14× difference. Always use NVLink topologies for multi-GPU workloads.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="cluster-heading">
+      <div class="container">
+        <h2 id="cluster-heading">AI Cluster Networking Topologies</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Cluster Size</th><th>Intra-Node</th><th>Inter-Node Fabric</th><th>Topology</th><th>Total Bisection BW</th></tr></thead>
+            <tbody>
+              <tr><td>8 GPUs (1 node)</td><td>NVLink + NVSwitch</td><td>N/A</td><td>Fully connected</td><td>7.2 TB/s (H100)</td></tr>
+              <tr><td>64 GPUs (8 nodes)</td><td>NVLink + NVSwitch</td><td>400G IB NDR</td><td>Fat-tree</td><td>~25.6 TB/s</td></tr>
+              <tr><td>256 GPUs (32 nodes)</td><td>NVLink + NVSwitch</td><td>400G IB NDR</td><td>2-tier fat-tree</td><td>~51.2 TB/s</td></tr>
+              <tr><td>1,024 GPUs (128 nodes)</td><td>NVLink + NVSwitch</td><td>400G IB NDR</td><td>3-tier fat-tree</td><td>~204.8 TB/s</td></tr>
+              <tr><td>4,096 GPUs (512 nodes)</td><td>NVLink + NVSwitch</td><td>800G IB XDR</td><td>3-tier fat-tree</td><td>~819 TB/s</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>DGX SuperPOD Configurations</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Configuration</th><th>GPUs</th><th>Nodes</th><th>Network Fabric</th><th>Compute</th></tr></thead>
+            <tbody>
+              <tr><td>DGX H100 SuperPOD</td><td>256</td><td>32</td><td>NDR 400G IB</td><td>~256 PFLOPS FP8</td></tr>
+              <tr><td>DGX B200 SuperPOD</td><td>576</td><td>72 (NVL72)</td><td>XDR 800G IB</td><td>~1.4 EFLOPS FP4</td></tr>
+              <tr><td>DGX GB200 NVL72</td><td>72 B200 + 36 Grace</td><td>36</td><td>NVLink 5.0 + XDR IB</td><td>~720 PFLOPS FP4</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-heading">
+      <div class="container">
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">What is NVLink 5.0 bandwidth compared to NVLink 4.0?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">NVLink 5.0 (B200/GB200) delivers <strong>1,800 GB/s total bidirectional bandwidth per GPU</strong> — double NVLink 4.0's 900 GB/s (H100/H200). This is achieved by doubling per-link bandwidth from 50 to 100 GB/s while maintaining 18 links per GPU. NVSwitch 4.0 provides 6.4 TB/s total switch bandwidth vs NVSwitch 3.0's 3.2 TB/s.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">What InfiniBand should I use for an H100 cluster?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">H100/H200 clusters should use <strong>NDR InfiniBand 400G</strong> (NVIDIA ConnectX-7 NICs, Quantum-2 switches). NDR provides 96 GB/s effective bidirectional bandwidth per node and is the standard for H100-era clusters. A 256-GPU DGX H100 SuperPOD with NDR provides ~51.2 TB/s total bisection bandwidth.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">When should I use InfiniBand vs RoCE for AI clusters?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">Use <strong>InfiniBand</strong> for large-scale training clusters (64+ GPUs) where performance is critical — it provides native RDMA, deterministic latency, and better congestion control. Use <strong>RoCE</strong> (RDMA over Converged Ethernet) for cost-sensitive deployments or when integrating with existing Ethernet infrastructure. RoCE at 400 GbE is now competitive for H100-era clusters. Intel Gaudi 3 uses RoCE natively via 24× 200GbE ports.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">What is the bandwidth hierarchy in an AI cluster?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">AI cluster bandwidth hierarchy (fastest to slowest): <strong>HBM3e memory (H200): 4.8 TB/s</strong> → <strong>NVLink 4.0: 900 GB/s</strong> (19% of HBM) → <strong>PCIe 5.0 x16: 64 GB/s</strong> (1.3% of HBM) → <strong>NDR InfiniBand: ~50 GB/s</strong> (1% of HBM) → <strong>100 GbE: 12.5 GB/s</strong> (0.26% of HBM). This hierarchy explains why model parallelism strategies must match communication patterns to available bandwidth.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col"><h4>Hardware Specs</h4><a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specifications</a><a href="/ai-infra-index/specs/ai-accelerators.html">AI Accelerators</a><a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a></div>
+        <div class="footer-col"><h4>Pricing &amp; Costs</h4><a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud GPU Pricing</a><a href="/ai-infra-index/specs/training-costs.html">Training Costs</a><a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a></div>
+        <div class="footer-col"><h4>Sizing &amp; Benchmarks</h4><a href="/ai-infra-index/specs/model-gpu-sizing.html">Model GPU Sizing</a><a href="/ai-infra-index/specs/inference-benchmarks.html">Inference Benchmarks</a><a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a></div>
+        <div class="footer-col"><h4>Data &amp; Repo</h4><a href="https://github.com/alpha-one-index/ai-infra-index">GitHub Repository</a><a href="/ai-infra-index/llms.txt">llms.txt</a><a href="/ai-infra-index/sitemap.xml">Sitemap</a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Alpha One Index — MIT License</span>
+        <span>Last updated: <time datetime="2026-02-28">February 28, 2026</time></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

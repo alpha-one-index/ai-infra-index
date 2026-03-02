@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPU Cost Optimization Playbook: Reduce AI Cloud Spend 30–90% — AI Infrastructure Index</title>
+  <meta name="description" content="Complete GPU cost optimization guide for AI infrastructure. Right-sizing, quantization, spot instances, reserved pricing, continuous batching, multi-cloud arbitrage, and cost monitoring. Real 2025–2026 pricing data.">
+  <meta name="keywords" content="GPU cost optimization, reduce cloud GPU cost, AI infrastructure cost, spot GPU instances, reserved GPU pricing, GPU right-sizing, quantization cost savings, continuous batching GPU, multi-cloud GPU arbitrage">
+  <link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/specs/gpu-cost-optimization.html">
+  <meta property="og:title" content="GPU Cost Optimization Playbook: Reduce AI Cloud Spend 30–90%">
+  <meta property="og:description" content="How to reduce GPU cloud costs: right-sizing, quantization, spot instances, batching, and multi-cloud arbitrage. Real 2026 data.">
+  <meta property="og:url" content="https://alpha-one-index.github.io/ai-infra-index/specs/gpu-cost-optimization.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="sitemap" type="application/xml" href="/ai-infra-index/sitemap.xml">
+  <style>:root{--bg:#0d1117;--bg-secondary:#161b22;--bg-tertiary:#21262d;--border:#30363d;--text:#e6edf3;--text-muted:#8b949e;--accent:#58a6ff;--accent-hover:#79c0ff;--green:#3fb950;--orange:#f0883e;--font:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;--radius:6px;--max-width:1200px;}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{font-size:16px;scroll-behavior:smooth;}body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;}a{color:var(--accent);text-decoration:none;}a:hover{color:var(--accent-hover);text-decoration:underline;}.container{max-width:var(--max-width);margin:0 auto;padding:0 24px;}.site-header{background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100;}.site-header .container{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}.site-logo{font-weight:700;font-size:1rem;color:var(--text);white-space:nowrap;}.site-logo span{color:var(--accent);}.site-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1;}.site-nav a{color:var(--text-muted);font-size:0.875rem;padding:4px 8px;border-radius:var(--radius);transition:color .15s,background .15s;}.site-nav a:hover,.site-nav a.active{color:var(--text);background:var(--bg-tertiary);text-decoration:none;}.breadcrumbs{padding:12px 0;font-size:0.8125rem;color:var(--text-muted);}.breadcrumbs a{color:var(--text-muted);}.page-header{padding:32px 0 24px;border-bottom:1px solid var(--border);}.page-header h1{font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;margin-bottom:10px;}.page-header .description{color:var(--text-muted);font-size:0.9375rem;max-width:800px;line-height:1.65;margin-top:8px;}.page-header .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8125rem;color:var(--text-muted);margin-top:12px;}.section{padding:36px 0;border-bottom:1px solid var(--border);}.section h2{font-size:1.25rem;font-weight:700;margin-bottom:12px;}.section h3{font-size:1.0625rem;font-weight:600;margin:20px 0 8px;}.answer-box{background:var(--bg-secondary);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:0.9375rem;line-height:1.6;}.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;}table{width:100%;border-collapse:collapse;font-size:0.875rem;}th{background:var(--bg-tertiary);color:var(--text-muted);font-weight:600;text-align:left;padding:10px 12px;border-bottom:2px solid var(--border);}td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}tr:last-child td{border-bottom:none;}tr:hover td{background:rgba(88,166,255,.04);}.price-low{color:var(--green);font-weight:600;}.badge{display:inline-block;font-size:0.6875rem;font-weight:600;padding:2px 7px;border-radius:10px;text-transform:uppercase;letter-spacing:.03em;}.badge-green{background:rgba(63,185,80,.15);color:var(--green);}.badge-blue{background:rgba(88,166,255,.15);color:var(--accent);}.faq-list{display:flex;flex-direction:column;gap:0;}.faq-item{border-bottom:1px solid var(--border);padding:16px 0;}.faq-item:last-child{border-bottom:none;}.faq-q{font-size:1rem;font-weight:600;margin-bottom:8px;color:var(--text);}.faq-a p{color:var(--text-muted);font-size:0.9375rem;line-height:1.65;}ul{padding-left:1.5rem;margin:12px 0;}ul li{margin-bottom:6px;font-size:0.9375rem;color:var(--text-muted);}.site-footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding:32px 0 24px;margin-top:0;}.footer-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;margin-bottom:24px;}.footer-col h4{font-size:0.8125rem;font-weight:600;color:var(--text);margin-bottom:8px;}.footer-col a{display:block;color:var(--text-muted);font-size:0.8125rem;margin-bottom:4px;}.footer-bottom{border-top:1px solid var(--border);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:0.8125rem;color:var(--text-muted);}@media(max-width:768px){.footer-inner{grid-template-columns:repeat(2,1fr);}}</style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"GPU Cost Optimization Playbook: Reduce AI Cloud Spend 30–90%","dateModified":"2026-03-01","url":"https://alpha-one-index.github.io/ai-infra-index/specs/gpu-cost-optimization.html","author":{"@type":"Organization","name":"Alpha One Index"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://alpha-one-index.github.io/ai-infra-index/"},{"@type":"ListItem","position":2,"name":"GPU Cost Optimization","item":"https://alpha-one-index.github.io/ai-infra-index/specs/gpu-cost-optimization.html"}]}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the biggest way to reduce GPU cloud costs?","acceptedAnswer":{"@type":"Answer","text":"The biggest cost reduction comes from GPU right-sizing: running a 7B model on an L4 ($0.50–0.80/hr) instead of H100 ($3.50/hr) saves 60–70%. Combined with FP8 quantization (50% fewer GPUs), continuous batching (50% per-token reduction), and spot instances (35–60% savings), total cost can be reduced 80–90% from a naive deployment."}}]}]}
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="site-logo"><a href="/ai-infra-index/" style="color:inherit;text-decoration:none;">AI <span>Infra</span> Index</a></div>
+      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <a href="/ai-infra-index/">Home</a>
+        <a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specs</a>
+        <a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Pricing</a>
+        <a href="/ai-infra-index/specs/ai-accelerators.html">Accelerators</a>
+        <a href="/ai-infra-index/specs/inference-benchmarks.html">Benchmarks</a>
+        <a href="/ai-infra-index/specs/model-gpu-sizing.html">Sizing Guide</a>
+        <a href="/ai-infra-index/specs/training-costs.html">Training Costs</a>
+        <a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a>
+        <a href="/ai-infra-index/specs/gpu-cost-optimization.html" class="active">Cost Optimization</a>
+        <a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/ai-infra-index/">Home</a> &rsaquo; <span>GPU Cost Optimization</span>
+      </nav>
+    </div>
+
+    <div class="page-header">
+      <div class="container">
+        <h1>GPU Cost Optimization Playbook</h1>
+        <p class="description">How to reduce GPU cloud costs 30–90% using right-sizing, quantization, spot instances, reserved pricing, continuous batching, and multi-cloud arbitrage. Based on 2025–2026 pricing data across 12 cloud providers. Includes specific savings percentages and implementation guidance.</p>
+        <div class="meta">
+          <span>Last updated: <time datetime="2026-03-01">March 1, 2026</time></span>
+          <span>Source: <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/gpu-cost-optimization-playbook.md">gpu-cost-optimization-playbook.md</a></span>
+          <span>Related: <a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud Pricing</a> · <a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a></span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="overview-heading">
+      <div class="container">
+        <h2 id="overview-heading">What Are the Biggest Levers for Reducing GPU Cloud Costs?</h2>
+        <div class="answer-box">
+          These techniques compound. Right-sizing + quantization + continuous batching together can reduce cost per token by <strong>80–90%</strong> compared to a naive deployment running an oversized GPU at 40% utilization in FP16. Start with the highest savings, lowest effort techniques first.
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Technique</th><th>Potential Savings</th><th>Effort</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Right-sizing GPU tier</strong></td><td class="price-low">60–70%</td><td><span class="badge badge-green">Low</span></td><td>H100 → L4 for 7B models</td></tr>
+              <tr><td><strong>FP8 quantization</strong></td><td class="price-low">~50%</td><td><span class="badge badge-green">Low</span></td><td>2× H100 → 1× H100 for 70B</td></tr>
+              <tr><td><strong>INT4 quantization (AWQ)</strong></td><td class="price-low">~75%</td><td><span class="badge badge-blue">Medium</span></td><td>75% VRAM reduction; 1–2% quality loss</td></tr>
+              <tr><td><strong>Spot vs on-demand</strong></td><td class="price-low">45–60%</td><td><span class="badge badge-blue">Medium</span></td><td>H100: $1.87 vs $3.50/hr</td></tr>
+              <tr><td><strong>Reserved vs on-demand</strong></td><td class="price-low">40–46%</td><td><span class="badge badge-green">Low (commit)</span></td><td>AWS H100: $1.90–2.10/hr 1yr</td></tr>
+              <tr><td><strong>Continuous batching</strong></td><td class="price-low">~50% per-token</td><td><span class="badge badge-blue">Medium</span></td><td>GPU util: 40% → 90%+</td></tr>
+              <tr><td><strong>Provider arbitrage</strong></td><td class="price-low">36–52%</td><td><span class="badge badge-blue">Medium</span></td><td>AWS $3.90 → RunPod/Vast $1.87</td></tr>
+              <tr><td><strong>MIG partitioning</strong></td><td class="price-low">Up to 7× density</td><td><span class="badge badge-blue">Medium</span></td><td>1 GPU → 7 workloads</td></tr>
+              <tr><td><strong>Auto-shutdown idle</strong></td><td class="price-low">33% monthly</td><td><span class="badge badge-green">Low</span></td><td>Scale to zero when idle</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="rightsizing-heading">
+      <div class="container">
+        <h2 id="rightsizing-heading">Which GPU Should I Actually Use for My Workload?</h2>
+        <p>The most common and expensive mistake is defaulting to the most powerful GPU. <strong>A team running a 7B model on H100s is spending 4–6× more than necessary.</strong> Select GPU based on model size, memory requirements, and whether the workload is memory-bound or compute-bound.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Model Size</th><th>FP16 VRAM Needed</th><th>Recommended GPU</th><th>On-Demand Cost/hr</th><th>Use Case</th></tr></thead>
+            <tbody>
+              <tr><td>≤3B params</td><td>≤6 GB</td><td>L4 (24 GB)</td><td class="price-low">$0.50–0.80</td><td>Cheapest inference</td></tr>
+              <tr><td>7B–13B params</td><td>14–28 GB</td><td>L4 or L40S (48 GB)</td><td class="price-low">$0.50–1.20</td><td>L4 wins on cost/token</td></tr>
+              <tr><td>13B–30B params</td><td>28–60 GB</td><td>A100 40GB or L40S</td><td>$1.20–2.00</td><td>L40S for inference</td></tr>
+              <tr><td>30B–70B params</td><td>60–140 GB</td><td>A100 80GB or H100</td><td>$1.90–3.90</td><td>Consider INT4 to fit 1 card</td></tr>
+              <tr><td>70B–130B params</td><td>140–260 GB</td><td>H200 141GB or 2× H100</td><td>$3.90–8.00</td><td>H200 often cheaper overall</td></tr>
+              <tr><td>130B+ params</td><td>&gt;260 GB</td><td>Multi-H100/H200 cluster</td><td>$8.00+</td><td>Evaluate quantization first</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Key insight:</strong> H100 SXM delivers <strong>86% lower training cost per token vs A100 PCIe</strong> ($0.88 vs $6.32 per 10M tokens) despite higher hourly rate — because MFU is significantly higher on SXM configurations.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="quant-heading">
+      <div class="container">
+        <h2 id="quant-heading">How Much Can Quantization Save, and What Do I Lose?</h2>
+        <p>Quantization is the highest-ROI optimization available. FP8 is production-ready with near-zero quality loss. INT4 AWQ reduces VRAM by 75% with only 1–2% perplexity increase.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Method</th><th>Baseline</th><th>Optimized</th><th>Savings</th><th>Quality Loss</th><th>Effort</th></tr></thead>
+            <tbody>
+              <tr><td>FP8 (vs FP16)</td><td>2× H100 for 70B</td><td>1× H100 (50% fewer GPUs)</td><td class="price-low">~50%</td><td>&lt;1% perplexity</td><td>Low</td></tr>
+              <tr><td>INT8 W8A8 (vs FP16)</td><td>2× H100 for 70B</td><td>1× H100</td><td class="price-low">~50%</td><td>~1% perplexity</td><td>Low</td></tr>
+              <tr><td>INT4 GPTQ (vs FP16)</td><td>2× A100 80GB</td><td>1× A100 40GB</td><td class="price-low">~75%</td><td>2–3% perplexity</td><td>Medium</td></tr>
+              <tr><td>INT4 AWQ (vs FP16)</td><td>2× A100 80GB</td><td>1× A100 40GB</td><td class="price-low">~75%</td><td>1–2% perplexity</td><td>Medium</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="spot-heading">
+      <div class="container">
+        <h2 id="spot-heading">How Do I Use Spot Instances Without Losing Training Progress?</h2>
+        <p>Spot/preemptible GPU instances save <strong>35–60% vs on-demand</strong> but can be interrupted with 2-minute notice. The key is <strong>checkpointing every 30–60 minutes</strong> so training can resume from the last checkpoint.</p>
+        <ul>
+          <li><strong>Always checkpoint to persistent storage</strong> (S3, GCS, NFS) — not local disk</li>
+          <li>Set checkpoint frequency: every 1,000–5,000 steps or every 30–60 minutes</li>
+          <li>Use fault-tolerant training frameworks: PyTorch Elastic, TorchX, Ray Train</li>
+          <li><strong>Do not use spot for inference</strong> — user-facing latency is unpredictable with interruptions</li>
+          <li>Monitor spot price trends before starting long runs; avoid peak demand windows</li>
+        </ul>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>GPU</th><th>On-Demand Avg</th><th>Spot Avg</th><th>Typical Savings</th><th>Provider</th></tr></thead>
+            <tbody>
+              <tr><td>H100 SXM 80GB</td><td>$3.50</td><td class="price-low">$2.25</td><td class="price-low">35–40%</td><td>AWS/GCP</td></tr>
+              <tr><td>H100 SXM 80GB</td><td>$2.49</td><td class="price-low">$1.89</td><td class="price-low">24%</td><td>RunPod</td></tr>
+              <tr><td>A100 SXM 80GB</td><td>$2.50</td><td class="price-low">$1.40</td><td class="price-low">40–45%</td><td>AWS/GCP</td></tr>
+              <tr><td>L40S 48GB</td><td>$0.79</td><td class="price-low">$0.40</td><td class="price-low">~49%</td><td>RunPod</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-heading">
+      <div class="container">
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">What is the single best way to reduce GPU cloud costs?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">The single best lever is <strong>GPU right-sizing</strong>: running a 7B model on an L4 ($0.50–0.80/hr) instead of H100 ($3.50/hr) saves 60–70% with no quality loss. Most teams overprovision by 2–4× because they default to the most powerful hardware available. Always match GPU to model size and workload type first.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">When does a reserved GPU instance pay off?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">Reserved instances pay off when you need the same GPU for a predictable workload for <strong>12+ months with 50%+ average utilization</strong>. 1-year commits save 25–40%; 3-year commits save 40–60%. AWS H100 with 1-year reservation: ~$1.90–2.10/hr vs $3.93/hr on-demand (47–53% savings). Break-even vs on-demand: typically 3–4 months of continuous usage.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">How does continuous batching reduce per-token inference cost?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">Continuous batching (aka in-flight batching, supported by vLLM and TensorRT-LLM) processes multiple requests simultaneously, improving GPU utilization from ~40% to <strong>90%+</strong> — reducing cost per token by approximately 50%. Without batching, a GPU sits idle between tokens; continuous batching fills those gaps with other requests. Batch size of 32 reduces per-token cost by ~85% vs single-request inference.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">Is it worth shopping across multiple GPU cloud providers?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes — there is a <strong>nearly 5× price spread for identical H100 hardware</strong> across providers in 2026: $1.87/hr (Vast.ai market) to ~$6.15/hr (CoreWeave). For non-SLA-critical workloads (training, batch inference), switching from AWS P5 ($3.93/hr) to Lambda Labs ($2.99/hr) or RunPod ($2.49/hr) saves 24–37% with minimal engineering effort. The main tradeoff is fewer enterprise features and potentially less reliable SLAs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col"><h4>Hardware Specs</h4><a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specifications</a><a href="/ai-infra-index/specs/ai-accelerators.html">AI Accelerators</a><a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a></div>
+        <div class="footer-col"><h4>Pricing &amp; Costs</h4><a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud GPU Pricing</a><a href="/ai-infra-index/specs/training-costs.html">Training Costs</a><a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a></div>
+        <div class="footer-col"><h4>Sizing &amp; Benchmarks</h4><a href="/ai-infra-index/specs/model-gpu-sizing.html">Model GPU Sizing</a><a href="/ai-infra-index/specs/inference-benchmarks.html">Inference Benchmarks</a><a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a></div>
+        <div class="footer-col"><h4>Data &amp; Repo</h4><a href="https://github.com/alpha-one-index/ai-infra-index">GitHub Repository</a><a href="/ai-infra-index/llms.txt">llms.txt</a><a href="/ai-infra-index/sitemap.xml">Sitemap</a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Alpha One Index — MIT License. Pricing data from official provider pages.</span>
+        <span>Last updated: <time datetime="2026-03-01">March 1, 2026</time></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

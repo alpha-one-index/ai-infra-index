@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model GPU Sizing Guide: How Many GPUs for LLaMA 3, Mixtral, GPT-4? — AI Infrastructure Index</title>
+  <meta name="description" content="GPU memory requirements for LLaMA 3 8B/70B/405B, Mixtral 8x7B, GPT-4, DeepSeek V3. VRAM calculation formula, training vs inference requirements, quantization impact, and multi-GPU parallelism strategies.">
+  <meta name="keywords" content="model GPU sizing, VRAM requirements LLM, how many GPUs LLaMA, GPU memory LLM, model VRAM calculator, LLaMA 3 70B GPU requirements, QLoRA VRAM, GPU sizing guide">
+  <link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/specs/model-gpu-sizing.html">
+  <meta property="og:title" content="Model GPU Sizing Guide: VRAM for LLaMA, Mixtral, GPT-4">
+  <meta property="og:description" content="How much VRAM does your model need? Sizing guide for LLaMA 3 8B/70B/405B and more across FP16, INT8, INT4 quantization.">
+  <meta property="og:url" content="https://alpha-one-index.github.io/ai-infra-index/specs/model-gpu-sizing.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="sitemap" type="application/xml" href="/ai-infra-index/sitemap.xml">
+  <style>:root{--bg:#0d1117;--bg-secondary:#161b22;--bg-tertiary:#21262d;--border:#30363d;--text:#e6edf3;--text-muted:#8b949e;--accent:#58a6ff;--accent-hover:#79c0ff;--green:#3fb950;--orange:#f0883e;--font:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;--font-mono:'SFMono-Regular',Consolas,monospace;--radius:6px;--max-width:1200px;}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{font-size:16px;scroll-behavior:smooth;}body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;}a{color:var(--accent);text-decoration:none;}a:hover{color:var(--accent-hover);text-decoration:underline;}.container{max-width:var(--max-width);margin:0 auto;padding:0 24px;}.site-header{background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100;}.site-header .container{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}.site-logo{font-weight:700;font-size:1rem;color:var(--text);white-space:nowrap;}.site-logo span{color:var(--accent);}.site-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1;}.site-nav a{color:var(--text-muted);font-size:0.875rem;padding:4px 8px;border-radius:var(--radius);transition:color .15s,background .15s;}.site-nav a:hover,.site-nav a.active{color:var(--text);background:var(--bg-tertiary);text-decoration:none;}.breadcrumbs{padding:12px 0;font-size:0.8125rem;color:var(--text-muted);}.breadcrumbs a{color:var(--text-muted);}.page-header{padding:32px 0 24px;border-bottom:1px solid var(--border);}.page-header h1{font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;margin-bottom:10px;}.page-header .description{color:var(--text-muted);font-size:0.9375rem;max-width:800px;line-height:1.65;margin-top:8px;}.page-header .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8125rem;color:var(--text-muted);margin-top:12px;}.section{padding:36px 0;border-bottom:1px solid var(--border);}.section h2{font-size:1.25rem;font-weight:700;margin-bottom:12px;}.section h3{font-size:1.0625rem;font-weight:600;margin:20px 0 8px;}.answer-box{background:var(--bg-secondary);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:0.9375rem;line-height:1.6;}.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;}table{width:100%;border-collapse:collapse;font-size:0.875rem;}th{background:var(--bg-tertiary);color:var(--text-muted);font-weight:600;text-align:left;padding:10px 12px;border-bottom:2px solid var(--border);}td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}tr:last-child td{border-bottom:none;}tr:hover td{background:rgba(88,166,255,.04);}.price-low{color:var(--green);font-weight:600;}.price-high{color:var(--orange);}pre{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:16px;overflow-x:auto;font-family:var(--font-mono);font-size:0.8125rem;line-height:1.6;margin:12px 0;}code{font-family:var(--font-mono);font-size:0.875em;background:var(--bg-tertiary);padding:2px 5px;border-radius:3px;}pre code{background:none;padding:0;font-size:inherit;}.faq-list{display:flex;flex-direction:column;gap:0;}.faq-item{border-bottom:1px solid var(--border);padding:16px 0;}.faq-item:last-child{border-bottom:none;}.faq-q{font-size:1rem;font-weight:600;margin-bottom:8px;color:var(--text);}.faq-a p{color:var(--text-muted);font-size:0.9375rem;line-height:1.65;}.badge{display:inline-block;font-size:0.6875rem;font-weight:600;padding:2px 7px;border-radius:10px;text-transform:uppercase;letter-spacing:.03em;}.badge-green{background:rgba(63,185,80,.15);color:var(--green);}.badge-blue{background:rgba(88,166,255,.15);color:var(--accent);}.site-footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding:32px 0 24px;margin-top:0;}.footer-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;margin-bottom:24px;}.footer-col h4{font-size:0.8125rem;font-weight:600;color:var(--text);margin-bottom:8px;}.footer-col a{display:block;color:var(--text-muted);font-size:0.8125rem;margin-bottom:4px;}.footer-bottom{border-top:1px solid var(--border);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:0.8125rem;color:var(--text-muted);}@media(max-width:768px){.footer-inner{grid-template-columns:repeat(2,1fr);}}</style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Model GPU Sizing Guide: VRAM Requirements for LLaMA, Mixtral, GPT-4","dateModified":"2026-02-28","url":"https://alpha-one-index.github.io/ai-infra-index/specs/model-gpu-sizing.html","author":{"@type":"Organization","name":"Alpha One Index"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://alpha-one-index.github.io/ai-infra-index/"},{"@type":"ListItem","position":2,"name":"Model GPU Sizing","item":"https://alpha-one-index.github.io/ai-infra-index/specs/model-gpu-sizing.html"}]}},{"@type":"HowTo","name":"How to Calculate GPU Memory Requirements for an LLM","step":[{"@type":"HowToStep","name":"Determine parameter count","text":"Find the number of parameters (e.g., 70B for LLaMA 3 70B)."},{"@type":"HowToStep","name":"Choose precision","text":"FP16=2 bytes/param, INT8=1 byte/param, INT4=0.5 bytes/param."},{"@type":"HowToStep","name":"Calculate base VRAM","text":"VRAM = (Parameters × bytes_per_param) / 1,000,000,000. Example: 70B FP16 = 70e9 × 2 / 1e9 = 140 GB."},{"@type":"HowToStep","name":"Add overhead","text":"Multiply by 1.2 for KV cache, activations, and runtime overhead. 70B FP16 with overhead = 168 GB."},{"@type":"HowToStep","name":"Select GPU configuration","text":"Choose GPUs whose total VRAM exceeds your requirement. 168 GB needs 3× H100 80GB or 2× H200 141GB."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much VRAM does LLaMA 3 70B need?","acceptedAnswer":{"@type":"Answer","text":"LLaMA 3 70B requires approximately 140 GB VRAM for FP16 inference (70B × 2 bytes), plus ~20% overhead = ~168 GB. Minimum configuration: 2× H100 80GB or 1× H200 141GB. With INT4 quantization (AWQ), fits on a single H100 80GB using ~35 GB VRAM."}},{"@type":"Question","name":"How many GPUs does LLaMA 3 405B require?","acceptedAnswer":{"@type":"Answer","text":"LLaMA 3 405B requires approximately 810 GB VRAM for FP16 inference. Minimum: 11× H100 80GB (880 GB). Recommended: 12× H100 80GB. With INT4 quantization, ~202 GB (3× H100 80GB). Full fine-tuning: 64× H100 80GB minimum."}}]}]}
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="site-logo"><a href="/ai-infra-index/" style="color:inherit;text-decoration:none;">AI <span>Infra</span> Index</a></div>
+      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <a href="/ai-infra-index/">Home</a>
+        <a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specs</a>
+        <a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Pricing</a>
+        <a href="/ai-infra-index/specs/ai-accelerators.html">Accelerators</a>
+        <a href="/ai-infra-index/specs/inference-benchmarks.html">Benchmarks</a>
+        <a href="/ai-infra-index/specs/model-gpu-sizing.html" class="active">Sizing Guide</a>
+        <a href="/ai-infra-index/specs/training-costs.html">Training Costs</a>
+        <a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a>
+        <a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a>
+        <a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/ai-infra-index/">Home</a> &rsaquo; <span>Model GPU Sizing Guide</span>
+      </nav>
+    </div>
+
+    <div class="page-header">
+      <div class="container">
+        <h1>Model GPU Sizing Guide</h1>
+        <p class="description">How many GPUs does your model need? GPU memory and compute requirements for training and deploying major AI models across all major GPU types. Covers LLaMA 3 (8B/70B/405B), Mixtral, GPT-4, DeepSeek V3 across FP16, INT8, and INT4 quantization.</p>
+        <div class="meta">
+          <span>Last updated: <time datetime="2026-02-28">February 28, 2026</time></span>
+          <span>Source: <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/model-gpu-sizing.md">model-gpu-sizing.md</a></span>
+          <span>Related: <a href="/ai-infra-index/specs/inference-benchmarks.html">Benchmarks</a> · <a href="/ai-infra-index/specs/training-costs.html">Training Costs</a></span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="quick-ref-heading">
+      <div class="container">
+        <h2 id="quick-ref-heading">Quick Reference: GPU Requirements by Model (FP16 Inference)</h2>
+        <div class="table-wrap" role="region" aria-label="Model VRAM requirements">
+          <table>
+            <thead>
+              <tr><th>Model</th><th>Parameters</th><th>VRAM Required (FP16)</th><th>Minimum GPU Config</th><th>Recommended Config</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>LLaMA 3 8B</strong></td><td>8B</td><td>~16 GB</td><td>1× RTX 4090 (24GB)</td><td>1× A100 40GB</td></tr>
+              <tr><td><strong>LLaMA 3 70B</strong></td><td>70B</td><td>~140 GB</td><td>2× H100 80GB</td><td>2× H100 80GB or 1× H200</td></tr>
+              <tr><td><strong>LLaMA 3 405B</strong></td><td>405B</td><td>~810 GB</td><td>11× H100 80GB</td><td>12× H100 80GB</td></tr>
+              <tr><td><strong>Mistral 7B</strong></td><td>7B</td><td>~14 GB</td><td>1× RTX 4090 (24GB)</td><td>1× A100 40GB</td></tr>
+              <tr><td><strong>Mixtral 8×7B</strong></td><td>47B active</td><td>~94 GB</td><td>2× A100 80GB</td><td>2× H100 80GB</td></tr>
+              <tr><td><strong>Mixtral 8×22B</strong></td><td>141B active</td><td>~282 GB</td><td>4× H100 80GB</td><td>4× H100 80GB</td></tr>
+              <tr><td><strong>DeepSeek V3</strong></td><td>671B</td><td>~1,340 GB</td><td>17× H100 80GB</td><td>24× H100 80GB</td></tr>
+              <tr><td><strong>Yi 34B</strong></td><td>34B</td><td>~68 GB</td><td>1× H100 80GB</td><td>1× H100 80GB</td></tr>
+              <tr><td><strong>Falcon 180B</strong></td><td>180B</td><td>~360 GB</td><td>5× H100 80GB</td><td>8× H100 80GB</td></tr>
+              <tr><td><strong>GPT-4 (est.)</strong></td><td>~1.8T</td><td>~3,600 GB</td><td>48× H100 80GB</td><td>64× H100 80GB</td></tr>
+              <tr><td><strong>Claude 3 Opus (est.)</strong></td><td>~2T</td><td>~4,000 GB</td><td>52× H100 80GB</td><td>64× H100 80GB</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="formula-heading">
+      <div class="container">
+        <h2 id="formula-heading">How Do You Calculate GPU Memory Requirements for an LLM?</h2>
+        <div class="answer-box">
+          <strong>Formula:</strong> VRAM (GB) = (Parameters × bytes_per_param) / 1,000,000,000 × 1.2 (overhead)<br>
+          FP32 = 4 bytes | BF16/FP16 = 2 bytes | INT8 = 1 byte | INT4/NF4 = 0.5 bytes
+        </div>
+        <pre><code>VRAM (GB) = (Parameters × bytes_per_param) / 1e9
+
+Precision bytes:
+  FP32  = 4 bytes per parameter
+  BF16  = 2 bytes per parameter
+  FP16  = 2 bytes per parameter
+  INT8  = 1 byte per parameter
+  INT4  = 0.5 bytes per parameter
+  NF4   = 0.5 bytes per parameter
+
+Add ~20% overhead for KV cache, activations, runtime
+
+Examples:
+  LLaMA 3 70B in FP16: (70e9 × 2) / 1e9 = 140 GB + 20% = ~168 GB
+  LLaMA 3 70B in INT4: (70e9 × 0.5) / 1e9 = 35 GB + 20% = ~42 GB</code></pre>
+
+        <h3>Context Length Impact on VRAM</h3>
+        <p>KV cache memory scales with sequence length. Long contexts add significant VRAM beyond model weights:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Model</th><th>Context Length</th><th>KV Cache (batch=1)</th></tr></thead>
+            <tbody>
+              <tr><td>LLaMA 3 8B</td><td>8K tokens</td><td>~0.5 GB</td></tr>
+              <tr><td>LLaMA 3 8B</td><td>128K tokens</td><td>~7.5 GB</td></tr>
+              <tr><td>LLaMA 3 70B</td><td>8K tokens</td><td>~3.5 GB</td></tr>
+              <tr><td>LLaMA 3 70B</td><td>128K tokens</td><td>~56 GB</td></tr>
+              <tr><td>LLaMA 3 405B</td><td>128K tokens</td><td>~320 GB</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="training-heading">
+      <div class="container">
+        <h2 id="training-heading">How Much VRAM Does Training Require?</h2>
+        <p>Training requires significantly more VRAM than inference due to optimizer states, gradients, and activations. Full fine-tuning requires approximately <strong>18× the parameter count in bytes</strong> (mixed precision with AdamW optimizer).</p>
+
+        <h3>Full Fine-Tuning Memory Requirements (AdamW)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Precision</th><th>Memory Multiplier</th><th>Formula</th><th>LLaMA 3 8B Example</th></tr></thead>
+            <tbody>
+              <tr><td>FP32</td><td>16× params</td><td>16 bytes/param</td><td>~128 GB (2× A100 80GB)</td></tr>
+              <tr><td>Mixed BF16+FP32</td><td>18× params</td><td>18 bytes/param</td><td>~144 GB (2× A100 80GB)</td></tr>
+              <tr><td>Pure BF16</td><td>12× params</td><td>12 bytes/param</td><td>~96 GB (2× A100 80GB)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Parameter-Efficient Fine-Tuning (PEFT)</h3>
+        <p>QLoRA dramatically reduces VRAM for fine-tuning: <strong>LLaMA 3 70B with QLoRA requires only ~37 GB</strong> — fitting on a single H100 80GB. This is the most practical approach for fine-tuning large models.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Method</th><th>Memory Overhead</th><th>Notes</th><th>LLaMA 3 70B VRAM</th></tr></thead>
+            <tbody>
+              <tr><td>LoRA (r=16)</td><td>+~5% base model</td><td>Trains only low-rank matrices</td><td>~147 GB (FP16 base)</td></tr>
+              <tr><td><strong>QLoRA (4-bit + LoRA)</strong></td><td>~0.5× params</td><td>4-bit base + FP16 adapters</td><td><strong>~37 GB (1× H100 80GB)</strong></td></tr>
+              <tr><td>IA3</td><td>+~1% base model</td><td>Fewer trainable params than LoRA</td><td>~141 GB (FP16 base)</td></tr>
+              <tr><td>Prefix Tuning</td><td>+~2% base model</td><td>Trainable prefix tokens</td><td>~143 GB (FP16 base)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="configs-heading">
+      <div class="container">
+        <h2 id="configs-heading">GPU Configurations for Popular Models</h2>
+
+        <h3>LLaMA 3 70B — GPU Configuration Options</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Use Case</th><th>GPU Config</th><th>Throughput</th></tr></thead>
+            <tbody>
+              <tr><td>Inference (FP16)</td><td>2× H100 80GB</td><td>~2,100 tok/s</td></tr>
+              <tr><td>Inference (FP16)</td><td>2× A100 80GB</td><td>~1,200 tok/s</td></tr>
+              <tr><td>Inference (INT4)</td><td>1× H100 80GB</td><td>~1,800 tok/s</td></tr>
+              <tr><td>Inference (FP16)</td><td>1× H200 141GB</td><td>~2,800 tok/s</td></tr>
+              <tr><td>Fine-tune (QLoRA)</td><td>2× A100 80GB</td><td>~400 tok/s training</td></tr>
+              <tr><td>Fine-tune (Full FP16)</td><td>8× A100 80GB</td><td>~1,100 tok/s training</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>LLaMA 3 405B — GPU Configuration Options</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Use Case</th><th>GPU Config</th><th>Throughput</th></tr></thead>
+            <tbody>
+              <tr><td>Inference (FP16)</td><td>8× H100 80GB</td><td>~580 tok/s</td></tr>
+              <tr><td>Inference (INT4)</td><td>4× H100 80GB</td><td>~640 tok/s</td></tr>
+              <tr><td>Fine-tune (Full BF16)</td><td>64× H100 80GB</td><td>~800 tok/s training</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-heading">
+      <div class="container">
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">How much VRAM does LLaMA 3 70B require?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">LLaMA 3 70B requires approximately <strong>140 GB VRAM for FP16 inference</strong> (70B × 2 bytes = 140 GB), plus ~20% overhead for KV cache = ~168 GB total. Minimum: <strong>2× H100 80GB</strong> (160 GB) or 1× H200 141GB. With INT4 quantization (AWQ), VRAM drops to ~35 GB — fitting on a single H100 80GB.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">Can LLaMA 3 70B run on a single H100?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes, with quantization. LLaMA 3 70B runs on a single H100 80GB with <strong>INT4 quantization (GPTQ or AWQ)</strong>, using approximately 35 GB VRAM — well within the 80 GB capacity. Throughput is approximately 1,800 tokens/second vs 2,100 tokens/second for FP16 on 2× H100, with 1–2% quality degradation. FP16 inference requires 2× H100 80GB (160 GB total).</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">What is QLoRA and how much VRAM does it use for 70B fine-tuning?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">QLoRA combines 4-bit quantization of the base model with FP16 LoRA adapters. For LLaMA 3 70B: base model in 4-bit = ~35 GB + LoRA adapters ~2 GB = <strong>~37 GB total</strong> — fitting on a single H100 80GB. This compares to ~1,260 GB for full FP32 fine-tuning. QLoRA is the standard approach for fine-tuning 70B+ models on accessible hardware.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">How many GPUs does LLaMA 3 405B need?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">LLaMA 3 405B requires approximately <strong>810 GB VRAM for FP16 inference</strong>. Minimum: 11× H100 80GB (880 GB). Recommended: <strong>12× H100 80GB</strong> for headroom. With INT4 quantization, VRAM drops to ~202 GB (3× H100 80GB). Full fine-tuning requires 64× H100 80GB (18× parameters = ~7,290 GB minimum).</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">What is the difference between tensor parallelism and pipeline parallelism?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">Tensor Parallelism (TP) splits individual layers across GPUs — requires high-bandwidth NVLink, scales linearly up to 8 GPUs, best for inference. Pipeline Parallelism (PP) splits model layers across GPU groups — lower bandwidth requirements, works across nodes, higher latency but enables very large models (4–16 pipeline stages). For production serving, use TP within a node (up to 8× H100) and PP across nodes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col"><h4>Hardware Specs</h4><a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specifications</a><a href="/ai-infra-index/specs/ai-accelerators.html">AI Accelerators</a><a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a></div>
+        <div class="footer-col"><h4>Pricing &amp; Costs</h4><a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud GPU Pricing</a><a href="/ai-infra-index/specs/training-costs.html">Training Costs</a><a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a></div>
+        <div class="footer-col"><h4>Sizing &amp; Benchmarks</h4><a href="/ai-infra-index/specs/model-gpu-sizing.html">Model GPU Sizing</a><a href="/ai-infra-index/specs/inference-benchmarks.html">Inference Benchmarks</a><a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a></div>
+        <div class="footer-col"><h4>Data &amp; Repo</h4><a href="https://github.com/alpha-one-index/ai-infra-index">GitHub Repository</a><a href="/ai-infra-index/llms.txt">llms.txt</a><a href="/ai-infra-index/sitemap.xml">Sitemap</a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Alpha One Index — MIT License. Data from model cards, empirical benchmarks, and provider documentation.</span>
+        <span>Last updated: <time datetime="2026-02-28">February 28, 2026</time></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

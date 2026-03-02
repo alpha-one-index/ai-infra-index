@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy vs Rent GPU Infrastructure: Cloud vs On-Premise TCO Decision Framework — AI Infrastructure Index</title>
+  <meta name="description" content="Cloud vs on-premise vs colocation GPU decision framework with 2025–2026 TCO data. H100 break-even analysis: 8-GPU node costs $12K/month on-prem vs $57K/month cloud. Decision matrix by use case and utilization.">
+  <meta name="keywords" content="buy vs rent GPU, cloud vs on-premise AI, GPU infrastructure TCO, H100 on-premise cost, GPU break-even analysis, colocation GPU, AI infrastructure decision">
+  <link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/specs/buy-vs-rent.html">
+  <meta property="og:title" content="Buy vs Rent GPU Infrastructure: Cloud vs On-Premise TCO">
+  <meta property="og:description" content="H100 cloud vs on-premise break-even analysis. 8-GPU node: $12K/month on-prem vs $57K/month cloud. Decision framework for AI teams.">
+  <meta property="og:url" content="https://alpha-one-index.github.io/ai-infra-index/specs/buy-vs-rent.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="sitemap" type="application/xml" href="/ai-infra-index/sitemap.xml">
+  <style>:root{--bg:#0d1117;--bg-secondary:#161b22;--bg-tertiary:#21262d;--border:#30363d;--text:#e6edf3;--text-muted:#8b949e;--accent:#58a6ff;--accent-hover:#79c0ff;--green:#3fb950;--orange:#f0883e;--font:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;--radius:6px;--max-width:1200px;}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{font-size:16px;scroll-behavior:smooth;}body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;}a{color:var(--accent);text-decoration:none;}a:hover{color:var(--accent-hover);text-decoration:underline;}.container{max-width:var(--max-width);margin:0 auto;padding:0 24px;}.site-header{background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100;}.site-header .container{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}.site-logo{font-weight:700;font-size:1rem;color:var(--text);white-space:nowrap;}.site-logo span{color:var(--accent);}.site-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1;}.site-nav a{color:var(--text-muted);font-size:0.875rem;padding:4px 8px;border-radius:var(--radius);transition:color .15s,background .15s;}.site-nav a:hover,.site-nav a.active{color:var(--text);background:var(--bg-tertiary);text-decoration:none;}.breadcrumbs{padding:12px 0;font-size:0.8125rem;color:var(--text-muted);}.breadcrumbs a{color:var(--text-muted);}.page-header{padding:32px 0 24px;border-bottom:1px solid var(--border);}.page-header h1{font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;margin-bottom:10px;}.page-header .description{color:var(--text-muted);font-size:0.9375rem;max-width:800px;line-height:1.65;margin-top:8px;}.page-header .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8125rem;color:var(--text-muted);margin-top:12px;}.section{padding:36px 0;border-bottom:1px solid var(--border);}.section h2{font-size:1.25rem;font-weight:700;margin-bottom:12px;}.section h3{font-size:1.0625rem;font-weight:600;margin:20px 0 8px;}.answer-box{background:var(--bg-secondary);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:0.9375rem;line-height:1.6;}.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;}table{width:100%;border-collapse:collapse;font-size:0.875rem;}th{background:var(--bg-tertiary);color:var(--text-muted);font-weight:600;text-align:left;padding:10px 12px;border-bottom:2px solid var(--border);}td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}tr:last-child td{border-bottom:none;}tr:hover td{background:rgba(88,166,255,.04);}.price-low{color:var(--green);font-weight:600;}ul,ol{padding-left:1.5rem;margin:12px 0;}ul li,ol li{margin-bottom:6px;font-size:0.9375rem;color:var(--text-muted);}.faq-list{display:flex;flex-direction:column;gap:0;}.faq-item{border-bottom:1px solid var(--border);padding:16px 0;}.faq-item:last-child{border-bottom:none;}.faq-q{font-size:1rem;font-weight:600;margin-bottom:8px;color:var(--text);}.faq-a p{color:var(--text-muted);font-size:0.9375rem;line-height:1.65;}.site-footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding:32px 0 24px;margin-top:0;}.footer-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;margin-bottom:24px;}.footer-col h4{font-size:0.8125rem;font-weight:600;color:var(--text);margin-bottom:8px;}.footer-col a{display:block;color:var(--text-muted);font-size:0.8125rem;margin-bottom:4px;}.footer-bottom{border-top:1px solid var(--border);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:0.8125rem;color:var(--text-muted);}@media(max-width:768px){.footer-inner{grid-template-columns:repeat(2,1fr);}}</style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Buy vs Rent GPU Infrastructure: Cloud vs On-Premise TCO Decision Framework","dateModified":"2026-03-01","url":"https://alpha-one-index.github.io/ai-infra-index/specs/buy-vs-rent.html","author":{"@type":"Organization","name":"Alpha One Index"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://alpha-one-index.github.io/ai-infra-index/"},{"@type":"ListItem","position":2,"name":"Buy vs Rent","item":"https://alpha-one-index.github.io/ai-infra-index/specs/buy-vs-rent.html"}]}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it cheaper to buy or rent GPUs for AI?","acceptedAnswer":{"@type":"Answer","text":"On-premise is significantly cheaper at scale with sustained utilization. An 8-GPU H100 node costs approximately $12,000/month on-premise (3-year amortization, power, staff) vs $57,000/month on on-demand cloud — a 78% cost reduction. Break-even vs reserved cloud pricing occurs in approximately 3–4 months. Cloud is cheaper for utilization below 50% or planning horizons under 12 months."}},{"@type":"Question","name":"What is the break-even point for buying vs renting H100 GPUs?","acceptedAnswer":{"@type":"Answer","text":"H100 on-premise break-even vs reserved cloud: approximately 3–4 months at 85% utilization. An 8-GPU H100 node ($300,000 purchase, 3-year amortization) costs ~$12,000/month on-prem vs ~$35,000/month reserved cloud. At that rate, the hardware pays back in 3 months. At 64 GPUs, on-prem costs $78,000/month vs $282,000/month reserved cloud."}}]}]}
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="site-logo"><a href="/ai-infra-index/" style="color:inherit;text-decoration:none;">AI <span>Infra</span> Index</a></div>
+      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <a href="/ai-infra-index/">Home</a>
+        <a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specs</a>
+        <a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Pricing</a>
+        <a href="/ai-infra-index/specs/ai-accelerators.html">Accelerators</a>
+        <a href="/ai-infra-index/specs/inference-benchmarks.html">Benchmarks</a>
+        <a href="/ai-infra-index/specs/model-gpu-sizing.html">Sizing Guide</a>
+        <a href="/ai-infra-index/specs/training-costs.html">Training Costs</a>
+        <a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a>
+        <a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a>
+        <a href="/ai-infra-index/specs/buy-vs-rent.html" class="active">Buy vs Rent</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/ai-infra-index/">Home</a> &rsaquo; <span>Buy vs Rent</span>
+      </nav>
+    </div>
+
+    <div class="page-header">
+      <div class="container">
+        <h1>Buy vs. Rent GPU Infrastructure: Decision Framework</h1>
+        <p class="description">Cloud vs on-premise vs colocation GPU decision framework with real 2025–2026 TCO data. H100 break-even analysis, decision matrix by use case and utilization, migration triggers, and 5-minute decision checklist.</p>
+        <div class="meta">
+          <span>Last updated: <time datetime="2026-03-01">March 1, 2026</time></span>
+          <span>Source: <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/buy-vs-rent-decision-framework.md">buy-vs-rent-decision-framework.md</a></span>
+          <span>Related: <a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud Pricing</a> · <a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a></span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="overview-heading">
+      <div class="container">
+        <h2 id="overview-heading">Should I Buy or Rent GPUs for AI?</h2>
+        <div class="answer-box">
+          <strong>Rent (cloud) when:</strong> GPU utilization is below 50%, planning horizon is under 12 months, or workloads are variable/bursty.<br><br>
+          <strong>Buy (on-prem) when:</strong> Utilization consistently exceeds 70%, planning horizon is 24+ months, and you have infra team expertise.<br><br>
+          <strong>The numbers:</strong> 8-GPU H100 node costs ~<strong>$12,000/month on-prem</strong> vs ~<strong>$57,000/month on-demand cloud</strong> — 79% cheaper on-prem at 85% utilization. Break-even vs reserved cloud: ~3 months.
+        </div>
+
+        <h3>Three Infrastructure Paths</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Path</th><th>Description</th><th>Best For</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Cloud (Rent)</strong></td><td>Pay per GPU-hour, no capital outlay</td><td>Variable workloads, early-stage teams, burst capacity</td></tr>
+              <tr><td><strong>On-Premise (Buy)</strong></td><td>Own hardware in your own data center</td><td>High utilization (&gt;60%), large teams, data-sensitive</td></tr>
+              <tr><td><strong>Colocation (Hybrid)</strong></td><td>Own hardware, rent facility space</td><td>On-prem economics without facility expertise</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Key Decision Variables</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Variable</th><th>Favors Cloud</th><th>Favors On-Prem</th></tr></thead>
+            <tbody>
+              <tr><td>Daily GPU utilization</td><td>&lt; 50%</td><td>&gt; 70%</td></tr>
+              <tr><td>Planning horizon</td><td>&lt; 12 months</td><td>&gt; 24 months</td></tr>
+              <tr><td>Workload predictability</td><td>Highly variable / bursty</td><td>Steady and predictable</td></tr>
+              <tr><td>Infrastructure team</td><td>No dedicated infra team</td><td>Experienced ML platform team</td></tr>
+              <tr><td>Data sensitivity</td><td>Low (public data)</td><td>High (PII, proprietary, regulated)</td></tr>
+              <tr><td>Capital availability</td><td>Capital-constrained</td><td>Capital available for CapEx</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="breakeven-heading">
+      <div class="container">
+        <h2 id="breakeven-heading">What Is the H100 On-Premise vs Cloud Break-Even?</h2>
+        <p>Assumptions: H100 SXM 8-GPU server = $300,000, 3-year amortization, power at $0.08/kWh, PUE 1.3, 85% utilization, 0.5 FTE per rack.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>GPU Count</th><th>Monthly On-Demand Cloud</th><th>Monthly Reserved Cloud</th><th>Monthly On-Prem TCO</th><th>Break-Even vs Reserved</th></tr></thead>
+            <tbody>
+              <tr><td>8 GPUs</td><td>~$57,000</td><td>~$35,000</td><td class="price-low">~$12,000</td><td>~3 months</td></tr>
+              <tr><td>64 GPUs</td><td>~$455,000</td><td>~$282,000</td><td class="price-low">~$78,000</td><td>~3.5 months</td></tr>
+              <tr><td>512 GPUs</td><td>~$3.64M</td><td>~$2.25M</td><td class="price-low">~$580,000</td><td>~4 months</td></tr>
+              <tr><td>4,096 GPUs</td><td>~$29M</td><td>~$18M</td><td class="price-low">~$4.3M</td><td>~4 months</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Key insight:</strong> On-premise is significantly cheaper at any scale &gt;8 GPUs if utilization stays above 70%. The break-even vs reserved cloud occurs in approximately <strong>3–4 months</strong> at 85% utilization.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="when-heading">
+      <div class="container">
+        <h2 id="when-heading">When Should You Choose Cloud vs On-Premise?</h2>
+
+        <h3>Choose Cloud When:</h3>
+        <ul>
+          <li>Running experiments, R&amp;D, or proof-of-concept work</li>
+          <li>GPU utilization is <strong>below 50%</strong> on average</li>
+          <li>You need to scale up/down rapidly for unpredictable demand</li>
+          <li>Your team has fewer than 5 people working on ML infrastructure</li>
+          <li>You need access to H200/B200 before on-prem procurement is viable</li>
+          <li>You're in the <strong>first 12–18 months</strong> of building an AI product</li>
+        </ul>
+
+        <h3>Choose On-Premise When:</h3>
+        <ul>
+          <li>GPU utilization <strong>consistently exceeds 70%</strong></li>
+          <li>You have a <strong>24+ month planning horizon</strong> with predictable workloads</li>
+          <li>Data sovereignty, latency, or compliance requirements rule out cloud</li>
+          <li>Running large-scale pretraining with 50B+ parameter models continuously</li>
+          <li>Annual cloud GPU bill <strong>exceeds $1M</strong> and is growing predictably</li>
+        </ul>
+
+        <h3>Choose Colocation When:</h3>
+        <ul>
+          <li>You want on-prem economics without building out your own facility</li>
+          <li>You're in a leased office without data-center-grade power/cooling</li>
+          <li>You want to own hardware but keep capital in compute, not facilities</li>
+          <li>Your team can manage hardware remotely (IPMI/BMC access)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="checklist-heading">
+      <div class="container">
+        <h2 id="checklist-heading">5-Minute Decision Checklist</h2>
+        <p>Answer these questions to determine the right path:</p>
+        <ol>
+          <li><strong>What is your average daily GPU utilization?</strong> — If below 50%, choose cloud. If above 70%, on-prem likely makes sense.</li>
+          <li><strong>How long will you need this capacity?</strong> — Under 12 months: cloud on-demand or reserved. Over 24 months: evaluate on-prem.</li>
+          <li><strong>Is your workload predictable?</strong> — Variable/bursty workloads favor cloud. Steady, predictable workloads favor on-prem.</li>
+          <li><strong>Do you have an infrastructure team?</strong> — Without dedicated ML platform engineers, cloud reduces operational burden significantly.</li>
+          <li><strong>What is your annual cloud GPU spend?</strong> — Under $500K/year: cloud is likely fine. Over $1M/year growing predictably: evaluate on-prem seriously.</li>
+          <li><strong>Are there compliance requirements?</strong> — HIPAA, SOC 2, data residency requirements may mandate on-prem or specific cloud regions.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-heading">
+      <div class="container">
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">Is it cheaper to buy or rent GPUs for AI?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">On-premise is substantially cheaper at scale with sustained utilization. An 8-GPU H100 node costs approximately <strong>$12,000/month on-prem</strong> vs <strong>$57,000/month on-demand cloud</strong> — 79% cheaper. The break-even vs reserved cloud pricing is approximately 3 months. At 64 GPUs: $78K/month on-prem vs $282K/month reserved. The math strongly favors on-prem at utilization above 70% and 24+ month horizon.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">What is the cost of an H100 server to buy?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">An 8-GPU H100 SXM server (DGX H100 or compatible) costs approximately <strong>$300,000</strong> at hardware list price. H100 GPU MSRP is ~$30,000 each × 8 = $240K, plus server chassis and networking. Over a 3-year amortization at 85% utilization, the effective GPU cost is approximately <strong>$0.40–0.50/GPU-hour</strong> (excluding power and staff) — vs $3.93/hr on-demand cloud.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">What is colocation and is it better than cloud or on-premise?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">Colocation means you own the GPU hardware but rent rack space, power, and cooling from a data center. TCO is typically <strong>10–20% higher than fully on-premise</strong> (you pay facility overhead) but <strong>50–70% cheaper than reserved cloud</strong>. Colocation is the best option for teams that want on-premise economics without building data center infrastructure — particularly for AI teams in leased offices.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">When should an AI startup transition from cloud to on-premise?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">Migration triggers for cloud → on-prem: (1) <strong>Cloud GPU bill exceeds $1M/year and is growing predictably</strong>; (2) GPU utilization consistently &gt;70% for 3+ months; (3) You've hired dedicated ML platform or infra engineers (3+ people); (4) Data compliance or latency requirements constrain cloud options; (5) You have 24+ month visibility into GPU demand. Most startups should stay on cloud for the first 12–18 months and then re-evaluate.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">How does the H100 price drop affect buy vs rent decisions?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">H100 on-demand cloud prices dropped 64–75% from Q4 2024 peaks (~$8/hr) to Q1 2026 (~$2–4/hr). This reduces the financial urgency of on-premise for smaller deployments. However, the <strong>fundamental economics haven't changed</strong>: at sustained high utilization (&gt;70%), on-prem remains 70–80% cheaper than even discounted cloud rates. The H100 price drop does make cloud competitive for workloads with 40–60% utilization where it previously wasn't.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col"><h4>Hardware Specs</h4><a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specifications</a><a href="/ai-infra-index/specs/ai-accelerators.html">AI Accelerators</a><a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a></div>
+        <div class="footer-col"><h4>Pricing &amp; Costs</h4><a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud GPU Pricing</a><a href="/ai-infra-index/specs/training-costs.html">Training Costs</a><a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a></div>
+        <div class="footer-col"><h4>Sizing &amp; Benchmarks</h4><a href="/ai-infra-index/specs/model-gpu-sizing.html">Model GPU Sizing</a><a href="/ai-infra-index/specs/inference-benchmarks.html">Inference Benchmarks</a><a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a></div>
+        <div class="footer-col"><h4>Data &amp; Repo</h4><a href="https://github.com/alpha-one-index/ai-infra-index">GitHub Repository</a><a href="/ai-infra-index/llms.txt">llms.txt</a><a href="/ai-infra-index/sitemap.xml">Sitemap</a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Alpha One Index — MIT License. TCO estimates based on industry benchmarks and public pricing data.</span>
+        <span>Last updated: <time datetime="2026-03-01">March 1, 2026</time></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

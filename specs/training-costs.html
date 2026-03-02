@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Model Training Cost Estimates: GPT-4, LLaMA 3, DeepSeek TCO — AI Infrastructure Index</title>
+  <meta name="description" content="Training cost estimates for GPT-3, GPT-4, LLaMA 2/3, Mistral, Mixtral, DeepSeek V3 and R1. GPU-hour calculator formula, fine-tuning costs, RLHF/DPO costs, and cloud vs on-premise TCO breakeven analysis.">
+  <meta name="keywords" content="AI training cost, LLaMA training cost, GPT-4 training cost, DeepSeek training cost, GPU training cost calculator, fine-tuning cost, RLHF cost, training TCO">
+  <link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/specs/training-costs.html">
+  <meta property="og:title" content="AI Model Training Cost Estimates: GPT-4, LLaMA 3, DeepSeek">
+  <meta property="og:description" content="Training cost estimates for major AI models. GPU-hour calculator, fine-tuning costs, and TCO breakeven analysis.">
+  <meta property="og:url" content="https://alpha-one-index.github.io/ai-infra-index/specs/training-costs.html">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="sitemap" type="application/xml" href="/ai-infra-index/sitemap.xml">
+  <style>:root{--bg:#0d1117;--bg-secondary:#161b22;--bg-tertiary:#21262d;--border:#30363d;--text:#e6edf3;--text-muted:#8b949e;--accent:#58a6ff;--accent-hover:#79c0ff;--green:#3fb950;--orange:#f0883e;--font:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;--font-mono:'SFMono-Regular',Consolas,monospace;--radius:6px;--max-width:1200px;}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{font-size:16px;scroll-behavior:smooth;}body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;}a{color:var(--accent);text-decoration:none;}a:hover{color:var(--accent-hover);text-decoration:underline;}.container{max-width:var(--max-width);margin:0 auto;padding:0 24px;}.site-header{background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:12px 0;position:sticky;top:0;z-index:100;}.site-header .container{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}.site-logo{font-weight:700;font-size:1rem;color:var(--text);white-space:nowrap;}.site-logo span{color:var(--accent);}.site-nav{display:flex;gap:4px;flex-wrap:wrap;flex:1;}.site-nav a{color:var(--text-muted);font-size:0.875rem;padding:4px 8px;border-radius:var(--radius);transition:color .15s,background .15s;}.site-nav a:hover,.site-nav a.active{color:var(--text);background:var(--bg-tertiary);text-decoration:none;}.breadcrumbs{padding:12px 0;font-size:0.8125rem;color:var(--text-muted);}.breadcrumbs a{color:var(--text-muted);}.page-header{padding:32px 0 24px;border-bottom:1px solid var(--border);}.page-header h1{font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;margin-bottom:10px;}.page-header .description{color:var(--text-muted);font-size:0.9375rem;max-width:800px;line-height:1.65;margin-top:8px;}.page-header .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:0.8125rem;color:var(--text-muted);margin-top:12px;}.section{padding:36px 0;border-bottom:1px solid var(--border);}.section h2{font-size:1.25rem;font-weight:700;margin-bottom:12px;}.section h3{font-size:1.0625rem;font-weight:600;margin:20px 0 8px;}.answer-box{background:var(--bg-secondary);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;font-size:0.9375rem;line-height:1.6;}.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;}table{width:100%;border-collapse:collapse;font-size:0.875rem;}th{background:var(--bg-tertiary);color:var(--text-muted);font-weight:600;text-align:left;padding:10px 12px;border-bottom:2px solid var(--border);}td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}tr:last-child td{border-bottom:none;}tr:hover td{background:rgba(88,166,255,.04);}.price-low{color:var(--green);font-weight:600;}.price-high{color:var(--orange);}pre{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:16px;overflow-x:auto;font-family:var(--font-mono);font-size:0.8125rem;line-height:1.6;margin:12px 0;}code{font-family:var(--font-mono);font-size:0.875em;background:var(--bg-tertiary);padding:2px 5px;border-radius:3px;}pre code{background:none;padding:0;font-size:inherit;}.faq-list{display:flex;flex-direction:column;gap:0;}.faq-item{border-bottom:1px solid var(--border);padding:16px 0;}.faq-item:last-child{border-bottom:none;}.faq-q{font-size:1rem;font-weight:600;margin-bottom:8px;color:var(--text);}.faq-a p{color:var(--text-muted);font-size:0.9375rem;line-height:1.65;}.site-footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding:32px 0 24px;margin-top:0;}.footer-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;margin-bottom:24px;}.footer-col h4{font-size:0.8125rem;font-weight:600;color:var(--text);margin-bottom:8px;}.footer-col a{display:block;color:var(--text-muted);font-size:0.8125rem;margin-bottom:4px;}.footer-bottom{border-top:1px solid var(--border);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:0.8125rem;color:var(--text-muted);}@media(max-width:768px){.footer-inner{grid-template-columns:repeat(2,1fr);}}</style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"AI Model Training Cost Estimates: GPT-4, LLaMA 3, DeepSeek, Mistral","dateModified":"2026-02-28","url":"https://alpha-one-index.github.io/ai-infra-index/specs/training-costs.html","author":{"@type":"Organization","name":"Alpha One Index"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://alpha-one-index.github.io/ai-infra-index/"},{"@type":"ListItem","position":2,"name":"Training Costs","item":"https://alpha-one-index.github.io/ai-infra-index/specs/training-costs.html"}]}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much did it cost to train GPT-4?","acceptedAnswer":{"@type":"Answer","text":"GPT-4 training is estimated to have cost approximately $63 million in compute, using ~25,000 A100 GPUs for ~50 million GPU-hours. This is an estimate based on reported compute scale and prevailing 2023 A100 pricing — OpenAI has not officially confirmed training costs."}},{"@type":"Question","name":"How much did DeepSeek V3 cost to train?","acceptedAnswer":{"@type":"Answer","text":"DeepSeek V3 reportedly cost approximately $5.5 million to train, using 2,000 H800 GPUs for ~2.7 million GPU-hours. This compares to GPT-4's estimated $63 million, demonstrating a 10x reduction in training cost through efficiency innovations including mixture-of-experts architecture and optimized training pipelines."}},{"@type":"Question","name":"What is the formula for calculating AI training cost?","acceptedAnswer":{"@type":"Answer","text":"Training cost formula: GPU_Hours = (6 × Parameters × Tokens) / (GPU_FLOPS × MFU × 3600). Total Cost = GPU_Hours × Hourly_GPU_Rate. Example: 7B model on 1T tokens with H100s (989 TFLOPS, 0.45 MFU) = 26,249 GPU-hours = ~$2.57M at AWS P5 rates ($98.32/hr for 256 H100s)."}}]}]}
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="site-logo"><a href="/ai-infra-index/" style="color:inherit;text-decoration:none;">AI <span>Infra</span> Index</a></div>
+      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <a href="/ai-infra-index/">Home</a>
+        <a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specs</a>
+        <a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Pricing</a>
+        <a href="/ai-infra-index/specs/ai-accelerators.html">Accelerators</a>
+        <a href="/ai-infra-index/specs/inference-benchmarks.html">Benchmarks</a>
+        <a href="/ai-infra-index/specs/model-gpu-sizing.html">Sizing Guide</a>
+        <a href="/ai-infra-index/specs/training-costs.html" class="active">Training Costs</a>
+        <a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a>
+        <a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a>
+        <a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/ai-infra-index/">Home</a> &rsaquo; <span>Training Costs</span>
+      </nav>
+    </div>
+
+    <div class="page-header">
+      <div class="container">
+        <h1>AI Model Training Cost Index</h1>
+        <p class="description">Comprehensive training cost estimates for major AI models: GPT-3/4, LLaMA 2/3, Mistral, DeepSeek V3, and more. GPU-hour calculation formula, fine-tuning cost guide, RLHF/DPO costs, and cloud vs on-premise TCO breakeven analysis.</p>
+        <div class="meta">
+          <span>Last updated: <time datetime="2026-02-28">February 28, 2026</time></span>
+          <span>Source: <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/specs/training-costs.md">training-costs.md</a></span>
+          <span>Related: <a href="/ai-infra-index/specs/model-gpu-sizing.html">GPU Sizing</a> · <a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud Pricing</a></span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="historical-heading">
+      <div class="container">
+        <h2 id="historical-heading">How Much Did It Cost to Train Major AI Models?</h2>
+        <div class="answer-box">
+          <strong>DeepSeek V3 ($5.5M)</strong> is notably cheaper than GPT-4 (~$63M) — a ~10x reduction demonstrating efficiency gains via mixture-of-experts and optimized training pipelines. <strong>LLaMA 3 70B cost ~$7.7M</strong> using 16,000 H100s. <strong>Gemini Ultra (~$200M)</strong> remains the most expensive reported training run.
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Model</th><th>Org</th><th>Year</th><th>GPUs</th><th>GPU-Hours</th><th>Compute Cost (Est.)</th></tr></thead>
+            <tbody>
+              <tr><td>GPT-3 175B</td><td>OpenAI</td><td>2020</td><td>10K A100s</td><td>~3.1M</td><td>~$4.6M</td></tr>
+              <tr><td>LLaMA 2 70B</td><td>Meta</td><td>2023</td><td>2K A100s</td><td>~1.7M</td><td>~$2.1M</td></tr>
+              <tr><td>Mistral 7B</td><td>Mistral</td><td>2023</td><td>512 H100s</td><td>~200K</td><td class="price-low">~$240K</td></tr>
+              <tr><td>Mixtral 8×7B</td><td>Mistral</td><td>2023</td><td>512 H100s</td><td>~600K</td><td>~$720K</td></tr>
+              <tr><td>Falcon 180B</td><td>TII</td><td>2023</td><td>4K A100s</td><td>~7.5M</td><td>~$9M</td></tr>
+              <tr><td>GPT-4 (est.)</td><td>OpenAI</td><td>2023</td><td>~25K A100s</td><td>~50M</td><td>~$63M</td></tr>
+              <tr><td>LLaMA 3 70B</td><td>Meta</td><td>2024</td><td>16K H100s</td><td>~6.4M</td><td>~$7.7M</td></tr>
+              <tr><td>LLaMA 3 405B</td><td>Meta</td><td>2024</td><td>16K H100s</td><td>~30.8M</td><td>~$37M</td></tr>
+              <tr><td>Claude 3 Opus (est.)</td><td>Anthropic</td><td>2024</td><td>~30K H100s</td><td>~60M</td><td>~$72M</td></tr>
+              <tr><td><strong>DeepSeek V3</strong></td><td>DeepSeek</td><td>2024</td><td>2K H800s</td><td>~2.7M</td><td class="price-low"><strong>~$5.5M</strong></td></tr>
+              <tr><td>DeepSeek R1</td><td>DeepSeek</td><td>2025</td><td>2K H800s</td><td>~2.7M</td><td>~$5.5M</td></tr>
+              <tr><td>Gemini Ultra (est.)</td><td>Google</td><td>2023</td><td>~32K TPUv4</td><td>~80M</td><td>~$200M</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.8125rem;color:var(--text-muted);">Note: Costs are estimates based on public disclosures and compute estimates. Actual costs vary based on negotiated contracts, energy, and cluster efficiency.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="formula-heading">
+      <div class="container">
+        <h2 id="formula-heading">How Do You Calculate AI Training Cost?</h2>
+        <p>Use the Chinchilla scaling law GPU-hour formula to estimate training compute requirements:</p>
+        <pre><code>Total Cost = GPU_Hours × Hourly_GPU_Rate
+
+GPU_Hours = (6 × Parameters × Tokens) / (GPU_FLOPS × MFU × 3600)
+
+Where:
+  Parameters = model parameter count
+  Tokens     = training tokens
+  GPU_FLOPS  = GPU peak FLOPS (BF16)
+  MFU        = Model FLOP Utilization (typically 0.35–0.55)
+  3600       = seconds per hour
+
+Example: 7B model on 1T tokens with H100s (989 TFLOPS, MFU=0.45):
+  GPU_Hours = (6 × 7e9 × 1e12) / (989e12 × 0.45 × 3600) = 26,249
+  With 256 H100s: 26,249 / 256 = 102 hours (~4.3 days)
+  Cost at $98.32/hr (256× AWS P5): 256 × 102 × $98.32 = ~$2.57M</code></pre>
+
+        <h3>Reference GPU FLOPS (BF16) and Typical MFU</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>GPU</th><th>BF16 TFLOPS</th><th>Typical MFU</th></tr></thead>
+            <tbody>
+              <tr><td>NVIDIA H100 SXM</td><td>989</td><td>0.45–0.55</td></tr>
+              <tr><td>NVIDIA H200 SXM</td><td>989</td><td>0.45–0.55</td></tr>
+              <tr><td>NVIDIA B200 SXM</td><td>2,250</td><td>0.50–0.60</td></tr>
+              <tr><td>NVIDIA A100 80GB SXM</td><td>312</td><td>0.35–0.45</td></tr>
+              <tr><td>AMD MI300X</td><td>1,307</td><td>0.40–0.50</td></tr>
+              <tr><td>Intel Gaudi 3</td><td>1,835</td><td>0.35–0.45</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="finetuning-heading">
+      <div class="container">
+        <h2 id="finetuning-heading">How Much Does Fine-Tuning an LLM Cost?</h2>
+        <p>Fine-tuning costs vary enormously by method. QLoRA on a 70B model can cost as little as <strong>$196 for a small dataset</strong>, while full PPO RLHF training costs $990K+.</p>
+
+        <h3>Instruction Fine-Tuning Costs (AWS P5 H100 rates)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Base Model</th><th>Dataset</th><th>Method</th><th>GPUs</th><th>Duration</th><th>Cost</th></tr></thead>
+            <tbody>
+              <tr><td>LLaMA 3 8B</td><td>50K examples</td><td>Full FT</td><td>8× H100</td><td>~3 hrs</td><td class="price-low">~$2.4K</td></tr>
+              <tr><td>LLaMA 3 8B</td><td>1M examples</td><td>Full FT</td><td>8× H100</td><td>~2 days</td><td>~$38K</td></tr>
+              <tr><td>LLaMA 3 70B</td><td>50K examples</td><td>Full FT</td><td>64× H100</td><td>~4 hrs</td><td>~$25K</td></tr>
+              <tr><td>LLaMA 3 70B</td><td>1M examples</td><td>Full FT</td><td>64× H100</td><td>~3 days</td><td>~$450K</td></tr>
+              <tr><td>LLaMA 3 405B</td><td>50K examples</td><td>Full FT</td><td>256× H100</td><td>~8 hrs</td><td>~$200K</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>QLoRA (Parameter-Efficient) Fine-Tuning Costs</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Base Model</th><th>Dataset</th><th>Method</th><th>GPUs</th><th>Duration</th><th>Cost</th></tr></thead>
+            <tbody>
+              <tr><td>LLaMA 3 8B</td><td>50K examples</td><td>QLoRA</td><td>1× A100 40GB</td><td>~6 hrs</td><td class="price-low">~$9.70</td></tr>
+              <tr><td>LLaMA 3 8B</td><td>1M examples</td><td>QLoRA</td><td>2× A100 80GB</td><td>~18 hrs</td><td class="price-low">~$58</td></tr>
+              <tr><td>LLaMA 3 70B</td><td>50K examples</td><td>QLoRA</td><td>2× H100 80GB</td><td>~8 hrs</td><td class="price-low">~$196</td></tr>
+              <tr><td>LLaMA 3 70B</td><td>1M examples</td><td>QLoRA</td><td>4× H100 80GB</td><td>~3 days</td><td>~$3.5K</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-heading">
+      <div class="container">
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">How much did it cost to train LLaMA 3 70B?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">Meta trained LLaMA 3 70B using approximately <strong>16,000 H100 GPUs for ~6.4 million GPU-hours</strong>, with an estimated compute cost of <strong>~$7.7 million</strong>. This was trained on a 15T token dataset. A fine-tuning run using QLoRA (4× H100, 3 days, 1M examples) costs approximately <strong>$3,500</strong>.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">How much did DeepSeek V3 cost to train compared to GPT-4?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">DeepSeek V3 training is estimated at <strong>~$5.5 million</strong> (2,000 H800 GPUs, ~2.7M GPU-hours). GPT-4 is estimated at <strong>~$63 million</strong> (~25,000 A100 GPUs, ~50M GPU-hours). DeepSeek achieved <strong>~10x cost reduction</strong> through mixture-of-experts architecture (671B total params, ~37B active), load-balanced routing, and FP8 mixed-precision training.</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">What percentage of AI training cost is GPU compute?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">GPU compute is the largest cost driver at <strong>60–75% of total training cost</strong>. Other costs: data collection and cleaning 10–20% (often underestimated), engineering labor 5–15%, storage and networking 2–5%, evaluation and iteration 5–10%, and energy (on-prem) 5–10% (~$0.06–$0.12/kWh).</p>
+            </div>
+          </div>
+          <div class="faq-item" itemscope itemtype="https://schema.org/Question">
+            <h3 class="faq-q" itemprop="name">How have AI training costs changed over time?</h3>
+            <div class="faq-a" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <p itemprop="text">H100 training cost per token has fallen approximately <strong>40% from Q1 2023 to Q1 2026</strong>: from ~$5,200/billion tokens at peak scarcity pricing (~$40+/hr) to ~$2,700/billion tokens at Q1 2026 rates (~$22–25/hr effective). B200/GB200 deployment will further reduce training cost per token by 3–5× due to higher FLOPS density and larger memory capacity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col"><h4>Hardware Specs</h4><a href="/ai-infra-index/specs/gpu-specifications.html">GPU Specifications</a><a href="/ai-infra-index/specs/ai-accelerators.html">AI Accelerators</a><a href="/ai-infra-index/specs/networking-interconnects.html">Networking</a></div>
+        <div class="footer-col"><h4>Pricing &amp; Costs</h4><a href="/ai-infra-index/specs/cloud-gpu-pricing.html">Cloud GPU Pricing</a><a href="/ai-infra-index/specs/training-costs.html">Training Costs</a><a href="/ai-infra-index/specs/gpu-cost-optimization.html">Cost Optimization</a></div>
+        <div class="footer-col"><h4>Sizing &amp; Benchmarks</h4><a href="/ai-infra-index/specs/model-gpu-sizing.html">Model GPU Sizing</a><a href="/ai-infra-index/specs/inference-benchmarks.html">Inference Benchmarks</a><a href="/ai-infra-index/specs/buy-vs-rent.html">Buy vs Rent</a></div>
+        <div class="footer-col"><h4>Data &amp; Repo</h4><a href="https://github.com/alpha-one-index/ai-infra-index">GitHub Repository</a><a href="/ai-infra-index/llms.txt">llms.txt</a><a href="/ai-infra-index/sitemap.xml">Sitemap</a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Alpha One Index — MIT License. Estimates from public disclosures. See <a href="https://github.com/alpha-one-index/ai-infra-index/blob/main/METHODOLOGY.md">METHODOLOGY.md</a>.</span>
+        <span>Last updated: <time datetime="2026-02-28">February 28, 2026</time></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
