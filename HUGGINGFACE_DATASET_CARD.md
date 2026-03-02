@@ -31,7 +31,7 @@ dataset_info:
   - name: gpu_name
     dtype: string
   - name: gpu_memory_gb
-    dtype: float64
+    dtype: string
   - name: price_per_hour_usd
     dtype: float64
   - name: pricing_type
@@ -58,90 +58,76 @@ The **AI Infrastructure Index** is a comprehensive open-source reference for AI 
 - **Live Data:** [https://alpha-one-index.github.io/ai-infra-index/](https://alpha-one-index.github.io/ai-infra-index/)
 - **Point of Contact:** [Alpha One Index](https://github.com/alpha-one-index)
 
-### Dataset Summary
+## Dataset Summary
 
 This dataset provides structured, machine-readable data on:
+- **Cloud GPU Pricing** — Real-time pricing from 12 cloud providers (Azure, RunPod, Lambda Labs, CoreWeave, Together AI, Vast.ai, etc.)
+- **GPU Specifications** — Detailed specs for NVIDIA (H100, H200, B200, GB200), AMD (MI300X, MI325X), and Intel (Gaudi 3) data center accelerators.
+- **Training Costs** — Model training cost estimates and TCO analysis.
+- **Inference Benchmarks** — MLPerf results and throughput data.
+- **Model-GPU Sizing** — Guides for matching GPU configurations to model requirements.
 
-1. **Cloud GPU Pricing** — Real-time pricing from 12 cloud providers (Azure, RunPod, Lambda Labs, CoreWeave, Together AI, Vast.ai, Vultr, Nebius, OCI, Cudo Compute, Fluidstack, Paperspace), auto-updated hourly via GitHub Actions
-2. **GPU Specifications** — Detailed specs for NVIDIA (H100, H200, B200, GB200), AMD (MI300X, MI325X), and Intel (Gaudi 3) data center GPUs
-3. **Training Costs** — Model training cost estimates and TCO analysis
-4. **Inference Benchmarks** — MLPerf results and throughput data
-5. **Model-GPU Sizing** — Guides for matching GPU configurations to model requirements
+## Languages
 
-### Languages
+The documentation and data field names are in English (en).
 
-English (en)
+## Data Fields
 
-### Data Fields
+### Cloud Pricing (`data/cloud-pricing.json`)
+- `provider`: Cloud service provider name.
+- `gpu_name`: Hardware model (e.g., "H100 NVL").
+- `price_per_hour_usd`: Hourly rental cost in USD.
+- `pricing_type`: On-demand, Reserved, or Spot.
+- `region`: Geographic region or "Global".
+- `timestamp`: Last update time (ISO 8601).
 
-#### Cloud Pricing (`data/cloud-pricing.json`)
+### GPU Specifications (`data/gpu-specs.json`)
+- `model`: GPU model name.
+- `architecture`: Hardware architecture (e.g., "Hopper", "Blackwell").
+- `memory_capacity`: HBM capacity in GB.
+- `memory_bandwidth`: Bandwidth in TB/s.
+- `fp8_perf`: Peak FP8 performance (PFLOPS).
+- `tdp`: Thermal Design Power in Watts.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| provider | string | Cloud provider name |
-| gpu_name | string | GPU model (e.g., "H100 SXM") |
-| gpu_memory_gb | float | GPU memory in gigabytes |
-| price_per_hour_usd | float | On-demand price per GPU-hour in USD |
-| pricing_type | string | on-demand, spot, or reserved |
-| region | string | Data center region |
-| timestamp | string | ISO 8601 timestamp of price capture |
+## Data Splits
 
-#### GPU Specifications (`data/gpu-specs.json`)
+The dataset is organized by file type rather than traditional ML splits:
+- `cloud_pricing`: Contains current market rates.
+- `gpu_specs`: Contains static hardware specifications.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| vendor | string | Hardware vendor (NVIDIA, AMD, Intel) |
-| model | string | GPU model name |
-| architecture | string | Chip architecture |
-| vram_gb | integer | Video memory in GB |
-| memory_type | string | Memory type (HBM3, HBM3e, etc.) |
-| fp16_tflops | float | FP16 performance in TFLOPS |
-| fp8_tflops | float | FP8 performance in TFLOPS |
-| tdp_watts | integer | Thermal design power |
-| interconnect | string | Interconnect type and bandwidth |
+## Dataset Creation
 
-### Data Splits
+### Curation Rationale
 
-| Split | Approx. Examples | Description |
-|-------|-----------------|-------------|
-| cloud_pricing | 80+ SKUs | Live pricing from 12 providers |
-| gpu_specs | 7 GPUs | Data center GPU specifications |
+No single open-source resource previously combined GPU hardware specifications, multi-provider cloud pricing, and model-sizing benchmarks into a unified, machine-readable format for automated procurement and system design.
 
-### Dataset Creation
+### Source Data
 
-#### Curation Rationale
+All data is independently verified against official vendor datasheets and pricing pages. Primary sources include:
+- Official NVIDIA, AMD, and Intel datasheets.
+- Cloud provider pricing APIs (e.g., Azure Retail Prices API) and public pricing tables.
+- MLCommons (MLPerf) benchmark results.
 
-No single open-source resource previously combined GPU hardware specifications, multi-provider cloud pricing, and infrastructure intelligence in a structured, machine-readable format. This dataset fills that gap for ML engineers, researchers, and procurement teams making hardware decisions.
+## Personal and Sensitive Information
 
-#### Source Data
+This dataset contains no personal or sensitive information. All data consists of publicly available technical specifications and commercial pricing.
 
-All data is independently verified against official vendor datasheets and pricing pages. See [METHODOLOGY.md](https://github.com/alpha-one-index/ai-infra-index/blob/main/METHODOLOGY.md) for full documentation.
+## Licensing Information
 
-Primary sources include:
-- Official NVIDIA, AMD, Intel datasheets
-- Cloud provider pricing APIs and pages
-- MLCommons benchmark results
+The dataset is licensed under the MIT License.
 
-#### Personal and Sensitive Information
-
-This dataset contains no personal or sensitive information. All data is publicly available pricing and hardware specification information.
-
-### Licensing Information
-
-MIT License — see [LICENSE](https://github.com/alpha-one-index/ai-infra-index/blob/main/LICENSE).
-
-### Citation Information
+## Citation Information
 
 ```bibtex
 @misc{aiinfraindex2026,
-  title        = {AI Infrastructure Index},
-  author       = {Alpha One Index},
-  year         = {2026},
-  url          = {https://github.com/alpha-one-index/ai-infra-index},
-  note         = {Open-source AI hardware specifications and cloud pricing data}
+  title = {AI Infrastructure Index},
+  author = {Alpha One Index},
+  year = {2026},
+  url = {https://github.com/alpha-one-index/ai-infra-index},
+  note = {Open-source AI hardware specifications and cloud pricing data}
 }
 ```
 
-### Contributions
+## Contributions
 
-Contributions are welcome. See [CONTRIBUTING.md](https://github.com/alpha-one-index/ai-infra-index/blob/main/CONTRIBUTING.md) for guidelines.
+Contributions are welcome via Pull Requests. Please see [CONTRIBUTING.md](https://github.com/alpha-one-index/ai-infra-index/blob/main/CONTRIBUTING.md) for data format standards.
