@@ -1,0 +1,113 @@
+name: Publish to HuggingFace Datasets
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "yes" to confirm creation of HuggingFace dataset'
+        required: true
+        default: 'yes'
+
+permissions:
+  contents: read
+
+jobs:
+  publish-to-huggingface:
+    name: Create and Populate HuggingFace Dataset
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install huggingface_hub
+
+      - name: Create HuggingFace dataset repo and upload files
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          python3 - <<'PYEOF'
+          import os, sys
+          from huggingface_hub import HfApi
+
+          token = os.environ.get("HF_TOKEN")
+          if not token:
+              print("ERROR: HF_TOKEN secret not configured in this repository.")
+              print("Please add HF_TOKEN as a repository secret in Settings > Secrets and variables > Actions.")
+              sys.exit(1)
+
+          api = HfApi(token=token)
+          REPO_ID = "alpha-one-index/ai-infra-index"
+          REPO_TYPE = "dataset"
+
+          # Step 1: Create the repository
+          print(f"Creating dataset repository: {REPO_ID}")
+          try:
+              repo_url = api.create_repo(
+                  repo_id=REPO_ID,
+                  repo_type=REPO_TYPE,
+                  private=False,
+                  exist_ok=True,
+              )
+              print(f"Repository created/verified: {repo_url}")
+          except Exception as e:
+              print(f"Error creating repo: {e}")
+              sys.exit(1)
+
+          # Step 2: Upload README.md (dataset card)
+          readme_content = open("HUGGINGFACE_DATASET_CARD.md").read()
+          print("Uploading README.md (dataset card)...")
+          api.upload_file(
+              path_or_fileobj=readme_content.encode(),
+              path_in_repo="README.md",
+              repo_id=REPO_ID,
+              repo_type=REPO_TYPE,
+              commit_message="Add dataset card",
+          )
+          print("README.md uploaded.")
+
+          # Step 3: Upload data/cloud-pricing.json
+          print("Uploading data/cloud-pricing.json...")
+          api.upload_file(
+              path_or_fileobj="data/cloud-pricing.json",
+              path_in_repo="data/cloud-pricing.json",
+              repo_id=REPO_ID,
+              repo_type=REPO_TYPE,
+              commit_message="Add cloud pricing data",
+          )
+          print("data/cloud-pricing.json uploaded.")
+
+          # Step 4: Upload data/gpu-specs.json
+          print("Uploading data/gpu-specs.json...")
+          api.upload_file(
+              path_or_fileobj="data/gpu-specs.json",
+              path_in_repo="data/gpu-specs.json",
+              repo_id=REPO_ID,
+              repo_type=REPO_TYPE,
+              commit_message="Add GPU specifications data",
+          )
+          print("data/gpu-specs.json uploaded.")
+
+          print(f"\nSuccess! Dataset available at: https://huggingface.co/datasets/{REPO_ID}")
+          PYEOF
+
+      - name: Verify dataset
+        run: |
+          python3 - <<'PYEOF'
+          from huggingface_hub import HfApi
+          import os
+          api = HfApi(token=os.environ["HF_TOKEN"])
+          files = api.list_repo_files(repo_id="alpha-one-index/ai-infra-index", repo_type="dataset")
+          print("Files in dataset repository:")
+          for f in files:
+              print(f"  - {f}")
+          PYEOF
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
