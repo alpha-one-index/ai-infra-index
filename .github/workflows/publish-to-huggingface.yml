@@ -1,6 +1,13 @@
 name: Publish to HuggingFace Datasets
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'HUGGINGFACE_DATASET_CARD.md'
+      - 'data/cloud-pricing.json'
+      - 'data/gpu-specs.json'
   workflow_dispatch:
     inputs:
       confirm:
@@ -39,9 +46,9 @@ jobs:
 
           token = os.environ.get("HF_TOKEN")
           if not token:
-              print("ERROR: HF_TOKEN secret not configured in this repository.")
-              print("Please add HF_TOKEN as a repository secret in Settings > Secrets and variables > Actions.")
-              sys.exit(1)
+              print("WARNING: HF_TOKEN secret not configured. Skipping HuggingFace upload.")
+              print("To enable: add HF_TOKEN as a repository secret in Settings > Secrets and variables > Actions")
+              sys.exit(0)
 
           api = HfApi(token=token)
           REPO_ID = "alpha-one-index/ai-infra-index"
@@ -103,11 +110,15 @@ jobs:
           python3 - <<'PYEOF'
           from huggingface_hub import HfApi
           import os
-          api = HfApi(token=os.environ["HF_TOKEN"])
-          files = api.list_repo_files(repo_id="alpha-one-index/ai-infra-index", repo_type="dataset")
-          print("Files in dataset repository:")
-          for f in files:
-              print(f"  - {f}")
+          token = os.environ.get("HF_TOKEN")
+          if not token:
+              print("No HF_TOKEN, skipping verification")
+          else:
+              api = HfApi(token=token)
+              files = api.list_repo_files(repo_id="alpha-one-index/ai-infra-index", repo_type="dataset")
+              print("Files in dataset repository:")
+              for f in files:
+                  print(f"  - {f}")
           PYEOF
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
