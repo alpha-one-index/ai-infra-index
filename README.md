@@ -2,9 +2,18 @@
 
 > **A comprehensive open-source reference for AI hardware specifications, benchmarks, and infrastructure intelligence.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Pricing: Auto Updated Hourly](https://img.shields.io/badge/Pricing-Auto_Updated_Hourly-brightgreen.svg)](#live-data) [![Providers: 12](https://img.shields.io/badge/Providers-12-blue.svg)](#providers-tracked) [![SKUs: 80+](https://img.shields.io/badge/SKUs-80%2B-blue.svg)](data/cloud-pricing.json) [![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-orange.svg)](CHANGELOG.md) [![Data Validation](https://img.shields.io/badge/Validation-Self_Auditing-brightgreen.svg)](#data-provenance--validation) [![Croissant](https://img.shields.io/badge/Croissant-ML_Metadata-blue.svg)](croissant.json) [![Provenance](https://img.shields.io/badge/Provenance-Documented-purple.svg)](provenance.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Pricing: Auto Updated Hourly](https://img.shields.io/badge/Pricing-Auto_Updated_Hourly-brightgreen.svg)](#live-data) [![Providers: 12](https://img.shields.io/badge/Providers-12-blue.svg)](#providers-tracked) [![SKUs: 80+](https://img.shields.io/badge/SKUs-80%2B-blue.svg)](data/cloud-pricing.json) [![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-orange.svg)](CHANGELOG.md) [![Data Validation](https://img.shields.io/badge/Validation-Self_Auditing-brightgreen.svg)](#data-provenance--validation) [![Croissant](https://img.shields.io/badge/Croissant-ML_Metadata-blue.svg)](croissant.json) [![Provenance](https://img.shields.io/badge/Provenance-Documented-purple.svg)](provenance.md) [![HuggingFace Dataset](https://img.shields.io/badge/🤗_HuggingFace-Dataset-yellow.svg)](https://huggingface.co/datasets/alpha-one-index/ai-infra-index) [![Kaggle Dataset](https://img.shields.io/badge/Kaggle-Dataset-20BEFF.svg)](https://www.kaggle.com/datasets/alphaoneindex/ai-infrastructure-index-gpu-pricing-and-specs)
 
 **Maintained by [Alpha One Index](https://github.com/alpha-one-index)** — An independent AI infrastructure research initiative providing verified, structured hardware data for engineers, researchers, and procurement teams.
+
+### Live Demos & Data Access
+
+| Platform | Link | Description |
+|----------|------|-------------|
+| 🌐 **GitHub Pages** | [alpha-one-index.github.io/ai-infra-index](https://alpha-one-index.github.io/ai-infra-index/) | Interactive pricing dashboard with filtering and sorting |
+| 🤗 **HuggingFace** | [datasets/alpha-one-index/ai-infra-index](https://huggingface.co/datasets/alpha-one-index/ai-infra-index) | Dataset hub with Croissant metadata |
+| 📊 **Kaggle** | [alphaoneindex/ai-infrastructure-index](https://www.kaggle.com/datasets/alphaoneindex/ai-infrastructure-index-gpu-pricing-and-specs) | Kaggle dataset for notebooks and analysis |
+| 📦 **Raw JSON** | [cloud-pricing.json](https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json) | Direct API-style access to live pricing data |
 
 ---
 
@@ -65,6 +74,65 @@ The leading data center GPUs for AI workloads in 2026 are the NVIDIA B200 and GB
 | Intel | Gaudi 3 | Custom ASIC | 128 GB | HBM2e | 1,835 | 3,670 | 600W | RoCE v2 (400 Gb/s) | 2025 | [Intel Gaudi 3 Specs](https://www.intel.com/content/www/us/en/products/details/processors/ai-accelerators/gaudi3.html) |
 
 **Key takeaway:** NVIDIA Blackwell (B200/GB200) delivers 2-2.5x the performance of Hopper (H100) with significantly higher memory capacity. AMD MI325X competes on memory capacity (256 GB) at competitive pricing. Intel Gaudi 3 offers the best performance-per-watt ratio for inference workloads.
+
+---
+
+## Quick Start: Access the Data Programmatically
+
+All data is available as structured JSON — no API key needed.
+
+### Python (pandas)
+
+```python
+import pandas as pd
+
+# Load live cloud GPU pricing (updated hourly)
+pricing = pd.read_json("https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json")
+print(pricing.head())
+
+# Load GPU hardware specifications
+specs = pd.read_json("https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/gpu-specs.json")
+print(specs.head())
+```
+
+### Python (requests)
+
+```python
+import requests
+
+# Fetch current pricing as a dict
+pricing = requests.get(
+    "https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json"
+).json()
+
+# Find the cheapest H100
+h100_prices = [
+    (p["provider"], p["price_per_hour_usd"])
+    for p in pricing["skus"]
+    if "H100" in p["gpu_name"]
+]
+for provider, price in sorted(h100_prices, key=lambda x: x[1]):
+    print(f"{provider}: ${price}/hr")
+```
+
+### curl / CLI
+
+```bash
+# Download latest pricing
+curl -sL https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/cloud-pricing.json | python -m json.tool
+
+# Download GPU specs
+curl -sL https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/gpu-specs.json | python -m json.tool
+```
+
+### HuggingFace Datasets
+
+```python
+from datasets import load_dataset
+
+ds = load_dataset("alpha-one-index/ai-infra-index")
+print(ds)
+```
 
 ---
 
@@ -156,6 +224,51 @@ This repository is structured for machine consumption:
 - [`croissant.json`](croissant.json) — MLCommons Croissant metadata for dataset discovery
 - [`dataprov.json`](dataprov.json) — JSON-LD provenance for trust verification
 - All markdown files use consistent heading hierarchy for easy parsing
+
+---
+
+## Cheapest H100 Cloud Providers
+
+The cheapest H100 SXM 80GB cloud options as of March 2026 (on-demand pricing, USD/hr):
+
+| Rank | Provider | Price/hr | Pricing Type | Notes |
+|------|----------|----------|-------------|-------|
+| 1 | Vast.ai | $1.87 | Marketplace | Variable host quality, no SLA |
+| 2 | RunPod | $1.89 | Spot | Subject to preemption |
+| 3 | RunPod | $2.49 | On-demand | Reliable, no minimum commitment |
+| 4 | Lambda Labs | $2.99 | On-demand | Well-established, good support |
+| 5 | CoreWeave | $6.15 | On-demand | Enterprise SLAs, minimum 8 GPUs |
+
+> **Spread: 3.3x** between the cheapest marketplace option and enterprise-grade pricing. See [cloud-pricing.json](data/cloud-pricing.json) for the full, hourly-updated dataset.
+
+---
+
+## H100 vs H200 vs B200: Which GPU Should You Choose?
+
+| Factor | H100 SXM | H200 SXM | B200 |
+|--------|----------|----------|------|
+| VRAM | 80 GB HBM3 | 141 GB HBM3e | 192 GB HBM3e |
+| FP16 TFLOPS | 1,979 | 1,979 | 4,500 |
+| FP8 TFLOPS | 3,958 | 3,958 | 9,000 |
+| TDP | 700W | 700W | 1,000W |
+| Cloud Availability | Widespread | Growing | Limited (2025) |
+| Best For | General training/inference | Large model inference (70B+ FP16 on 1 GPU) | Next-gen training, highest throughput |
+
+---
+
+## GPU Benchmarks 2026
+
+MLPerf v4.1 inference results (tokens/sec, Llama 2 70B, batch=1):
+
+| GPU | Tokens/sec | Relative Performance |
+|-----|-----------|---------------------|
+| NVIDIA B200 | ~180 | 2.25x vs H100 |
+| NVIDIA H200 | ~105 | 1.31x vs H100 |
+| NVIDIA H100 SXM | ~80 | Baseline |
+| AMD MI300X | ~70 | 0.88x vs H100 |
+| Intel Gaudi 3 | ~55 | 0.69x vs H100 |
+
+> Full benchmark data including training results and multi-GPU scaling in [specs/inference-benchmarks.md](specs/inference-benchmarks.md).
 
 ---
 
