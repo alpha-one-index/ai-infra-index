@@ -1,0 +1,37 @@
+name: Publish to Kaggle
+on:
+  push:
+    paths:
+      - 'data/**'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Kaggle CLI
+        run: pip install kaggle
+
+      - name: Prepare dataset
+        run: |
+          mkdir -p kaggle_upload
+          cp data/cloud-pricing.json kaggle_upload/
+          cp data/gpu-specs.json kaggle_upload/
+          cp kaggle/dataset-metadata.json kaggle_upload/
+
+      - name: Upload to Kaggle
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          kaggle datasets version -p kaggle_upload -m "Auto-update $(date -u +%Y-%m-%dT%H:%M:%SZ)" --dir-mode zip 2>/dev/null || \
+          kaggle datasets create -p kaggle_upload -u

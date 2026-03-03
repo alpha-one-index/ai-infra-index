@@ -1,0 +1,18 @@
+{
+  "title": "AI Infrastructure Index - GPU Pricing & Specs",
+  "id": "alphaoneindex/ai-infra-index",
+  "licenses": [{"name": "other"}],
+  "keywords": ["gpu", "cloud computing", "pricing", "hardware", "ai", "machine learning", "nvidia", "benchmarks", "infrastructure", "h100"],
+  "resources": [
+    {
+      "path": "cloud-pricing.json",
+      "description": "Cloud GPU pricing from 12+ providers (AWS, Azure, GCP, Lambda, CoreWeave, RunPod, Vast.ai, etc.), updated hourly. Includes on-demand, spot, and reserved pricing."
+    },
+    {
+      "path": "gpu-specs.json",
+      "description": "GPU hardware specifications for NVIDIA (H100, H200, B200, GB200), AMD (MI300X, MI325X), and Intel (Gaudi 3). Includes FP16/FP8 TFLOPS, HBM capacity, memory bandwidth, TDP."
+    }
+  ],
+  "subtitle": "Real-time cloud GPU pricing from 12+ providers, updated hourly. GPU specs, benchmarks, and cost optimization data.",
+  "description": "## AI Infrastructure Index\n\nA comprehensive, vendor-neutral dataset for AI infrastructure decision-making.\n\n### What's Included\n\n- **Cloud GPU Pricing** (`cloud-pricing.json`): Hourly-updated pricing from 12+ cloud providers including AWS, Azure, GCP, Lambda Labs, CoreWeave, RunPod, Vast.ai, Nebius, Vultr, OCI, FluidStack, Paperspace, and Cudo Compute. Covers on-demand, spot, and reserved pricing for H100, H200, B200, A100, MI300X, and more.\n\n- **GPU Specifications** (`gpu-specs.json`): Hardware specifications for NVIDIA (H100 SXM/PCIe, H200, B200, GB200), AMD (MI300X, MI325X), and Intel (Gaudi 3). Includes compute performance (FP16/FP8/INT8 TFLOPS), memory (HBM capacity, bandwidth), power (TDP), and interconnect specs.\n\n### Data Pipeline\n\nPricing data is collected hourly via automated GitHub Actions from official provider APIs and pricing pages. Each update runs through validation (schema checks, price anomaly detection, URL health verification) before committing.\n\n### Use Cases\n\n- GPU procurement decision support\n- Cloud cost optimization and multi-provider comparison\n- Model-to-GPU sizing (VRAM requirements by model and quantization level)\n- Historical price trend analysis\n- Training cost estimation and TCO modeling\n\n### Source & Updates\n\n- **GitHub**: https://github.com/alpha-one-index/ai-infra-index\n- **HuggingFace**: https://huggingface.co/datasets/alpha-one-index/ai-infra-index\n- **Update frequency**: Hourly (automated)\n- **License**: MIT"
+}
