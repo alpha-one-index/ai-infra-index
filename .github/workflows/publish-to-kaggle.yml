@@ -33,5 +33,11 @@ jobs:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
         run: |
-          kaggle datasets version -p kaggle_upload -m "Auto-update $(date -u +%Y-%m-%dT%H:%M:%SZ)" --dir-mode zip 2>/dev/null || \
-          kaggle datasets create -p kaggle_upload -u
+          echo "Attempting to update existing dataset..."
+          if kaggle datasets status alphaoneindex/ai-infra-index 2>/dev/null; then
+            echo "Dataset exists, creating new version..."
+            kaggle datasets version -p kaggle_upload -m "Auto-update $(date -u +%Y-%m-%dT%H:%M:%SZ)" --dir-mode zip
+          else
+            echo "Dataset does not exist, creating for the first time..."
+            kaggle datasets create -p kaggle_upload -u
+          fi
