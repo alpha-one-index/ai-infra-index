@@ -21,23 +21,43 @@ jobs:
       - name: Install Kaggle CLI
         run: pip install kaggle
 
+      - name: Verify credentials
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          echo "Username length: ${#KAGGLE_USERNAME}"
+          echo "Key length: ${#KAGGLE_KEY}"
+          echo "Username set: $(if [ -n \"$KAGGLE_USERNAME\" ]; then echo YES; else echo NO; fi)"
+          echo "Key set: $(if [ -n \"$KAGGLE_KEY\" ]; then echo YES; else echo NO; fi)"
+          mkdir -p ~/.kaggle
+          echo '{"username":"'"$KAGGLE_USERNAME"'","key":"'"$KAGGLE_KEY"'"}' > ~/.kaggle/kaggle.json
+          chmod 600 ~/.kaggle/kaggle.json
+          echo "Kaggle config written to ~/.kaggle/kaggle.json"
+          echo "Testing auth..."
+          kaggle datasets list -s test --max-size 1 && echo "AUTH OK" || echo "AUTH FAILED"
+
       - name: Prepare dataset
         run: |
           mkdir -p kaggle_upload
           cp data/cloud-pricing.json kaggle_upload/
           cp data/gpu-specs.json kaggle_upload/
           cp kaggle/dataset-metadata.json kaggle_upload/
+          echo "Files in kaggle_upload:"
+          ls -la kaggle_upload/
+          echo "Metadata contents:"
+          cat kaggle_upload/dataset-metadata.json
 
       - name: Upload to Kaggle
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
         run: |
-          echo "Attempting to update existing dataset..."
-          if kaggle datasets status alphaoneindex/ai-infra-index 2>/dev/null; then
-            echo "Dataset exists, creating new version..."
-            kaggle datasets version -p kaggle_upload -m "Auto-update $(date -u +%Y-%m-%dT%H:%M:%SZ)" --dir-mode zip
-          else
-            echo "Dataset does not exist, creating for the first time..."
-            kaggle datasets create -p kaggle_upload -u
-          fi
+          mkdir -p ~/.kaggle
+          echo '{"username":"'"$KAGGLE_USERNAME"'","key":"'"$KAGGLE_KEY"'"}' > ~/.kaggle/kaggle.json
+          chmod 600 ~/.kaggle/kaggle.json
+          echo "Attempting dataset create..."
+          kaggle datasets create -p kaggle_upload -u 2>&1 || true
+          echo "---"
+          echo "Checking dataset status..."
+          kaggle datasets status alphaoneindex/ai-infra-index 2>&1 || true
