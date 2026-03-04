@@ -1,0 +1,35 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "AI Infrastructure Index",
+  "description": "Comprehensive technical reference for AI hardware: GPUs, TPUs, inference accelerators, specs, benchmarks, cloud pricing across 12+ providers.",
+  "url": "https://alpha-one-index.github.io/ai-infra-index",
+  "sameAs": "https://github.com/alpha-one-index/ai-infra-index",
+  "license": "https://opensource.org/licenses/MIT",
+  "isAccessibleForFree": true,
+  "creator": {
+    "@type": "Organization",
+    "name": "Alpha One Index",
+    "url": "https://github.com/alpha-one-index"
+  },
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://raw.githubusercontent.com/alpha-one-index/ai-infra-index/main/data/gpu-specs.json"
+    }
+  ],
+  "keywords": [
+    "AI infrastructure",
+    "GPU benchmarks",
+    "cloud GPU pricing",
+    "NVIDIA",
+    "AMD",
+    "TPU",
+    "inference accelerators",
+    "MLPerf"
+  ],
+  "datePublished": "2026-02-28",
+  "dateModified": "2026-03-04",
+  "version": "1.2.1"
+}
