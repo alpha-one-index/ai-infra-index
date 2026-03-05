@@ -395,6 +395,17 @@ The AI Infrastructure Index complements other tools and data sources in the GPU/
 
 ## Contributing
 
+### Alpha One Index Family
+
+| Index | Repository | Focus | Records | Updated |
+|---|---|---|---|---|
+| **AI AppSec Index** | [alpha-one-index/ai-appsec-index](https://github.com/alpha-one-index/ai-appsec-index) | AI remediation, ASPM, AI-code vulns, CRA compliance, FP rates | 30+ tools, 12 CWEs, 7 frameworks | Weekly |
+| **AI LLMOps Index** | [alpha-one-index/ai-llmops-index](https://github.com/alpha-one-index/ai-llmops-index) | LLMOps platforms, inference costs, failure modes, compliance | 50+ vendors, 45+ models | Weekly |
+| **AI TRiSM Index** | [alpha-one-index/ai-trism-index](https://github.com/alpha-one-index/ai-trism-index) | AI Trust, Risk, Security Management platforms | 60+ vendors | Monthly |
+| **AI Red Teaming Index** | [alpha-one-index/ai-red-teaming-index](https://github.com/alpha-one-index/ai-red-teaming-index) | Red teaming tools, LLM vulnerability databases | 40+ tools, 200+ vulnerabilities | Monthly |
+
+> **Infrastructure Cross-Reference:** For inference cost comparisons when evaluating self-hosted vs. managed scanning, see the **[AI LLMOps Index](https://github.com/alpha-one-index/ai-llmops-index)**. For AI-generated code vulnerability tracking that maps to compute requirements, see the **[AI AppSec Index](https://github.com/alpha-one-index/ai-appsec-index)**.
+
 Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 **Priority contributions:**
