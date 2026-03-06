@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Infrastructure Index — Cloud GPU Pricing, AI Hardware Specs & Benchmarks Dataset</title>
+<meta name="description" content="Open-source dataset tracking cloud GPU pricing, AI hardware specifications, inference accelerators, and infrastructure benchmarks. Updated weekly. CSV/JSON.">
+<meta name="keywords" content="cloud GPU pricing,AI hardware specs,GPU benchmarks,inference accelerators,AI infrastructure,TPU pricing,NVIDIA H100,AMD MI300X,cloud computing costs">
+<link rel="canonical" href="https://alpha-one-index.github.io/ai-infra-index/landing/">
+<meta property="og:title" content="AI Infrastructure Index — Cloud GPU Pricing & Hardware Specs Dataset">
+<meta property="og:description" content="Open-source dataset tracking cloud GPU pricing, AI hardware specs, and infrastructure benchmarks. Updated weekly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alpha-one-index.github.io/ai-infra-index/landing/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Infrastructure Index — Cloud GPU Pricing & Hardware Specs">
+<meta name="twitter:description" content="Track cloud GPU pricing, AI hardware specs, and benchmarks. Open dataset, updated weekly.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Dataset","name":"AI Infrastructure Index","description":"Comprehensive dataset tracking cloud GPU pricing, AI hardware specifications, inference accelerators, and infrastructure benchmarks across major cloud providers.","url":"https://github.com/alpha-one-index/ai-infra-index","license":"https://opensource.org/licenses/MIT","creator":{"@type":"Organization","name":"Alpha One Index"},"distribution":[{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://github.com/alpha-one-index/ai-infra-index/tree/main/data"}],"temporalCoverage":"2024/..","keywords":["cloud GPU pricing","AI hardware","inference accelerators","GPU benchmarks","AI infrastructure"]}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.6}a{color:#58a6ff;text-decoration:none}a:hover{text-decoration:underline}.container{max-width:1100px;margin:0 auto;padding:0 20px}
+header{padding:60px 0 40px;text-align:center}header h1{font-size:2.4rem;color:#fff;margin-bottom:12px;line-height:1.2}header p{font-size:1.15rem;color:#8b949e;max-width:700px;margin:0 auto 24px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}.badges img{height:22px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.cta-btn{display:inline-block;padding:10px 22px;border-radius:6px;font-weight:600;font-size:.95rem;transition:opacity .2s}.cta-btn.primary{background:#238636;color:#fff}.cta-btn.secondary{background:#21262d;color:#c9d1d9;border:1px solid #30363d}.cta-btn:hover{opacity:.85;text-decoration:none}
+section{padding:48px 0}.section-title{font-size:1.6rem;color:#fff;margin-bottom:24px;text-align:center}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:20px}.stat-card{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:20px;text-align:center}.stat-card .num{font-size:1.8rem;font-weight:700;color:#58a6ff}.stat-card .label{font-size:.85rem;color:#8b949e;margin-top:4px}
+.table-wrap{overflow-x:auto;margin-top:16px}table{width:100%;border-collapse:collapse;background:#161b22;border-radius:8px;overflow:hidden}th,td{padding:12px 16px;text-align:left;border-bottom:1px solid #21262d;font-size:.9rem}th{background:#0d1117;color:#8b949e;font-weight:600;text-transform:uppercase;font-size:.8rem;letter-spacing:.5px}td{color:#c9d1d9}tr:hover td{background:#1c2129}
+.cta-banner{background:linear-gradient(135deg,#238636 0%,#1a7f37 100%);border-radius:12px;padding:40px;text-align:center;margin:40px 0}.cta-banner h2{color:#fff;font-size:1.5rem;margin-bottom:12px}.cta-banner p{color:#ffffffcc;margin-bottom:20px}.cta-banner .cta-btn{background:#fff;color:#238636}
+.affiliate-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}.affiliate-card{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:24px}.affiliate-card h3{color:#fff;margin-bottom:8px}.affiliate-card p{color:#8b949e;font-size:.9rem;margin-bottom:14px}.affiliate-card .aff-btn{display:inline-block;padding:8px 18px;background:#21262d;border:1px solid #30363d;border-radius:6px;color:#58a6ff;font-size:.85rem;font-weight:600}.affiliate-card .aff-btn:hover{background:#30363d;text-decoration:none}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.related-card{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:20px;transition:border-color .2s}.related-card:hover{border-color:#58a6ff}.related-card h3{color:#fff;font-size:1rem;margin-bottom:6px}.related-card p{color:#8b949e;font-size:.85rem}
+footer{text-align:center;padding:40px 0;color:#484f58;font-size:.85rem;border-top:1px solid #21262d;margin-top:48px}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<h1>AI Infrastructure Index</h1>
+<p>Open-source dataset tracking cloud GPU pricing, AI hardware specifications, inference accelerators, and infrastructure benchmarks across major providers. Updated weekly.</p>
+<div class="badges">
+<img src="https://img.shields.io/github/stars/alpha-one-index/ai-infra-index?style=social" alt="GitHub Stars">
+<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License">
+<img src="https://img.shields.io/badge/HuggingFace-Dataset-yellow" alt="HuggingFace">
+<img src="https://img.shields.io/badge/Kaggle-Dataset-blue" alt="Kaggle">
+<img src="https://img.shields.io/badge/updated-weekly-brightgreen" alt="Updated Weekly">
+</div>
+<div class="cta-row">
+<a href="https://github.com/alpha-one-index/ai-infra-index" class="cta-btn primary">Star on GitHub</a>
+<a href="https://huggingface.co/datasets/alpha-one-index/ai-infra-index" class="cta-btn secondary">HuggingFace</a>
+<a href="https://www.kaggle.com/datasets/alphaoneindex/ai-infra-index" class="cta-btn secondary">Kaggle</a>
+<a href="https://github.com/alpha-one-index/ai-infra-index/tree/main/data" class="cta-btn secondary">Download Data</a>
+</div>
+</div>
+</header>
+
+<section>
+<div class="container">
+<h2 class="section-title">Key Stats</h2>
+<div class="stats-grid">
+<div class="stat-card"><div class="num">85+</div><div class="label">GPUs & Accelerators Tracked</div></div>
+<div class="stat-card"><div class="num">12</div><div class="label">Cloud Providers</div></div>
+<div class="stat-card"><div class="num">40+</div><div class="label">Spec Categories</div></div>
+<div class="stat-card"><div class="num">5,000+</div><div class="label">Data Points</div></div>
+<div class="stat-card"><div class="num">Weekly</div><div class="label">Update Frequency</div></div>
+<div class="stat-card"><div class="num">CSV/JSON</div><div class="label">Data Formats</div></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2 class="section-title">Sample Data</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>GPU Model</th><th>VRAM</th><th>FP16 TFLOPS</th><th>Cloud $/hr</th><th>Provider</th></tr></thead>
+<tbody>
+<tr><td>NVIDIA H100 SXM</td><td>80 GB HBM3</td><td>989.5</td><td>$2.49</td><td>Lambda</td></tr>
+<tr><td>NVIDIA A100 80GB</td><td>80 GB HBM2e</td><td>312</td><td>$1.29</td><td>RunPod</td></tr>
+<tr><td>AMD MI300X</td><td>192 GB HBM3</td><td>1,307</td><td>$3.19</td><td>Vast.ai</td></tr>
+<tr><td>NVIDIA L40S</td><td>48 GB GDDR6X</td><td>362</td><td>$0.99</td><td>FluidStack</td></tr>
+<tr><td>Google TPU v5e</td><td>16 GB HBM2e</td><td>197</td><td>$1.20</td><td>GCP</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<div class="container">
+<div class="cta-banner">
+<h2>Use This Data in Your Next Project</h2>
+<p>Available in CSV and JSON. MIT licensed. Perfect for research, cost optimization, and AI infrastructure planning.</p>
+<a href="https://github.com/alpha-one-index/ai-infra-index/tree/main/data" class="cta-btn">Download Dataset</a>
+</div>
+</div>
+
+<section>
+<div class="container">
+<h2 class="section-title">Cloud GPU Providers</h2>
+<div class="affiliate-grid">
+<div class="affiliate-card">
+<h3>RunPod</h3>
+<p>On-demand GPU cloud for AI inference and training. NVIDIA A100, H100, and RTX GPUs at competitive prices.</p>
+<a href="https://runpod.io?ref=alphaoneindex" rel="sponsored noopener" target="_blank" class="aff-btn">Try RunPod &rarr;</a>
+</div>
+<div class="affiliate-card">
+<h3>Lambda Cloud</h3>
+<p>GPU cloud built for deep learning. On-demand and reserved NVIDIA H100 and A100 instances.</p>
+<a href="https://lambdalabs.com?ref=alphaoneindex" rel="sponsored noopener" target="_blank" class="aff-btn">Try Lambda &rarr;</a>
+</div>
+<div class="affiliate-card">
+<h3>Vast.ai</h3>
+<p>GPU marketplace with the lowest prices. Rent GPUs from a decentralized network of providers.</p>
+<a href="https://vast.ai?ref=alphaoneindex" rel="sponsored noopener" target="_blank" class="aff-btn">Try Vast.ai &rarr;</a>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2 class="section-title">Related Indexes</h2>
+<div class="related-grid">
+<a href="https://alpha-one-index.github.io/ai-trism-index/" class="related-card">
+<h3>AI TRiSM Index</h3>
+<p>AI trust, risk, and security management frameworks, tools, and compliance benchmarks.</p>
+</a>
+<a href="https://alpha-one-index.github.io/ai-appsec-index/" class="related-card">
+<h3>AI AppSec Index</h3>
+<p>AI application security tools, vulnerability scanners, and ML security frameworks.</p>
+</a>
+<a href="https://alpha-one-index.github.io/ai-llmops-index/" class="related-card">
+<h3>AI LLMOps Index</h3>
+<p>LLM deployment platforms, inference engines, orchestration frameworks, and observability tools.</p>
+</a>
+<a href="https://alpha-one-index.github.io/ai-red-teaming-index/" class="related-card">
+<h3>AI Red Teaming Index</h3>
+<p>AI red teaming tools, adversarial testing frameworks, and model safety evaluation benchmarks.</p>
+</a>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p>&copy; 2025 Alpha One Index. MIT License. Data provided as-is for research and educational purposes.</p>
+</div>
+</footer>
+</body>
+</html>
