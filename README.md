@@ -298,7 +298,72 @@ The cheapest H100 SXM 80GB cloud options as of March 2026 (on-demand pricing, US
 
 ---
 
-## GPU Benchmarks 2026
+## What Is the Energy Efficiency and Carbon Footprint of AI GPUs?
+
+GPU energy efficiency is increasingly critical for both cost optimisation and regulatory compliance. The EU AI Act's systemic-risk GPAI provisions (Article 51/55) require compute and energy reporting for models trained above 10^25 FLOPs.
+
+### GPU Performance-per-Watt Comparison (FP16)
+
+| GPU | FP16 TFLOPS | TDP (W) | TFLOPS/Watt | Relative Efficiency | Best Use Case |
+|-----|:-----------:|:-------:|:-----------:|:-------------------:|---------------|
+| NVIDIA H100 SXM | 1,979 | 700 | 2.83 | 1.00x (baseline) | General training + inference |
+| NVIDIA H200 SXM | 1,979 | 700 | 2.83 | 1.00x | Large model inference (141 GB VRAM) |
+| NVIDIA B200 | 4,500 | 1,000 | **4.50** | **1.59x** | Next-gen training, highest throughput |
+| AMD MI300X | 1,307 | 750 | 1.74 | 0.62x | Memory-bound inference (192 GB HBM3) |
+| AMD MI325X | 1,307 | 750 | 1.74 | 0.62x | Largest VRAM inference (256 GB) |
+| Intel Gaudi 3 | 1,835 | 600 | **3.06** | **1.08x** | Inference workloads, best perf/watt |
+| Groq LPU (GroqCard) | 188 | ~75 | 2.51 | 0.89x | Ultra-low-latency inference only |
+
+> Note: TFLOPS/Watt is a theoretical peak metric. For production inference, measure **tokens/joule** or **tokens/kWh** rather than TFLOPS/Watt.
+
+### EU AI Act Compute and Energy Reporting Requirements
+
+| Obligation | Threshold | Article | Status |
+|------------|-----------|---------|--------|
+| GPAI systemic-risk classification | Training compute > 10^25 FLOPs | Art. 51 | Binding (Aug 2025) |
+| Energy consumption reporting | Systemic-risk GPAI models | Art. 55 | Binding |
+| Carbon footprint disclosure | All high-risk AI systems | Recital 59 | Recommended |
+| PUE / WUE reporting (data centres) | EU data centre operators | EU Energy Efficiency Directive | Binding (separate) |
+
+### Approximate CO2e for Common AI Training Runs
+
+Estimates assume EU average grid intensity ~0.276 kg CO2e/kWh:
+
+| Workload | Approx. FLOPs | Estimated CO2e |
+|----------|:-------------:|:--------------:|
+| GPT-3 175B training | ~3.14 x 10^23 | ~550 tCO2e |
+| Llama 2 70B training | ~2.0 x 10^23 | ~340 tCO2e |
+| Llama 3.1 405B training | ~3.0 x 10^24 | ~7,700 tCO2e |
+| Daily inference (10B req/day, Llama 3 8B, H100) | -- | ~12 tCO2e/day |
+
+> **Cross-reference:** For EU AI Act compliance mapping see [Regulatory Mandate Map](specs/regulatory-mandate-map.md). For inference cost optimisation strategies that also reduce energy see [GPU Cost Optimization Playbook](specs/gpu-cost-optimization-playbook.md).
+
+---
+
+## What Is Groq LPU and Cerebras CS-3 Inference Pricing?
+
+Beyond traditional GPU cloud providers, purpose-built **AI inference accelerators** offer dramatically higher tokens-per-second throughput. These chips are optimised specifically for LLM inference and are increasingly relevant for EU AI Act energy-reporting compliance given their superior performance-per-watt.
+
+### Inference Accelerator Cloud Pricing (March 2026)
+
+| Vendor | Chip | Model | Speed (TPS) | Input ($/M tokens) | Output ($/M tokens) | Notes |
+|--------|------|-------|:-----------:|:------------------:|:-------------------:|-------|
+| **[Groq](https://groq.com/pricing)** | LPU (GroqCard) | Llama 3.1 8B Instant | ~840 | $0.05 | $0.08 | Fastest small model available |
+| **[Groq](https://groq.com/pricing)** | LPU | Llama 3.3 70B | ~394 | $0.59 | $0.79 | On-demand, no minimum |
+| **[Groq](https://groq.com/pricing)** | LPU | Llama 4 Scout 17Bx16E | ~594 | $0.11 | $0.34 | Mixture-of-experts |
+| **[Cerebras](https://www.cerebras.ai/pricing)** | CS-3 (Wafer-Scale Engine 3) | Llama 3.1 8B | ~1,800 | $0.10 | $0.10 | 20x faster than GPU hyperscalers |
+| **[Cerebras](https://www.cerebras.ai/pricing)** | CS-3 | Llama 3.1 70B | ~450 | $0.60 | $0.60 | Native FP16, no accuracy tradeoff |
+| **[Cerebras](https://www.cerebras.ai/pricing)** | CS-3 | Qwen 3 235B | ~1,400 | $0.60 | $1.20 | Largest model on Cerebras |
+
+**Hardware notes:**
+- **Groq LPU (GroqCard):** PCIe Gen 4 card, 750 TOPs (INT8) / 188 TFLOPs (FP16), 230 MB on-chip SRAM, 80 TB/s on-die memory bandwidth, ~75W TDP. On-premise ~$20,000/card.
+- **Cerebras CS-3 (WSE-3):** Wafer-scale chip achieving 1,800 tokens/sec for 8B models -- 20x faster than NVIDIA GPU-based cloud systems. CS-3 system price ~$3.2-4M/node (includes MemoryX + SwarmX fabric).
+
+> **EU AI Act relevance:** Inference accelerators achieve substantially better performance-per-watt than GPU alternatives. Under Art. 51/55, organisations should document TDP and tokens-per-joule metrics alongside FLOPs estimates in compute-reporting compliance filings.
+
+---
+
+## Which GPUs Have the Best Inference Benchmarks in 2026?
 
 MLPerf v4.1 inference results (tokens/sec, Llama 2 70B, batch=1). All figures are drawn from publicly published [MLCommons MLPerf Inference v4.1 results](https://mlcommons.org/benchmarks/inference-datacenter/) (released November 2024). Individual system results vary by submission configuration; figures below represent representative high-performance submissions for each GPU family.
 
@@ -316,7 +381,7 @@ Full benchmark data including training results and multi-GPU scaling in [specs/i
 
 ---
 
-## Data Sources & Methodology
+## Where Does This Data Come From?
 
 All data is independently verified against official vendor sources:
 
@@ -444,12 +509,12 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 Part of the [Alpha One Index](https://github.com/alpha-one-index) family:
 
-| Index | Focus | Link |
-|-------|-------|------|
-| AI Infrastructure Index | GPU specs, cloud pricing, hardware benchmarks | *You are here* |
-| AI Red Teaming Index | Attack tools, vulnerability data, safety benchmarks | [ai-red-teaming-index](https://github.com/alpha-one-index/ai-red-teaming-index) 
-| AI LLMOps Index | LLM inference costs, failure modes, observability, compliance | [ai-llmops-index](https://github.com/alpha-one-index/ai-llmops-index) |
-| AI TRiSM Index | Trust, risk, security management vendors & frameworks | [ai-trism-index]
-| AI AppSec Index | AI remediation benchmarks, ASPM, CRA compliance, false positives | [ai-appsec-index](https://github.com/alpha-one-index/ai-appsec-index) |(https://github.com/alpha-one-index/ai-appsec-index) |(https://github.com/alpha-one-index/ai-trism-index) |
+| Index | Focus | Cost Bridge to This Index | Link |
+|-------|-------|--------------------------|------|
+| **AI Infrastructure Index** | GPU specs, cloud pricing, hardware benchmarks | *You are here* | -- |
+| **[AI LLMOps Index](https://github.com/alpha-one-index/ai-llmops-index)** | LLMOps platforms, inference costs, observability, compliance | GPU $/hr to per-token inference cost translation | [ai-llmops-index](https://github.com/alpha-one-index/ai-llmops-index) |
+| **[AI AppSec Index](https://github.com/alpha-one-index/ai-appsec-index)** | AI remediation benchmarks, ASPM, CRA compliance, false positives | Compute cost of AI-assisted code scanning pipelines | [ai-appsec-index](https://github.com/alpha-one-index/ai-appsec-index) |
+| **[AI TRiSM Index](https://github.com/alpha-one-index/ai-trism-index)** | Trust, risk, security management vendors & frameworks | Infrastructure cost of TRiSM monitoring at scale | [ai-trism-index](https://github.com/alpha-one-index/ai-trism-index) |
+| **[AI Red Teaming Index](https://github.com/alpha-one-index/ai-red-teaming-index)** | Attack tools, vulnerability data, safety benchmarks | GPU cost of adversarial evaluation & red-team runs | [ai-red-teaming-index](https://github.com/alpha-one-index/ai-red-teaming-index) |
 
 Data is provided for informational purposes. Prices may change; always verify with providers before making purchasing decisions.
