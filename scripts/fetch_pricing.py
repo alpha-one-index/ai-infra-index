@@ -16,6 +16,7 @@ import json
 import os
 import urllib.request
 import urllib.error
+import urllib.parse
 from datetime import datetime, timezone
 
 # --- Configuration ---
@@ -186,7 +187,7 @@ def fetch_azure():
     skus = list(AZURE_GPU_MAP.keys())
     filters = " or ".join(f"armSkuName eq '{s}'" for s in skus)
     query = f"$filter=serviceName eq 'Virtual Machines' and priceType eq 'Consumption' and ({filters})"
-    url = f"{AZURE_API}?{query}"
+    url = f"{AZURE_API}?" + urllib.parse.quote(query, safe="=&$'()")
     results = []
     page = 0
     while url:
