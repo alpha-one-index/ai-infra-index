@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2026-03-08T14:53:39Z",
+    "updated": "2026-03-08T15:00:23Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
@@ -120,26 +120,26 @@
         "mem": 80,
         "on_demand": 0.9,
         "offers_sampled": 4,
-        "price_min": 0.67,
-        "price_max": 1.09
+        "price_min": 0.68,
+        "price_max": 1.2
       },
       {
         "gpu": "H100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 1.87,
+        "on_demand": 1.67,
         "offers_sampled": 1,
-        "price_min": 1.87,
-        "price_max": 1.87
+        "price_min": 1.67,
+        "price_max": 1.67
       },
       {
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.27,
+        "on_demand": 2.33,
         "offers_sampled": 3,
-        "price_min": 1.94,
-        "price_max": 2.33
+        "price_min": 2.2,
+        "price_max": 2.58
       },
       {
         "gpu": "L40",
@@ -154,37 +154,37 @@
         "gpu": "L40S",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 1.21,
+        "on_demand": 0.94,
         "offers_sampled": 1,
-        "price_min": 1.21,
-        "price_max": 1.21
+        "price_min": 0.94,
+        "price_max": 0.94
       },
       {
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.15,
-        "offers_sampled": 2,
+        "on_demand": 0.14,
+        "offers_sampled": 3,
         "price_min": 0.13,
-        "price_max": 0.16
+        "price_max": 0.2
       },
       {
         "gpu": "RTX 4090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.4,
+        "on_demand": 0.31,
         "offers_sampled": 3,
-        "price_min": 0.32,
-        "price_max": 0.67
+        "price_min": 0.27,
+        "price_max": 0.54
       },
       {
-        "gpu": "RTX A5000",
+        "gpu": "RTX A6000",
         "cnt": 1,
-        "mem": 24,
-        "on_demand": 0.18,
+        "mem": 48,
+        "on_demand": 0.37,
         "offers_sampled": 1,
-        "price_min": 0.18,
-        "price_max": 0.18
+        "price_min": 0.37,
+        "price_max": 0.37
       }
     ],
     "RunPod": [
