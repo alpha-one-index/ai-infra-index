@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "updated": "2026-03-08T15:00:23Z",
+    "updated": "2026-03-08T15:47:08Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
-    "total_skus": 118,
+    "total_skus": 119,
     "live_providers": [
       "Azure",
       "Vast.ai",
@@ -118,10 +118,10 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.9,
+        "on_demand": 0.88,
         "offers_sampled": 4,
         "price_min": 0.68,
-        "price_max": 1.2
+        "price_max": 1.1
       },
       {
         "gpu": "H100 SXM",
@@ -138,8 +138,8 @@
         "mem": 141,
         "on_demand": 2.33,
         "offers_sampled": 3,
-        "price_min": 2.2,
-        "price_max": 2.58
+        "price_min": 2.07,
+        "price_max": 2.45
       },
       {
         "gpu": "L40",
@@ -154,28 +154,37 @@
         "gpu": "L40S",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 0.94,
+        "on_demand": 1.21,
         "offers_sampled": 1,
-        "price_min": 0.94,
-        "price_max": 0.94
+        "price_min": 1.21,
+        "price_max": 1.21
       },
       {
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.14,
-        "offers_sampled": 3,
-        "price_min": 0.13,
-        "price_max": 0.2
+        "on_demand": 0.12,
+        "offers_sampled": 1,
+        "price_min": 0.12,
+        "price_max": 0.12
       },
       {
         "gpu": "RTX 4090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.31,
+        "on_demand": 0.32,
         "offers_sampled": 3,
-        "price_min": 0.27,
+        "price_min": 0.31,
         "price_max": 0.54
+      },
+      {
+        "gpu": "RTX A5000",
+        "cnt": 1,
+        "mem": 24,
+        "on_demand": 0.16,
+        "offers_sampled": 1,
+        "price_min": 0.16,
+        "price_max": 0.16
       },
       {
         "gpu": "RTX A6000",
@@ -219,8 +228,7 @@
         "mem": 24,
         "on_demand": 0.22,
         "secure_price": 0.41,
-        "spot": 0.11,
-        "min_bid": 0.11
+        "spot": 0.11
       },
       {
         "gpu": "A40",
@@ -267,8 +275,7 @@
         "cnt": 1,
         "mem": 12,
         "on_demand": 0.18,
-        "spot": 0.09,
-        "min_bid": 0.09
+        "spot": 0.09
       },
       {
         "gpu": "RTX 3090",
