@@ -2,7 +2,7 @@ name: Update GPU Pricing Data
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Runs every hour
+      - cron: '0 * * * *'  # Runs every hour
   workflow_dispatch:
 
 permissions:
@@ -27,8 +27,8 @@ jobs:
         run: python scripts/fetch_pricing.py
         env:
           PYTHONUNBUFFERED: '1'
-            RUNPOD_API_KEY: ${{ secrets.RUNPOD_API_KEY }}
-            LAMBDA_API_KEY: ${{ secrets.LAMBDA_API_KEY }}
+          RUNPOD_API_KEY: ${{ secrets.RUNPOD_API_KEY }}
+          LAMBDA_API_KEY: ${{ secrets.LAMBDA_API_KEY }}
 
       - name: Configure AWS credentials
         if: env.ADX_DATASET_ID != ''
@@ -61,42 +61,42 @@ jobs:
           adx = boto3.client('dataexchange', region_name='us-east-1')
           dataset_id = os.environ['ADX_DATASET_ID']
           if not dataset_id:
-            print('No ADX_DATASET_ID set, skipping')
-            exit(0)
+              print('No ADX_DATASET_ID set, skipping')
+              exit(0)
           ts = datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
           revision = adx.create_revision(
-            DataSetId=dataset_id,
-            Comment=f'Hourly GPU pricing update {ts}'
+              DataSetId=dataset_id,
+              Comment=f'Hourly GPU pricing update {ts}'
           )
           rev_id = revision['Id']
           print(f'Created revision {rev_id}')
           bucket = os.environ['S3_BUCKET']
           prefix = os.environ['S3_PREFIX']
           job = adx.create_job(
-            Type='IMPORT_ASSETS_FROM_S3',
-            Details={
-              'ImportAssetsFromS3': {
-                'DataSetId': dataset_id,
-                'RevisionId': rev_id,
-                'AssetSources': [
-                  {'Bucket': bucket, 'Key': f'{prefix}/latest/cloud-pricing.json'}
-                ]
+              Type='IMPORT_ASSETS_FROM_S3',
+              Details={
+                  'ImportAssetsFromS3': {
+                      'DataSetId': dataset_id,
+                      'RevisionId': rev_id,
+                      'AssetSources': [
+                          {'Bucket': bucket, 'Key': f'{prefix}/latest/cloud-pricing.json'}
+                      ]
+                  }
               }
-            }
           )
           job_id = job['Id']
           print(f'Created import job {job_id}')
           import time
           for _ in range(30):
-            status = adx.get_job(JobId=job_id)['State']
-            if status in ('COMPLETED', 'ERROR', 'CANCELLED'):
-              break
-            time.sleep(2)
+              status = adx.get_job(JobId=job_id)['State']
+              if status in ('COMPLETED', 'ERROR', 'CANCELLED'):
+                  break
+              time.sleep(2)
           final = adx.get_job(JobId=job_id)
           print(f'Job status: {final["State"]}')
           if final['State'] == 'COMPLETED':
-            adx.update_revision(DataSetId=dataset_id, RevisionId=rev_id, Finalized=True)
-            print(f'Revision {rev_id} finalized')
+              adx.update_revision(DataSetId=dataset_id, RevisionId=rev_id, Finalized=True)
+              print(f'Revision {rev_id} finalized')
           "
         continue-on-error: true
 
