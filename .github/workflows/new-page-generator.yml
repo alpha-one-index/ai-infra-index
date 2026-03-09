@@ -1,0 +1,110 @@
+# New Page Generator — Automated Unique Page Creation
+# Runs 3x/week (Tue/Thu/Sat) with randomized 0-180 min delay
+# to keep the repo growing with unique, data-backed pages.
+
+name: New Page Generator
+
+on:
+  schedule:
+    # Tue 15:00 UTC, Thu 17:00 UTC, Sat 12:00 UTC
+    # (staggered base times for natural variance)
+    - cron: '0 15 * * 2'
+    - cron: '0 17 * * 4'
+    - cron: '0 12 * * 6'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Preview what would be created (no commits)'
+        required: false
+        default: 'false'
+        type: boolean
+      force_type:
+        description: 'Force a specific page type (gpu_spec, provider, comparison, snapshot, or blank for auto)'
+        required: false
+        default: ''
+        type: string
+      max_pages:
+        description: 'Max pages to generate (2-5 default)'
+        required: false
+        default: '5'
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  generate-pages:
+    name: Generate New Pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Randomized delay
+        if: github.event_name == 'schedule'
+        run: |
+          # Sleep 0-180 minutes (0-10800 seconds) so commits
+          # land at unpredictable times, not a fixed cron tick
+          DELAY=$((RANDOM % 10800))
+          DELAY_MIN=$((DELAY / 60))
+          echo "Sleeping ${DELAY_MIN} minutes (${DELAY}s) for timing variance..."
+          sleep $DELAY
+
+      - name: Create output directories
+        run: |
+          mkdir -p specs/gpu providers comparisons snapshots usecases
+
+      - name: Run page generator
+        id: generate
+        run: |
+          ARGS=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          if [ -n "${{ inputs.force_type }}" ]; then
+            ARGS="$ARGS --force-type ${{ inputs.force_type }}"
+          fi
+          if [ -n "${{ inputs.max_pages }}" ]; then
+            ARGS="$ARGS --max-pages ${{ inputs.max_pages }}"
+          fi
+          python scripts/generate_new_pages.py $ARGS
+
+      - name: Update sitemap
+        if: steps.generate.outputs.count != '0' && inputs.dry_run != 'true'
+        run: python scripts/update_sitemap.py
+
+      - name: Commit and push changes
+        if: steps.generate.outputs.count != '0' && inputs.dry_run != 'true'
+        run: |
+          git config user.name "alpha-one-index"
+          git config user.email "alpha-one-index@users.noreply.github.com"
+
+          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
+          SUMMARY="${{ steps.generate.outputs.summary }}"
+
+          # Natural-looking commit messages, randomly selected
+          MESSAGES=(
+            "content: add ${SUMMARY}"
+            "publish: ${SUMMARY} [${TIMESTAMP}]"
+            "feat: new pages — ${SUMMARY}"
+            "docs: expand coverage with ${SUMMARY}"
+          )
+
+          MSG_INDEX=$((RANDOM % ${#MESSAGES[@]}))
+          COMMIT_MSG="${MESSAGES[$MSG_INDEX]}"
+
+          git add -A
+          git diff --cached --quiet || {
+            git commit -m "$COMMIT_MSG"
+            git push
+            echo "Committed: $COMMIT_MSG"
+          }
