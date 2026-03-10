@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "updated": "2026-03-10T19:00:58Z",
+    "updated": "2026-03-10T19:54:10Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
-    "total_skus": 118,
+    "total_skus": 119,
     "live_providers": [
       "Azure",
       "Vast.ai",
@@ -118,28 +118,28 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.9,
-        "offers_sampled": 2,
+        "on_demand": 0.87,
+        "offers_sampled": 4,
         "price_min": 0.67,
-        "price_max": 1.12
+        "price_max": 1.2
       },
       {
         "gpu": "H100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 1.87,
+        "on_demand": 1.67,
         "offers_sampled": 1,
-        "price_min": 1.87,
-        "price_max": 1.87
+        "price_min": 1.67,
+        "price_max": 1.67
       },
       {
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.11,
+        "on_demand": 2.3,
         "offers_sampled": 4,
-        "price_min": 1.94,
-        "price_max": 3.23
+        "price_min": 1.95,
+        "price_max": 2.45
       },
       {
         "gpu": "L40",
@@ -163,10 +163,10 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.17,
-        "offers_sampled": 3,
-        "price_min": 0.11,
-        "price_max": 0.2
+        "on_demand": 0.12,
+        "offers_sampled": 1,
+        "price_min": 0.12,
+        "price_max": 0.12
       },
       {
         "gpu": "RTX 4090",
@@ -174,8 +174,17 @@
         "mem": 24,
         "on_demand": 0.4,
         "offers_sampled": 3,
-        "price_min": 0.34,
-        "price_max": 0.52
+        "price_min": 0.28,
+        "price_max": 0.6
+      },
+      {
+        "gpu": "RTX A5000",
+        "cnt": 1,
+        "mem": 24,
+        "on_demand": 0.18,
+        "offers_sampled": 1,
+        "price_min": 0.18,
+        "price_max": 0.18
       },
       {
         "gpu": "RTX A6000",
@@ -228,8 +237,7 @@
         "mem": 48,
         "on_demand": 0.35,
         "secure_price": 0.4,
-        "spot": 0.24,
-        "min_bid": 0.24
+        "spot": 0.24
       },
       {
         "gpu": "B200",
@@ -364,7 +372,8 @@
         "mem": 80,
         "on_demand": 1.99,
         "secure_price": 2.39,
-        "spot": 1.35
+        "spot": 1.35,
+        "min_bid": 1.35
       },
       {
         "gpu": "H200 SXM",
@@ -478,7 +487,8 @@
         "mem": 48,
         "on_demand": 0.33,
         "secure_price": 0.49,
-        "spot": 0.25
+        "spot": 0.25,
+        "min_bid": 0.25
       },
       {
         "gpu": "RTX PRO 4500",
