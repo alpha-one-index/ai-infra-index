@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2026-03-10T22:58:14Z",
+    "updated": "2026-03-10T23:00:57Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
@@ -120,8 +120,8 @@
         "mem": 80,
         "on_demand": 1.07,
         "offers_sampled": 3,
-        "price_min": 0.68,
-        "price_max": 1.12
+        "price_min": 0.71,
+        "price_max": 1.24
       },
       {
         "gpu": "H100 SXM",
@@ -136,7 +136,7 @@
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.27,
+        "on_demand": 2.25,
         "offers_sampled": 4,
         "price_min": 1.91,
         "price_max": 2.84
@@ -163,9 +163,9 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.15,
+        "on_demand": 0.17,
         "offers_sampled": 3,
-        "price_min": 0.14,
+        "price_min": 0.08,
         "price_max": 0.2
       },
       {
@@ -181,10 +181,10 @@
         "gpu": "RTX A6000",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 0.37,
+        "on_demand": 0.4,
         "offers_sampled": 1,
-        "price_min": 0.37,
-        "price_max": 0.37
+        "price_min": 0.4,
+        "price_max": 0.4
       }
     ],
     "RunPod": [
