@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "updated": "2026-03-12T17:38:38Z",
+    "updated": "2026-03-12T18:00:53Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
-    "total_skus": 109,
+    "total_skus": 108,
     "live_providers": [
       "Azure",
       "Vast.ai",
@@ -118,10 +118,10 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.96,
+        "on_demand": 1.04,
         "offers_sampled": 3,
         "price_min": 0.74,
-        "price_max": 1.26
+        "price_max": 1.19
       },
       {
         "gpu": "H100 SXM",
@@ -136,9 +136,9 @@
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.84,
-        "offers_sampled": 3,
-        "price_min": 2.07,
+        "on_demand": 2.31,
+        "offers_sampled": 4,
+        "price_min": 1.99,
         "price_max": 3.23
       },
       {
@@ -165,26 +165,17 @@
         "mem": 24,
         "on_demand": 0.16,
         "offers_sampled": 3,
-        "price_min": 0.11,
+        "price_min": 0.12,
         "price_max": 0.2
       },
       {
         "gpu": "RTX 4090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.38,
-        "offers_sampled": 4,
-        "price_min": 0.23,
+        "on_demand": 0.36,
+        "offers_sampled": 3,
+        "price_min": 0.32,
         "price_max": 0.47
-      },
-      {
-        "gpu": "RTX A6000",
-        "cnt": 1,
-        "mem": 48,
-        "on_demand": 0.4,
-        "offers_sampled": 1,
-        "price_min": 0.4,
-        "price_max": 0.4
       }
     ],
     "RunPod": [
@@ -346,8 +337,7 @@
         "mem": 94,
         "on_demand": 2.59,
         "secure_price": 3.07,
-        "spot": 1.4,
-        "min_bid": 1.4
+        "spot": 1.4
       },
       {
         "gpu": "H100 PCIe",
