@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2026-03-12T04:00:58Z",
+    "updated": "2026-03-12T05:01:00Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
@@ -118,28 +118,28 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.86,
+        "on_demand": 0.9,
         "offers_sampled": 4,
         "price_min": 0.73,
-        "price_max": 1.31
+        "price_max": 1.37
       },
       {
         "gpu": "H100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 1.47,
+        "on_demand": 1.87,
         "offers_sampled": 1,
-        "price_min": 1.47,
-        "price_max": 1.47
+        "price_min": 1.87,
+        "price_max": 1.87
       },
       {
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.33,
-        "offers_sampled": 3,
-        "price_min": 2.07,
-        "price_max": 2.84
+        "on_demand": 2.49,
+        "offers_sampled": 4,
+        "price_min": 2.14,
+        "price_max": 3.23
       },
       {
         "gpu": "L40",
@@ -154,18 +154,18 @@
         "gpu": "L40S",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 1.21,
+        "on_demand": 0.94,
         "offers_sampled": 1,
-        "price_min": 1.21,
-        "price_max": 1.21
+        "price_min": 0.94,
+        "price_max": 0.94
       },
       {
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
         "on_demand": 0.14,
-        "offers_sampled": 3,
-        "price_min": 0.12,
+        "offers_sampled": 2,
+        "price_min": 0.08,
         "price_max": 0.2
       },
       {
@@ -174,8 +174,8 @@
         "mem": 24,
         "on_demand": 0.4,
         "offers_sampled": 3,
-        "price_min": 0.36,
-        "price_max": 0.52
+        "price_min": 0.33,
+        "price_max": 0.54
       },
       {
         "gpu": "RTX A6000",
