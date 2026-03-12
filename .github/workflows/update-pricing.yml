@@ -100,11 +100,15 @@ jobs:
           "
         continue-on-error: true
 
+              - name: Generate GPU Price Index (GCPI)
+        run: python scripts/generate_price_index.py
+        continue-on-error: true
+
       - name: Commit and push if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/cloud-pricing.json data/history/
+          git add data/cloud-pricing.json data/history/ data/gpu-price-index.json
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
