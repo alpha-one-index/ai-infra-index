@@ -66,6 +66,7 @@ We track GPU pricing from **12 cloud providers** — one of the most detailed op
 | **[Cudo Compute](https://www.cudocompute.com/pricing)** | H100, A100, RTX 4090 | On-demand | [cudocompute.com/pricing](https://www.cudocompute.com/pricing) |
 | **[Fluidstack](https://www.fluidstack.io/pricing)** | H100, A100, L40S | On-demand | [fluidstack.io/pricing](https://www.fluidstack.io/pricing) |
 | **[Paperspace](https://www.paperspace.com/pricing)** | H100, A100, RTX A4000 | On-demand | [paperspace.com/pricing](https://www.paperspace.com/pricing) |
+| **[DigitalOcean](https://www.digitalocean.com/pricing)** | H100, A100, RTX 4090 | On-demand | [digitalocean.com/pricing](https://www.digitalocean.com/pricing) |
 
 ---
 
