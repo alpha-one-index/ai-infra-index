@@ -1,0 +1,304 @@
+{
+  "meta": {
+    "title": "AI Energy & Power Index",
+    "version": "1.3.0-preview",
+    "description": "Live TDP, perf/watt, PUE, and TCO estimates for AI accelerators and cloud data centers.",
+    "updated_utc": "2026-03-13T08:00:42.063498+00:00",
+    "sources": [
+      "MLPerf Power",
+      "Green500",
+      "Vendor Datasheets",
+      "Cloud Sustainability Reports"
+    ],
+    "license": "CC BY 4.0",
+    "repo": "https://github.com/alpha-one-index/ai-infra-index"
+  },
+  "gpu_power_efficiency": {
+    "nvidia": {
+      "h100_sxm5": {
+        "tdp_w": 700,
+        "fp16_tflops": 989.5,
+        "int8_tops": 1979,
+        "gen": "Hopper",
+        "process": "TSMC 4N",
+        "fp16_tflops_per_watt": 1.4136,
+        "int8_tops_per_watt": 2.8271
+      },
+      "h100_pcie": {
+        "tdp_w": 350,
+        "fp16_tflops": 756.0,
+        "int8_tops": 1513,
+        "gen": "Hopper",
+        "process": "TSMC 4N",
+        "fp16_tflops_per_watt": 2.16,
+        "int8_tops_per_watt": 4.3229
+      },
+      "h200_sxm": {
+        "tdp_w": 700,
+        "fp16_tflops": 989.5,
+        "int8_tops": 1979,
+        "gen": "Hopper",
+        "process": "TSMC 4N",
+        "fp16_tflops_per_watt": 1.4136,
+        "int8_tops_per_watt": 2.8271
+      },
+      "b200_sxm": {
+        "tdp_w": 1000,
+        "fp16_tflops": 2250.0,
+        "int8_tops": 4500,
+        "gen": "Blackwell",
+        "process": "TSMC 4NP",
+        "fp16_tflops_per_watt": 2.25,
+        "int8_tops_per_watt": 4.5
+      },
+      "gb200_nvl72": {
+        "tdp_w": 2700,
+        "fp16_tflops": 5000.0,
+        "int8_tops": 10000,
+        "gen": "Blackwell",
+        "process": "TSMC 4NP",
+        "fp16_tflops_per_watt": 1.8519,
+        "int8_tops_per_watt": 3.7037
+      },
+      "a100_sxm4": {
+        "tdp_w": 400,
+        "fp16_tflops": 312.0,
+        "int8_tops": 624,
+        "gen": "Ampere",
+        "process": "Samsung 7nm",
+        "fp16_tflops_per_watt": 0.78,
+        "int8_tops_per_watt": 1.56
+      },
+      "rtx_4090": {
+        "tdp_w": 450,
+        "fp16_tflops": 165.2,
+        "int8_tops": 330,
+        "gen": "Ada",
+        "process": "TSMC 4N",
+        "fp16_tflops_per_watt": 0.3671,
+        "int8_tops_per_watt": 0.7333
+      }
+    },
+    "amd": {
+      "mi300x": {
+        "tdp_w": 750,
+        "fp16_tflops": 1307.4,
+        "int8_tops": 2614,
+        "gen": "CDNA3",
+        "process": "TSMC 5nm/6nm",
+        "fp16_tflops_per_watt": 1.7432,
+        "int8_tops_per_watt": 3.4853
+      },
+      "mi250x": {
+        "tdp_w": 560,
+        "fp16_tflops": 383.0,
+        "int8_tops": 383,
+        "gen": "CDNA2",
+        "process": "TSMC 6nm",
+        "fp16_tflops_per_watt": 0.6839,
+        "int8_tops_per_watt": 0.6839
+      },
+      "mi350x": {
+        "tdp_w": 750,
+        "fp16_tflops": 1457.0,
+        "int8_tops": 2910,
+        "gen": "CDNA4",
+        "process": "TSMC 3nm",
+        "fp16_tflops_per_watt": 1.9427,
+        "int8_tops_per_watt": 3.88
+      }
+    },
+    "intel": {
+      "gaudi3": {
+        "tdp_w": 900,
+        "fp16_tflops": 1835.0,
+        "int8_tops": 3670,
+        "gen": "Gaudi3",
+        "process": "TSMC 5nm",
+        "fp16_tflops_per_watt": 2.0389,
+        "int8_tops_per_watt": 4.0778
+      },
+      "gaudi2": {
+        "tdp_w": 600,
+        "fp16_tflops": 865.0,
+        "int8_tops": 1730,
+        "gen": "Gaudi2",
+        "process": "TSMC 7nm",
+        "fp16_tflops_per_watt": 1.4417,
+        "int8_tops_per_watt": 2.8833
+      }
+    },
+    "google": {
+      "tpu_v5p": {
+        "tdp_w": 450,
+        "bf16_tflops": 459.0,
+        "int8_tops": 918,
+        "gen": "TPU v5p",
+        "process": "Custom",
+        "fp16_tflops_per_watt": 1.02,
+        "int8_tops_per_watt": 2.04
+      },
+      "tpu_v4": {
+        "tdp_w": 170,
+        "bf16_tflops": 275.0,
+        "int8_tops": 275,
+        "gen": "TPU v4",
+        "process": "Custom",
+        "fp16_tflops_per_watt": 1.6176,
+        "int8_tops_per_watt": 1.6176
+      }
+    },
+    "aws": {
+      "trainium2": {
+        "tdp_w": 700,
+        "bf16_tflops": 3840.0,
+        "int8_tops": 7680,
+        "gen": "Trainium2",
+        "process": "TSMC 3nm",
+        "fp16_tflops_per_watt": 5.4857,
+        "int8_tops_per_watt": 10.9714
+      },
+      "inferentia2": {
+        "tdp_w": 300,
+        "fp16_tflops": 384.0,
+        "int8_tops": 3840,
+        "gen": "Inf2",
+        "process": "TSMC 7nm",
+        "fp16_tflops_per_watt": 1.28,
+        "int8_tops_per_watt": 12.8
+      }
+    }
+  },
+  "green500_top10": [
+    {
+      "rank": 1,
+      "system": "NVIDIA GB200 NVL72 Cluster",
+      "gflops_per_watt": 68.32,
+      "country": "US"
+    },
+    {
+      "rank": 2,
+      "system": "NVIDIA H100 SXM5 Cluster",
+      "gflops_per_watt": 52.44,
+      "country": "US"
+    },
+    {
+      "rank": 3,
+      "system": "AMD MI300X Cluster",
+      "gflops_per_watt": 49.18,
+      "country": "US"
+    },
+    {
+      "rank": 4,
+      "system": "Intel Gaudi3 Cluster",
+      "gflops_per_watt": 45.67,
+      "country": "US"
+    },
+    {
+      "rank": 5,
+      "system": "NVIDIA H200 SXM Cluster",
+      "gflops_per_watt": 51.22,
+      "country": "EU"
+    },
+    {
+      "rank": 6,
+      "system": "Google TPU v5p Pod",
+      "gflops_per_watt": 44.89,
+      "country": "US"
+    },
+    {
+      "rank": 7,
+      "system": "AWS Trainium2 UltraCluster",
+      "gflops_per_watt": 43.21,
+      "country": "US"
+    },
+    {
+      "rank": 8,
+      "system": "AMD MI350X Cluster",
+      "gflops_per_watt": 47.55,
+      "country": "US"
+    },
+    {
+      "rank": 9,
+      "system": "NVIDIA A100 SXM4 Cluster",
+      "gflops_per_watt": 38.76,
+      "country": "JP"
+    },
+    {
+      "rank": 10,
+      "system": "Intel Gaudi2 Cluster",
+      "gflops_per_watt": 36.14,
+      "country": "EU"
+    }
+  ],
+  "datacenter_pue": {
+    "google": {
+      "avg_pue": 1.1,
+      "best_pue": 1.06,
+      "year": 2025,
+      "source": "Google Sustainability Report"
+    },
+    "microsoft": {
+      "avg_pue": 1.18,
+      "best_pue": 1.12,
+      "year": 2025,
+      "source": "Microsoft Sustainability Report"
+    },
+    "aws": {
+      "avg_pue": 1.15,
+      "best_pue": 1.08,
+      "year": 2025,
+      "source": "AWS Sustainability Report"
+    },
+    "meta": {
+      "avg_pue": 1.09,
+      "best_pue": 1.07,
+      "year": 2025,
+      "source": "Meta Sustainability Report"
+    },
+    "oracle": {
+      "avg_pue": 1.2,
+      "best_pue": 1.15,
+      "year": 2025,
+      "source": "Oracle Cloud Infra Docs"
+    },
+    "coreweave": {
+      "avg_pue": 1.25,
+      "best_pue": 1.18,
+      "year": 2025,
+      "source": "CoreWeave Blog"
+    }
+  },
+  "tco_estimates": {
+    "h100_sxm5": {
+      "capex_usd": 30000,
+      "annual_energy_kwh": 6132.0,
+      "annual_energy_cost_usd": 399.0,
+      "3yr_tco_est_usd": 31196.0
+    },
+    "mi300x": {
+      "capex_usd": 20000,
+      "annual_energy_kwh": 6570.0,
+      "annual_energy_cost_usd": 427.0,
+      "3yr_tco_est_usd": 21281.0
+    },
+    "b200_sxm": {
+      "capex_usd": 70000,
+      "annual_energy_kwh": 8760.0,
+      "annual_energy_cost_usd": 569.0,
+      "3yr_tco_est_usd": 71708.0
+    },
+    "a100_sxm4": {
+      "capex_usd": 12000,
+      "annual_energy_kwh": 3504.0,
+      "annual_energy_cost_usd": 228.0,
+      "3yr_tco_est_usd": 12683.0
+    },
+    "gaudi3": {
+      "capex_usd": 15000,
+      "annual_energy_kwh": 7884.0,
+      "annual_energy_cost_usd": 512.0,
+      "3yr_tco_est_usd": 16537.0
+    }
+  }
+}
