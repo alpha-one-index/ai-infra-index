@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2026-03-13T23:00:28Z",
+    "updated": "2026-03-13T23:55:54Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
@@ -118,9 +118,9 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.88,
+        "on_demand": 0.86,
         "offers_sampled": 4,
-        "price_min": 0.67,
+        "price_min": 0.71,
         "price_max": 1.21
       },
       {
@@ -136,10 +136,10 @@
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.84,
-        "offers_sampled": 3,
-        "price_min": 2.45,
-        "price_max": 3.23
+        "on_demand": 2.21,
+        "offers_sampled": 4,
+        "price_min": 1.99,
+        "price_max": 2.47
       },
       {
         "gpu": "L40",
@@ -163,10 +163,10 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.11,
+        "on_demand": 0.12,
         "offers_sampled": 1,
-        "price_min": 0.11,
-        "price_max": 0.11
+        "price_min": 0.12,
+        "price_max": 0.12
       },
       {
         "gpu": "RTX 4090",
@@ -175,25 +175,25 @@
         "on_demand": 0.43,
         "offers_sampled": 4,
         "price_min": 0.38,
-        "price_max": 0.57
+        "price_max": 0.67
       },
       {
         "gpu": "RTX A5000",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.19,
+        "on_demand": 0.16,
         "offers_sampled": 1,
-        "price_min": 0.19,
-        "price_max": 0.19
+        "price_min": 0.16,
+        "price_max": 0.16
       },
       {
         "gpu": "RTX A6000",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 0.4,
+        "on_demand": 0.37,
         "offers_sampled": 1,
-        "price_min": 0.4,
-        "price_max": 0.4
+        "price_min": 0.37,
+        "price_max": 0.37
       }
     ],
     "RunPod": [
@@ -294,7 +294,8 @@
         "mem": 12,
         "on_demand": 0.19,
         "secure_price": 0.5,
-        "spot": 0.1
+        "spot": 0.1,
+        "min_bid": 0.1
       },
       {
         "gpu": "RTX 4080",
@@ -514,8 +515,7 @@
         "cnt": 1,
         "mem": 16,
         "on_demand": 0.19,
-        "spot": 0.1,
-        "min_bid": 0.1
+        "spot": 0.1
       },
       {
         "gpu": "V100 SXM2",
