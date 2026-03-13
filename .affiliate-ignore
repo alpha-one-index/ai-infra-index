@@ -1,0 +1,11 @@
+# Files excluded from affiliate link injection
+# Used by seo-expansion-private/scripts/inject_affiliate_links.py
+# This repo (ai-infra-index) stays vendor-neutral as the authoritative reference.
+
+README.md
+index.html
+CONTRIBUTING.md
+METHODOLOGY.md
+CHANGELOG.md
+provenance.md
+FRESHNESS.md
