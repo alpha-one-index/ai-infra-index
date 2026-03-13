@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2026-03-13T11:00:40Z",
+    "updated": "2026-03-13T11:45:56Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
@@ -118,27 +118,27 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.88,
+        "on_demand": 0.89,
         "offers_sampled": 4,
-        "price_min": 0.67,
-        "price_max": 1.26
+        "price_min": 0.53,
+        "price_max": 1.32
       },
       {
         "gpu": "H100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 1.87,
-        "offers_sampled": 1,
-        "price_min": 1.87,
-        "price_max": 1.87
+        "on_demand": 1.5,
+        "offers_sampled": 2,
+        "price_min": 1.47,
+        "price_max": 1.54
       },
       {
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.61,
+        "on_demand": 2.84,
         "offers_sampled": 3,
-        "price_min": 2.49,
+        "price_min": 2.61,
         "price_max": 3.23
       },
       {
@@ -163,10 +163,10 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.17,
-        "offers_sampled": 1,
-        "price_min": 0.17,
-        "price_max": 0.17
+        "on_demand": 0.16,
+        "offers_sampled": 2,
+        "price_min": 0.12,
+        "price_max": 0.2
       },
       {
         "gpu": "RTX 4090",
@@ -174,26 +174,26 @@
         "mem": 24,
         "on_demand": 0.43,
         "offers_sampled": 4,
-        "price_min": 0.3,
-        "price_max": 0.67
+        "price_min": 0.38,
+        "price_max": 0.52
       },
       {
         "gpu": "RTX A4000",
         "cnt": 1,
         "mem": 16,
-        "on_demand": 0.07,
+        "on_demand": 0.09,
         "offers_sampled": 1,
-        "price_min": 0.07,
-        "price_max": 0.07
+        "price_min": 0.09,
+        "price_max": 0.09
       },
       {
-        "gpu": "RTX A5000",
+        "gpu": "RTX A6000",
         "cnt": 1,
-        "mem": 24,
-        "on_demand": 0.19,
+        "mem": 48,
+        "on_demand": 0.4,
         "offers_sampled": 1,
-        "price_min": 0.19,
-        "price_max": 0.19
+        "price_min": 0.4,
+        "price_max": 0.4
       }
     ],
     "RunPod": [
@@ -228,8 +228,7 @@
         "mem": 48,
         "on_demand": 0.35,
         "secure_price": 0.4,
-        "spot": 0.24,
-        "min_bid": 0.24
+        "spot": 0.24
       },
       {
         "gpu": "B200",
@@ -267,8 +266,7 @@
         "cnt": 1,
         "mem": 12,
         "on_demand": 0.18,
-        "spot": 0.09,
-        "min_bid": 0.09
+        "spot": 0.09
       },
       {
         "gpu": "RTX 3090",
@@ -364,7 +362,8 @@
         "mem": 80,
         "on_demand": 1.99,
         "secure_price": 2.39,
-        "spot": 1.35
+        "spot": 1.35,
+        "min_bid": 1.35
       },
       {
         "gpu": "H200 SXM",
