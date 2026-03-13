@@ -118,7 +118,7 @@
         {
           "@type": "prov:Entity",
           "name": "RunPod Pricing",
-          "url": "https://www.runpod.io/pricing",
+          "url": "https://get.runpod.io/rycwc72ktzn7",
           "collectionMethod": "manual_curation",
           "updateFrequency": "monthly",
           "isFirstParty": true
@@ -150,7 +150,7 @@
         {
           "@type": "prov:Entity",
           "name": "Vast.ai Pricing",
-          "url": "https://vast.ai/pricing",
+          "url": "https://cloud.vast.ai/?ref_id=428013",
           "collectionMethod": "manual_curation",
           "updateFrequency": "monthly",
           "isFirstParty": true
@@ -158,7 +158,7 @@
         {
           "@type": "prov:Entity",
           "name": "Vultr Pricing",
-          "url": "https://www.vultr.com/pricing/#cloud-gpu",
+          "url": "https://www.vultr.com/?ref=9877855",
           "collectionMethod": "manual_curation",
           "updateFrequency": "monthly",
           "isFirstParty": true
