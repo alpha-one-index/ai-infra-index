@@ -16,6 +16,8 @@
 
 <!-- /sponsors -->
 
+> **Affiliate Disclosure:** Some links in this repository are affiliate links. We earn commissions when you sign up or make purchases through these links, at no additional cost to you. This helps support the ongoing maintenance and development of this open-source project. All data and recommendations remain independent and unbiased.
+
 ### Live Demos & Data Access
 
 | Platform | Link | Description |
