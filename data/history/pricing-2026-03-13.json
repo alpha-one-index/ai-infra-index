@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2026-03-13T21:05:38Z",
+    "updated": "2026-03-13T22:00:28Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
@@ -118,10 +118,10 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.83,
-        "offers_sampled": 4,
-        "price_min": 0.64,
-        "price_max": 1.04
+        "on_demand": 1.07,
+        "offers_sampled": 3,
+        "price_min": 0.79,
+        "price_max": 1.26
       },
       {
         "gpu": "H100 SXM",
@@ -136,9 +136,9 @@
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 3.02,
-        "offers_sampled": 4,
-        "price_min": 2.48,
+        "on_demand": 2.46,
+        "offers_sampled": 3,
+        "price_min": 1.99,
         "price_max": 3.23
       },
       {
@@ -163,28 +163,19 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.2,
+        "on_demand": 0.16,
         "offers_sampled": 2,
-        "price_min": 0.16,
-        "price_max": 0.24
+        "price_min": 0.11,
+        "price_max": 0.2
       },
       {
         "gpu": "RTX 4090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.43,
+        "on_demand": 0.41,
         "offers_sampled": 4,
-        "price_min": 0.27,
-        "price_max": 0.67
-      },
-      {
-        "gpu": "RTX A5000",
-        "cnt": 1,
-        "mem": 24,
-        "on_demand": 0.19,
-        "offers_sampled": 1,
-        "price_min": 0.19,
-        "price_max": 0.19
+        "price_min": 0.33,
+        "price_max": 0.52
       },
       {
         "gpu": "RTX A6000",
@@ -363,8 +354,7 @@
         "mem": 80,
         "on_demand": 1.99,
         "secure_price": 2.39,
-        "spot": 1.35,
-        "min_bid": 1.35
+        "spot": 1.35
       },
       {
         "gpu": "H200 SXM",
@@ -536,6 +526,14 @@
       }
     ],
     "Lambda": [
+      {
+        "gpu": "GH200 (96 GB)",
+        "cnt": 1,
+        "mem": 432,
+        "on_demand": 1.99,
+        "per_gpu": 1.99,
+        "instance_type": "gpu_1x_gh200"
+      },
       {
         "gpu": "B200 (180 GB SXM6)",
         "cnt": 8,
