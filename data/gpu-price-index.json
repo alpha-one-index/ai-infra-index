@@ -3,7 +3,7 @@
     "name": "GPU Cloud Price Index (GCPI)",
     "description": "Proprietary price index tracking cloud GPU costs across providers over time. Base index = 100 on first tracking date.",
     "version": "1.0.0",
-    "generated": "2026-03-14T02:00:35Z",
+    "generated": "2026-03-14T03:00:29Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "methodology": "Median per-GPU-hour price across all providers and regions, normalized to base date index of 100",
@@ -25,11 +25,11 @@
     ],
     "license": "MIT - cite as: Alpha One Index. GPU Cloud Price Index (GCPI). https://github.com/alpha-one-index/ai-infra-index"
   },
-  "latest_composite_index": 95.02,
+  "latest_composite_index": 94.9,
   "latest_summary": {
     "date": "2026-03-14",
     "gpu_medians": {
-      "H100 SXM": 2.4787,
+      "H100 SXM": 2.4575,
       "A100 SXM": 1.2,
       "A10": 0.65,
       "L40S": 0.865,
@@ -69,7 +69,7 @@
       },
       "H200": {
         "provider": "Vast.ai",
-        "price": 2.84
+        "price": 2.45
       }
     }
   },
@@ -81,8 +81,8 @@
     },
     "Vast.ai": {
       "competitive_wins": 2,
-      "gpus_offered": 5,
-      "competitiveness_pct": 40.0
+      "gpus_offered": 6,
+      "competitiveness_pct": 33.3
     },
     "RunPod": {
       "competitive_wins": 2,
@@ -493,9 +493,9 @@
     },
     {
       "date": "2026-03-14",
-      "composite_index": 95.02,
+      "composite_index": 94.9,
       "gpu_index": {
-        "H100 SXM": 99.15,
+        "H100 SXM": 98.3,
         "A100 SXM": 88.89,
         "A10": 61.9,
         "L40S": 113.07,
@@ -504,7 +504,7 @@
         "H200": 96.49
       },
       "gpu_medians": {
-        "H100 SXM": 2.4787,
+        "H100 SXM": 2.4575,
         "A100 SXM": 1.2,
         "A10": 0.65,
         "L40S": 0.865,
@@ -514,7 +514,7 @@
         "H200": 3.3
       },
       "num_gpus_tracked": 8,
-      "num_skus": 43
+      "num_skus": 44
     }
   ]
 }
