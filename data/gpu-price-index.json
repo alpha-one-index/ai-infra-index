@@ -3,13 +3,13 @@
     "name": "GPU Cloud Price Index (GCPI)",
     "description": "Proprietary price index tracking cloud GPU costs across providers over time. Base index = 100 on first tracking date.",
     "version": "1.0.0",
-    "generated": "2026-03-13T23:55:56Z",
+    "generated": "2026-03-14T00:00:31Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "methodology": "Median per-GPU-hour price across all providers and regions, normalized to base date index of 100",
     "base_date": "2026-03-01",
-    "latest_date": "2026-03-13",
-    "total_snapshots": 13,
+    "latest_date": "2026-03-14",
+    "total_snapshots": 14,
     "tracked_gpus": [
       "H100 SXM",
       "H100",
@@ -27,7 +27,7 @@
   },
   "latest_composite_index": 93.35,
   "latest_summary": {
-    "date": "2026-03-13",
+    "date": "2026-03-14",
     "gpu_medians": {
       "H100 SXM": 2.4575,
       "A100 SXM": 1.2,
@@ -44,8 +44,8 @@
         "price": 1.395
       },
       "A100 SXM": {
-        "provider": "Azure",
-        "price": 0.68
+        "provider": "Vast.ai",
+        "price": 0.67
       },
       "A10": {
         "provider": "Azure",
@@ -69,7 +69,7 @@
       },
       "H200": {
         "provider": "Vast.ai",
-        "price": 2.21
+        "price": 2.44
       }
     }
   },
@@ -80,9 +80,9 @@
       "competitiveness_pct": 100.0
     },
     "Vast.ai": {
-      "competitive_wins": 2,
+      "competitive_wins": 3,
       "gpus_offered": 6,
-      "competitiveness_pct": 33.3
+      "competitiveness_pct": 50.0
     },
     "RunPod": {
       "competitive_wins": 2,
@@ -468,6 +468,31 @@
     },
     {
       "date": "2026-03-13",
+      "composite_index": 93.35,
+      "gpu_index": {
+        "H100 SXM": 98.3,
+        "A100 SXM": 88.89,
+        "A10": 61.9,
+        "L40S": 113.07,
+        "RTX 4090": 102.94,
+        "RTX 3090": 91.89,
+        "H200": 96.49
+      },
+      "gpu_medians": {
+        "H100 SXM": 2.4575,
+        "A100 SXM": 1.2,
+        "A10": 0.65,
+        "L40S": 0.865,
+        "L4": 0.44,
+        "RTX 4090": 0.35,
+        "RTX 3090": 0.17,
+        "H200": 3.3
+      },
+      "num_gpus_tracked": 8,
+      "num_skus": 44
+    },
+    {
+      "date": "2026-03-14",
       "composite_index": 93.35,
       "gpu_index": {
         "H100 SXM": 98.3,
