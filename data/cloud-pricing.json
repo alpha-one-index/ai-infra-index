@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "updated": "2026-03-14T11:00:53Z",
+    "updated": "2026-03-14T11:48:08Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
-    "total_skus": 108,
+    "total_skus": 110,
     "live_providers": [
       "Azure",
       "Vast.ai",
@@ -118,7 +118,7 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.86,
+        "on_demand": 0.93,
         "offers_sampled": 4,
         "price_min": 0.67,
         "price_max": 1.21
@@ -136,10 +136,10 @@
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.4,
+        "on_demand": 2.36,
         "offers_sampled": 4,
-        "price_min": 1.94,
-        "price_max": 2.84
+        "price_min": 1.97,
+        "price_max": 3.23
       },
       {
         "gpu": "L40",
@@ -163,19 +163,37 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.17,
+        "on_demand": 0.14,
         "offers_sampled": 2,
-        "price_min": 0.14,
-        "price_max": 0.2
+        "price_min": 0.13,
+        "price_max": 0.15
       },
       {
         "gpu": "RTX 4090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.41,
+        "on_demand": 0.43,
         "offers_sampled": 4,
-        "price_min": 0.24,
+        "price_min": 0.31,
         "price_max": 0.67
+      },
+      {
+        "gpu": "RTX A5000",
+        "cnt": 1,
+        "mem": 24,
+        "on_demand": 0.19,
+        "offers_sampled": 1,
+        "price_min": 0.19,
+        "price_max": 0.19
+      },
+      {
+        "gpu": "RTX A6000",
+        "cnt": 1,
+        "mem": 48,
+        "on_demand": 0.37,
+        "offers_sampled": 1,
+        "price_min": 0.37,
+        "price_max": 0.37
       }
     ],
     "RunPod": [
@@ -276,7 +294,8 @@
         "mem": 12,
         "on_demand": 0.19,
         "secure_price": 0.5,
-        "spot": 0.1
+        "spot": 0.1,
+        "min_bid": 0.1
       },
       {
         "gpu": "RTX 4080",
