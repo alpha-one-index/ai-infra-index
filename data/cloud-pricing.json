@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "updated": "2026-03-14T09:04:08Z",
+    "updated": "2026-03-14T10:00:54Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
-    "total_skus": 110,
+    "total_skus": 109,
     "live_providers": [
       "Azure",
       "Vast.ai",
@@ -120,8 +120,8 @@
         "mem": 80,
         "on_demand": 0.9,
         "offers_sampled": 4,
-        "price_min": 0.67,
-        "price_max": 1.14
+        "price_min": 0.73,
+        "price_max": 1.21
       },
       {
         "gpu": "H100 SXM",
@@ -136,10 +136,10 @@
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.33,
-        "offers_sampled": 4,
-        "price_min": 2.21,
-        "price_max": 2.45
+        "on_demand": 2.3,
+        "offers_sampled": 3,
+        "price_min": 1.94,
+        "price_max": 2.33
       },
       {
         "gpu": "L40",
@@ -163,37 +163,28 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.14,
-        "offers_sampled": 2,
-        "price_min": 0.14,
-        "price_max": 0.14
+        "on_demand": 0.18,
+        "offers_sampled": 3,
+        "price_min": 0.12,
+        "price_max": 0.2
       },
       {
         "gpu": "RTX 4090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.44,
+        "on_demand": 0.38,
         "offers_sampled": 4,
         "price_min": 0.32,
-        "price_max": 0.57
-      },
-      {
-        "gpu": "RTX A5000",
-        "cnt": 1,
-        "mem": 24,
-        "on_demand": 0.16,
-        "offers_sampled": 1,
-        "price_min": 0.16,
-        "price_max": 0.16
+        "price_max": 0.47
       },
       {
         "gpu": "RTX A6000",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 0.4,
+        "on_demand": 0.37,
         "offers_sampled": 1,
-        "price_min": 0.4,
-        "price_max": 0.4
+        "price_min": 0.37,
+        "price_max": 0.37
       }
     ],
     "RunPod": [
