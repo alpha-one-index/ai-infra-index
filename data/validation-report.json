@@ -1,7 +1,7 @@
 {
   "validation_run": {
-    "timestamp": "2026-03-14T13:58:10.668946+00:00",
-    "duration_seconds": 0.002714,
+    "timestamp": "2026-03-14T15:00:32.762720+00:00",
+    "duration_seconds": 0.002383,
     "repository": "alpha-one-index/ai-infra-index",
     "script_version": "1.0.0"
   },
@@ -19,7 +19,7 @@
       "passed": true,
       "message": "",
       "severity": "error",
-      "timestamp": "2026-03-14T13:58:10.668993+00:00"
+      "timestamp": "2026-03-14T15:00:32.762752+00:00"
     },
     {
       "category": "schema",
@@ -27,7 +27,7 @@
       "passed": true,
       "message": "",
       "severity": "error",
-      "timestamp": "2026-03-14T13:58:10.669021+00:00"
+      "timestamp": "2026-03-14T15:00:32.762803+00:00"
     },
     {
       "category": "schema",
@@ -35,7 +35,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669039+00:00"
+      "timestamp": "2026-03-14T15:00:32.762824+00:00"
     },
     {
       "category": "schema",
@@ -43,7 +43,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669052+00:00"
+      "timestamp": "2026-03-14T15:00:32.762838+00:00"
     },
     {
       "category": "schema",
@@ -51,7 +51,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669065+00:00"
+      "timestamp": "2026-03-14T15:00:32.762850+00:00"
     },
     {
       "category": "schema",
@@ -59,7 +59,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669080+00:00"
+      "timestamp": "2026-03-14T15:00:32.762865+00:00"
     },
     {
       "category": "schema",
@@ -67,7 +67,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669094+00:00"
+      "timestamp": "2026-03-14T15:00:32.762878+00:00"
     },
     {
       "category": "schema",
@@ -75,7 +75,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669112+00:00"
+      "timestamp": "2026-03-14T15:00:32.762894+00:00"
     },
     {
       "category": "schema",
@@ -83,7 +83,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669124+00:00"
+      "timestamp": "2026-03-14T15:00:32.762906+00:00"
     },
     {
       "category": "schema",
@@ -91,7 +91,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669136+00:00"
+      "timestamp": "2026-03-14T15:00:32.762918+00:00"
     },
     {
       "category": "schema",
@@ -99,7 +99,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669147+00:00"
+      "timestamp": "2026-03-14T15:00:32.762929+00:00"
     },
     {
       "category": "schema",
@@ -107,7 +107,7 @@
       "passed": true,
       "message": "",
       "severity": "error",
-      "timestamp": "2026-03-14T13:58:10.669311+00:00"
+      "timestamp": "2026-03-14T15:00:32.763034+00:00"
     },
     {
       "category": "schema",
@@ -115,7 +115,7 @@
       "passed": true,
       "message": "",
       "severity": "error",
-      "timestamp": "2026-03-14T13:58:10.669325+00:00"
+      "timestamp": "2026-03-14T15:00:32.763044+00:00"
     },
     {
       "category": "schema",
@@ -123,7 +123,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669329+00:00"
+      "timestamp": "2026-03-14T15:00:32.763047+00:00"
     },
     {
       "category": "schema",
@@ -131,7 +131,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669331+00:00"
+      "timestamp": "2026-03-14T15:00:32.763050+00:00"
     },
     {
       "category": "schema",
@@ -139,7 +139,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669333+00:00"
+      "timestamp": "2026-03-14T15:00:32.763052+00:00"
     },
     {
       "category": "schema",
@@ -147,7 +147,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669336+00:00"
+      "timestamp": "2026-03-14T15:00:32.763054+00:00"
     },
     {
       "category": "schema",
@@ -155,7 +155,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669338+00:00"
+      "timestamp": "2026-03-14T15:00:32.763056+00:00"
     },
     {
       "category": "schema",
@@ -163,7 +163,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669341+00:00"
+      "timestamp": "2026-03-14T15:00:32.763058+00:00"
     },
     {
       "category": "schema",
@@ -171,7 +171,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669348+00:00"
+      "timestamp": "2026-03-14T15:00:32.763063+00:00"
     },
     {
       "category": "schema",
@@ -179,7 +179,7 @@
       "passed": true,
       "message": "",
       "severity": "error",
-      "timestamp": "2026-03-14T13:58:10.669590+00:00"
+      "timestamp": "2026-03-14T15:00:32.763281+00:00"
     },
     {
       "category": "schema",
@@ -187,7 +187,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669595+00:00"
+      "timestamp": "2026-03-14T15:00:32.763286+00:00"
     },
     {
       "category": "schema",
@@ -195,7 +195,7 @@
       "passed": true,
       "message": "Found 1 top-level keys",
       "severity": "error",
-      "timestamp": "2026-03-14T13:58:10.669603+00:00"
+      "timestamp": "2026-03-14T15:00:32.763292+00:00"
     },
     {
       "category": "schema",
@@ -203,7 +203,7 @@
       "passed": true,
       "message": "",
       "severity": "error",
-      "timestamp": "2026-03-14T13:58:10.669748+00:00"
+      "timestamp": "2026-03-14T15:00:32.763421+00:00"
     },
     {
       "category": "schema",
@@ -211,7 +211,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669754+00:00"
+      "timestamp": "2026-03-14T15:00:32.763426+00:00"
     },
     {
       "category": "schema",
@@ -219,7 +219,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.669756+00:00"
+      "timestamp": "2026-03-14T15:00:32.763428+00:00"
     },
     {
       "category": "schema",
@@ -227,7 +227,7 @@
       "passed": true,
       "message": "",
       "severity": "error",
-      "timestamp": "2026-03-14T13:58:10.669851+00:00"
+      "timestamp": "2026-03-14T15:00:32.763521+00:00"
     },
     {
       "category": "schema",
@@ -235,7 +235,7 @@
       "passed": true,
       "message": "",
       "severity": "error",
-      "timestamp": "2026-03-14T13:58:10.669858+00:00"
+      "timestamp": "2026-03-14T15:00:32.763526+00:00"
     },
     {
       "category": "links",
@@ -243,7 +243,7 @@
       "passed": true,
       "message": "Skipped (--skip-links)",
       "severity": "info",
-      "timestamp": "2026-03-14T13:58:10.669882+00:00"
+      "timestamp": "2026-03-14T15:00:32.763549+00:00"
     },
     {
       "category": "prices",
@@ -251,7 +251,7 @@
       "passed": false,
       "message": "Could not extract any pricing entries",
       "severity": "error",
-      "timestamp": "2026-03-14T13:58:10.670273+00:00"
+      "timestamp": "2026-03-14T15:00:32.763921+00:00"
     },
     {
       "category": "freshness",
@@ -259,7 +259,7 @@
       "passed": true,
       "message": "Last modified 0 days ago (max: 2)",
       "severity": "info",
-      "timestamp": "2026-03-14T13:58:10.670326+00:00"
+      "timestamp": "2026-03-14T15:00:32.763967+00:00"
     },
     {
       "category": "freshness",
@@ -267,7 +267,7 @@
       "passed": true,
       "message": "Last modified 0 days ago (max: 90)",
       "severity": "info",
-      "timestamp": "2026-03-14T13:58:10.670348+00:00"
+      "timestamp": "2026-03-14T15:00:32.763989+00:00"
     },
     {
       "category": "cross-ref",
@@ -275,7 +275,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.670622+00:00"
+      "timestamp": "2026-03-14T15:00:32.764227+00:00"
     },
     {
       "category": "cross-ref",
@@ -283,7 +283,7 @@
       "passed": true,
       "message": "",
       "severity": "error",
-      "timestamp": "2026-03-14T13:58:10.670874+00:00"
+      "timestamp": "2026-03-14T15:00:32.764470+00:00"
     },
     {
       "category": "cross-ref",
@@ -291,7 +291,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.670974+00:00"
+      "timestamp": "2026-03-14T15:00:32.764568+00:00"
     },
     {
       "category": "cross-ref",
@@ -299,7 +299,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.670991+00:00"
+      "timestamp": "2026-03-14T15:00:32.764584+00:00"
     },
     {
       "category": "cross-ref",
@@ -307,7 +307,7 @@
       "passed": true,
       "message": "",
       "severity": "warning",
-      "timestamp": "2026-03-14T13:58:10.671003+00:00"
+      "timestamp": "2026-03-14T15:00:32.764596+00:00"
     },
     {
       "category": "integrity",
@@ -315,15 +315,15 @@
       "passed": true,
       "message": "",
       "severity": "info",
-      "timestamp": "2026-03-14T13:58:10.671092+00:00"
+      "timestamp": "2026-03-14T15:00:32.764653+00:00"
     },
     {
       "category": "integrity",
-      "name": "SHA-256 for data/cloud-pricing.json: 6429db098db9c5d6...",
+      "name": "SHA-256 for data/cloud-pricing.json: d86640010cc08f2f...",
       "passed": true,
       "message": "",
       "severity": "info",
-      "timestamp": "2026-03-14T13:58:10.671139+00:00"
+      "timestamp": "2026-03-14T15:00:32.764700+00:00"
     }
   ]
 }
