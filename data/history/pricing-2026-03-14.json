@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2026-03-14T18:01:12Z",
+    "updated": "2026-03-14T19:01:07Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
@@ -118,19 +118,19 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.91,
+        "on_demand": 0.89,
         "offers_sampled": 4,
-        "price_min": 0.67,
-        "price_max": 1.23
+        "price_min": 0.71,
+        "price_max": 1.2
       },
       {
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.84,
+        "on_demand": 2.31,
         "offers_sampled": 3,
-        "price_min": 2.2,
-        "price_max": 3.21
+        "price_min": 2.07,
+        "price_max": 2.84
       },
       {
         "gpu": "L40",
@@ -154,9 +154,9 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.14,
+        "on_demand": 0.16,
         "offers_sampled": 3,
-        "price_min": 0.1,
+        "price_min": 0.16,
         "price_max": 0.2
       },
       {
@@ -165,7 +165,7 @@
         "mem": 24,
         "on_demand": 0.43,
         "offers_sampled": 4,
-        "price_min": 0.24,
+        "price_min": 0.31,
         "price_max": 0.67
       },
       {
@@ -495,14 +495,16 @@
         "cnt": 1,
         "mem": 16,
         "on_demand": 0.19,
-        "spot": 0.1
+        "spot": 0.1,
+        "min_bid": 0.1
       },
       {
         "gpu": "V100 SXM2",
         "cnt": 1,
         "mem": 16,
         "on_demand": 0.23,
-        "spot": 0.12
+        "spot": 0.12,
+        "min_bid": 0.12
       },
       {
         "gpu": "V100 SXM2 32GB",
