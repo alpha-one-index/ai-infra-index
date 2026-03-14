@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2026-03-14T03:00:28Z",
+    "updated": "2026-03-14T04:00:29Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
@@ -120,8 +120,8 @@
         "mem": 80,
         "on_demand": 0.88,
         "offers_sampled": 4,
-        "price_min": 0.64,
-        "price_max": 1.26
+        "price_min": 0.62,
+        "price_max": 1.21
       },
       {
         "gpu": "H100 SXM",
@@ -136,10 +136,10 @@
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.45,
+        "on_demand": 2.39,
         "offers_sampled": 4,
-        "price_min": 2.4,
-        "price_max": 3.23
+        "price_min": 2.33,
+        "price_max": 2.45
       },
       {
         "gpu": "L40",
@@ -163,8 +163,8 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.16,
-        "offers_sampled": 2,
+        "on_demand": 0.15,
+        "offers_sampled": 3,
         "price_min": 0.12,
         "price_max": 0.2
       },
@@ -172,10 +172,10 @@
         "gpu": "RTX 4090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.4,
+        "on_demand": 0.43,
         "offers_sampled": 4,
-        "price_min": 0.35,
-        "price_max": 0.47
+        "price_min": 0.37,
+        "price_max": 0.67
       },
       {
         "gpu": "RTX A6000",
@@ -250,8 +250,7 @@
         "cnt": 1,
         "mem": 10,
         "on_demand": 0.17,
-        "spot": 0.09,
-        "min_bid": 0.09
+        "spot": 0.09
       },
       {
         "gpu": "RTX 3080 Ti",
@@ -355,8 +354,7 @@
         "mem": 80,
         "on_demand": 1.99,
         "secure_price": 2.39,
-        "spot": 1.35,
-        "min_bid": 1.35
+        "spot": 1.35
       },
       {
         "gpu": "H200 SXM",
@@ -506,8 +504,7 @@
         "cnt": 1,
         "mem": 16,
         "on_demand": 0.19,
-        "spot": 0.1,
-        "min_bid": 0.1
+        "spot": 0.1
       },
       {
         "gpu": "V100 SXM2",
