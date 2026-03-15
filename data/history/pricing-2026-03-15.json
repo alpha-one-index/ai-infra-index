@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "updated": "2026-03-15T14:59:51Z",
+    "updated": "2026-03-15T15:00:54Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
-    "total_skus": 110,
+    "total_skus": 111,
     "live_providers": [
       "Azure",
       "Vast.ai",
@@ -121,16 +121,16 @@
         "on_demand": 0.88,
         "offers_sampled": 4,
         "price_min": 0.62,
-        "price_max": 1.25
+        "price_max": 1.18
       },
       {
         "gpu": "H100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 1.68,
+        "on_demand": 1.87,
         "offers_sampled": 1,
-        "price_min": 1.68,
-        "price_max": 1.68
+        "price_min": 1.87,
+        "price_max": 1.87
       },
       {
         "gpu": "H200",
@@ -163,19 +163,28 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.2,
-        "offers_sampled": 3,
+        "on_demand": 0.12,
+        "offers_sampled": 1,
         "price_min": 0.12,
-        "price_max": 0.24
+        "price_max": 0.12
       },
       {
         "gpu": "RTX 4090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.44,
+        "on_demand": 0.36,
         "offers_sampled": 4,
-        "price_min": 0.4,
-        "price_max": 0.6
+        "price_min": 0.35,
+        "price_max": 0.47
+      },
+      {
+        "gpu": "RTX A5000",
+        "cnt": 1,
+        "mem": 24,
+        "on_demand": 0.19,
+        "offers_sampled": 1,
+        "price_min": 0.19,
+        "price_max": 0.19
       },
       {
         "gpu": "RTX A6000",
@@ -219,8 +228,7 @@
         "mem": 48,
         "on_demand": 0.35,
         "secure_price": 0.4,
-        "spot": 0.24,
-        "min_bid": 0.24
+        "spot": 0.24
       },
       {
         "gpu": "B200",
@@ -477,7 +485,8 @@
         "mem": 48,
         "on_demand": 0.33,
         "secure_price": 0.49,
-        "spot": 0.25
+        "spot": 0.25,
+        "min_bid": 0.25
       },
       {
         "gpu": "RTX PRO 4500",
