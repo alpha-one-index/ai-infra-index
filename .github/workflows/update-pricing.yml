@@ -114,6 +114,7 @@ jobs:
           else
             TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
             git commit -m "chore: auto-update cloud pricing data [${TIMESTAMP}]"
+                                      git pull --rebase origin main
             git push
             echo "Changes committed and pushed"
           fi
