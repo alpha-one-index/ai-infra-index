@@ -3,7 +3,7 @@
     "title": "AI Energy & Power Index",
     "version": "1.3.0-preview",
     "description": "Live TDP, perf/watt, PUE, and TCO estimates for AI accelerators and cloud data centers.",
-    "updated_utc": "2026-03-15T11:01:54.243539+00:00",
+    "updated_utc": "2026-03-15T14:00:43.760814+00:00",
     "sources": [
       "MLPerf Power",
       "Green500",
