@@ -31,7 +31,7 @@ jobs:
   content-refresh:
     name: Refresh Stale Content Pages
     runs-on: ubuntu-latest
-        timeout-minutes: 200
+    timeout-minutes: 200
 
     steps:
       - name: Checkout repository
