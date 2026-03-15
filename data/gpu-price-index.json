@@ -3,7 +3,7 @@
     "name": "GPU Cloud Price Index (GCPI)",
     "description": "Proprietary price index tracking cloud GPU costs across providers over time. Base index = 100 on first tracking date.",
     "version": "1.0.0",
-    "generated": "2026-03-15T21:53:36Z",
+    "generated": "2026-03-15T22:01:00Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "methodology": "Median per-GPU-hour price across all providers and regions, normalized to base date index of 100",
@@ -45,7 +45,7 @@
       },
       "A100 SXM": {
         "provider": "Vast.ai",
-        "price": 0.66
+        "price": 0.67
       },
       "A10": {
         "provider": "Azure",
@@ -69,7 +69,7 @@
       },
       "H200": {
         "provider": "Vast.ai",
-        "price": 1.99
+        "price": 2.59
       }
     }
   },

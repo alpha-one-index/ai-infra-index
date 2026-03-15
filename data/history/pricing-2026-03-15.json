@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2026-03-15T21:53:34Z",
+    "updated": "2026-03-15T22:00:56Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
@@ -118,10 +118,10 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.66,
+        "on_demand": 0.67,
         "offers_sampled": 3,
         "price_min": 0.53,
-        "price_max": 1.02
+        "price_max": 1.03
       },
       {
         "gpu": "H100 SXM",
@@ -136,7 +136,7 @@
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 1.99,
+        "on_demand": 2.59,
         "offers_sampled": 3,
         "price_min": 1.82,
         "price_max": 3.23
@@ -165,17 +165,17 @@
         "mem": 24,
         "on_demand": 0.16,
         "offers_sampled": 3,
-        "price_min": 0.14,
+        "price_min": 0.12,
         "price_max": 0.2
       },
       {
         "gpu": "RTX 4090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.38,
+        "on_demand": 0.43,
         "offers_sampled": 4,
-        "price_min": 0.24,
-        "price_max": 0.47
+        "price_min": 0.37,
+        "price_max": 0.55
       },
       {
         "gpu": "RTX A6000",
@@ -408,8 +408,7 @@
         "mem": 20,
         "on_demand": 0.2,
         "secure_price": 0.26,
-        "spot": 0.1,
-        "min_bid": 0.1
+        "spot": 0.1
       },
       {
         "gpu": "RTX 4000 Ada SFF",
