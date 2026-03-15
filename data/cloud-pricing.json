@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "updated": "2026-03-15T17:00:36Z",
+    "updated": "2026-03-15T17:00:55Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
-    "total_skus": 111,
+    "total_skus": 110,
     "live_providers": [
       "Azure",
       "Vast.ai",
@@ -120,8 +120,8 @@
         "mem": 80,
         "on_demand": 0.86,
         "offers_sampled": 4,
-        "price_min": 0.62,
-        "price_max": 1.18
+        "price_min": 0.47,
+        "price_max": 1.2
       },
       {
         "gpu": "H100 SXM",
@@ -136,37 +136,37 @@
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.11,
+        "on_demand": 1.99,
         "offers_sampled": 4,
-        "price_min": 1.99,
+        "price_min": 1.89,
         "price_max": 2.24
       },
       {
         "gpu": "L40",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 0.58,
+        "on_demand": 0.34,
         "offers_sampled": 1,
-        "price_min": 0.58,
-        "price_max": 0.58
+        "price_min": 0.34,
+        "price_max": 0.34
       },
       {
         "gpu": "L40S",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 0.94,
+        "on_demand": 1.21,
         "offers_sampled": 1,
-        "price_min": 0.94,
-        "price_max": 0.94
+        "price_min": 1.21,
+        "price_max": 1.21
       },
       {
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.09,
-        "offers_sampled": 1,
-        "price_min": 0.09,
-        "price_max": 0.09
+        "on_demand": 0.18,
+        "offers_sampled": 2,
+        "price_min": 0.12,
+        "price_max": 0.24
       },
       {
         "gpu": "RTX 4090",
@@ -174,7 +174,7 @@
         "mem": 24,
         "on_demand": 0.43,
         "offers_sampled": 4,
-        "price_min": 0.37,
+        "price_min": 0.32,
         "price_max": 0.67
       },
       {
@@ -185,15 +185,6 @@
         "offers_sampled": 1,
         "price_min": 0.17,
         "price_max": 0.17
-      },
-      {
-        "gpu": "RTX A6000",
-        "cnt": 1,
-        "mem": 48,
-        "on_demand": 0.4,
-        "offers_sampled": 1,
-        "price_min": 0.4,
-        "price_max": 0.4
       }
     ],
     "RunPod": [
