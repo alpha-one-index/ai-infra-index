@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "updated": "2026-03-15T22:00:56Z",
+    "updated": "2026-03-15T22:59:45Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
@@ -118,37 +118,37 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.67,
+        "on_demand": 0.66,
         "offers_sampled": 3,
         "price_min": 0.53,
-        "price_max": 1.03
+        "price_max": 1.02
       },
       {
         "gpu": "H100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 1.87,
+        "on_demand": 1.67,
         "offers_sampled": 1,
-        "price_min": 1.87,
-        "price_max": 1.87
+        "price_min": 1.67,
+        "price_max": 1.67
       },
       {
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.59,
-        "offers_sampled": 3,
-        "price_min": 1.82,
-        "price_max": 3.23
+        "on_demand": 2.19,
+        "offers_sampled": 4,
+        "price_min": 1.81,
+        "price_max": 2.44
       },
       {
         "gpu": "L40",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 0.58,
+        "on_demand": 0.34,
         "offers_sampled": 1,
-        "price_min": 0.58,
-        "price_max": 0.58
+        "price_min": 0.34,
+        "price_max": 0.34
       },
       {
         "gpu": "L40S",
@@ -163,9 +163,9 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.16,
-        "offers_sampled": 3,
-        "price_min": 0.12,
+        "on_demand": 0.15,
+        "offers_sampled": 2,
+        "price_min": 0.09,
         "price_max": 0.2
       },
       {
@@ -174,17 +174,17 @@
         "mem": 24,
         "on_demand": 0.43,
         "offers_sampled": 4,
-        "price_min": 0.37,
-        "price_max": 0.55
+        "price_min": 0.24,
+        "price_max": 0.67
       },
       {
         "gpu": "RTX A6000",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 0.37,
+        "on_demand": 0.4,
         "offers_sampled": 1,
-        "price_min": 0.37,
-        "price_max": 0.37
+        "price_min": 0.4,
+        "price_max": 0.4
       }
     ],
     "RunPod": [
@@ -408,7 +408,8 @@
         "mem": 20,
         "on_demand": 0.2,
         "secure_price": 0.26,
-        "spot": 0.1
+        "spot": 0.1,
+        "min_bid": 0.1
       },
       {
         "gpu": "RTX 4000 Ada SFF",
@@ -513,7 +514,8 @@
         "cnt": 1,
         "mem": 16,
         "on_demand": 0.19,
-        "spot": 0.1
+        "spot": 0.1,
+        "min_bid": 0.1
       },
       {
         "gpu": "V100 SXM2",
