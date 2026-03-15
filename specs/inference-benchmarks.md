@@ -154,3 +154,5 @@ This document compiles inference performance data from MLPerf, vendor publicatio
 ---
 
 *Part of the [AI Infrastructure Index](https://github.com/alpha-one-index/ai-infra-index) — Maintained by [Alpha One Index](https://github.com/alpha-one-index)*
+
+<!-- last_reviewed: 2026-03-15 -->

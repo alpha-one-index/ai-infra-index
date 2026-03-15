@@ -1,9 +1,8 @@
 {
-  "refreshed_at": "2026-03-11T18:26:49.413124+00:00",
+  "refreshed_at": "2026-03-15T13:08:34.749461+00:00",
   "files": [
-    "data/history/pricing-2026-03-05.json",
-    "data/history/pricing-2026-03-01.json",
-    "specs/training-costs.md"
+    "specs/inference-benchmarks.md",
+    "specs/ai-accelerators.html"
   ],
-  "count": 3
+  "count": 2
 }
