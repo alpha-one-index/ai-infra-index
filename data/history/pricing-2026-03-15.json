@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "updated": "2026-03-15T10:00:51Z",
+    "updated": "2026-03-15T11:00:33Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "providers_count": 12,
-    "total_skus": 110,
+    "total_skus": 109,
     "live_providers": [
       "Azure",
       "Vast.ai",
@@ -118,9 +118,9 @@
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.93,
+        "on_demand": 0.92,
         "offers_sampled": 4,
-        "price_min": 0.73,
+        "price_min": 0.67,
         "price_max": 1.23
       },
       {
@@ -136,10 +136,10 @@
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 2.39,
-        "offers_sampled": 4,
+        "on_demand": 2.33,
+        "offers_sampled": 3,
         "price_min": 2.23,
-        "price_max": 2.47
+        "price_max": 2.84
       },
       {
         "gpu": "L40",
@@ -163,10 +163,10 @@
         "gpu": "RTX 3090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.17,
-        "offers_sampled": 2,
-        "price_min": 0.16,
-        "price_max": 0.17
+        "on_demand": 0.2,
+        "offers_sampled": 3,
+        "price_min": 0.12,
+        "price_max": 0.24
       },
       {
         "gpu": "RTX 4090",
@@ -174,26 +174,17 @@
         "mem": 24,
         "on_demand": 0.43,
         "offers_sampled": 4,
-        "price_min": 0.28,
-        "price_max": 0.52
-      },
-      {
-        "gpu": "RTX A5000",
-        "cnt": 1,
-        "mem": 24,
-        "on_demand": 0.19,
-        "offers_sampled": 1,
-        "price_min": 0.19,
-        "price_max": 0.19
+        "price_min": 0.32,
+        "price_max": 0.5
       },
       {
         "gpu": "RTX A6000",
         "cnt": 1,
         "mem": 48,
-        "on_demand": 0.4,
+        "on_demand": 0.37,
         "offers_sampled": 1,
-        "price_min": 0.4,
-        "price_max": 0.4
+        "price_min": 0.37,
+        "price_max": 0.37
       }
     ],
     "RunPod": [
@@ -363,7 +354,8 @@
         "mem": 80,
         "on_demand": 1.99,
         "secure_price": 2.39,
-        "spot": 1.35
+        "spot": 1.35,
+        "min_bid": 1.35
       },
       {
         "gpu": "H200 SXM",
