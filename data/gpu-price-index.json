@@ -3,7 +3,7 @@
     "name": "GPU Cloud Price Index (GCPI)",
     "description": "Proprietary price index tracking cloud GPU costs across providers over time. Base index = 100 on first tracking date.",
     "version": "1.0.0",
-    "generated": "2026-03-16T00:00:56Z",
+    "generated": "2026-03-16T01:01:15Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
     "methodology": "Median per-GPU-hour price across all providers and regions, normalized to base date index of 100",
@@ -25,13 +25,13 @@
     ],
     "license": "MIT - cite as: Alpha One Index. GPU Cloud Price Index (GCPI). https://github.com/alpha-one-index/ai-infra-index"
   },
-  "latest_composite_index": 106.46,
+  "latest_composite_index": 94.13,
   "latest_summary": {
     "date": "2026-03-16",
     "gpu_medians": {
-      "H100 SXM": 2.5,
-      "A100 SXM": 1.25,
-      "A10": 1.5,
+      "H100 SXM": 2.4575,
+      "A100 SXM": 1.2,
+      "A10": 0.65,
       "L40S": 0.865,
       "L4": 0.44,
       "RTX 4090": 0.35,
@@ -40,16 +40,16 @@
     },
     "cheapest_per_gpu": {
       "H100 SXM": {
-        "provider": "Vast.ai",
-        "price": 1.87
+        "provider": "Azure",
+        "price": 1.395
       },
       "A100 SXM": {
-        "provider": "Vast.ai",
-        "price": 0.85
+        "provider": "Azure",
+        "price": 0.68
       },
       "A10": {
-        "provider": "OCI",
-        "price": 1.5
+        "provider": "Azure",
+        "price": 0.64
       },
       "L40S": {
         "provider": "Fluidstack",
@@ -69,20 +69,20 @@
       },
       "H200": {
         "provider": "Vast.ai",
-        "price": 1.99
+        "price": 2.29
       }
     }
   },
   "provider_competitiveness": {
-    "Nebius": {
-      "competitive_wins": 1,
-      "gpus_offered": 1,
+    "Azure": {
+      "competitive_wins": 3,
+      "gpus_offered": 3,
       "competitiveness_pct": 100.0
     },
     "Vast.ai": {
-      "competitive_wins": 4,
+      "competitive_wins": 3,
       "gpus_offered": 6,
-      "competitiveness_pct": 66.7
+      "competitiveness_pct": 50.0
     },
     "RunPod": {
       "competitive_wins": 2,
@@ -99,11 +99,6 @@
       "gpus_offered": 3,
       "competitiveness_pct": 33.3
     },
-    "OCI": {
-      "competitive_wins": 1,
-      "gpus_offered": 4,
-      "competitiveness_pct": 25.0
-    },
     "CoreWeave": {
       "competitive_wins": 0,
       "gpus_offered": 4,
@@ -119,6 +114,16 @@
       "gpus_offered": 3,
       "competitiveness_pct": 0.0
     },
+    "Nebius": {
+      "competitive_wins": 0,
+      "gpus_offered": 1,
+      "competitiveness_pct": 0.0
+    },
+    "OCI": {
+      "competitive_wins": 0,
+      "gpus_offered": 4,
+      "competitiveness_pct": 0.0
+    },
     "Paperspace": {
       "competitive_wins": 0,
       "gpus_offered": 2,
@@ -128,31 +133,25 @@
   "price_movers": {
     "biggest_drops": [
       {
+        "gpu": "A10",
+        "change_pct": -38.1,
+        "old": 1.05,
+        "new": 0.65
+      },
+      {
         "gpu": "A100 SXM",
-        "change_pct": -7.41,
+        "change_pct": -11.11,
         "old": 1.35,
-        "new": 1.25
+        "new": 1.2
       },
       {
         "gpu": "H200",
         "change_pct": -3.51,
         "old": 3.42,
         "new": 3.3
-      },
-      {
-        "gpu": "RTX 3090",
-        "change_pct": -2.7,
-        "old": 0.185,
-        "new": 0.18
       }
     ],
     "biggest_increases": [
-      {
-        "gpu": "A10",
-        "change_pct": 42.86,
-        "old": 1.05,
-        "new": 1.5
-      },
       {
         "gpu": "L40S",
         "change_pct": 13.07,
@@ -164,6 +163,12 @@
         "change_pct": 2.94,
         "old": 0.34,
         "new": 0.35
+      },
+      {
+        "gpu": "H100 SXM",
+        "change_pct": -1.7,
+        "old": 2.5,
+        "new": 2.4575
       }
     ]
   },
@@ -538,20 +543,20 @@
     },
     {
       "date": "2026-03-16",
-      "composite_index": 106.46,
+      "composite_index": 94.13,
       "gpu_index": {
-        "H100 SXM": 100.0,
-        "A100 SXM": 92.59,
-        "A10": 142.86,
+        "H100 SXM": 98.3,
+        "A100 SXM": 88.89,
+        "A10": 61.9,
         "L40S": 113.07,
         "RTX 4090": 102.94,
         "RTX 3090": 97.3,
         "H200": 96.49
       },
       "gpu_medians": {
-        "H100 SXM": 2.5,
-        "A100 SXM": 1.25,
-        "A10": 1.5,
+        "H100 SXM": 2.4575,
+        "A100 SXM": 1.2,
+        "A10": 0.65,
         "L40S": 0.865,
         "L4": 0.44,
         "RTX 4090": 0.35,
@@ -559,7 +564,7 @@
         "H200": 3.3
       },
       "num_gpus_tracked": 8,
-      "num_skus": 35
+      "num_skus": 44
     }
   ]
 }

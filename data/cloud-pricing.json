@@ -1,11 +1,12 @@
 {
   "metadata": {
-    "updated": "2026-03-16T00:00:51Z",
+    "updated": "2026-03-16T01:00:52Z",
     "source": "AI Infrastructure Index",
     "url": "https://alpha-one-index.github.io/ai-infra-index/",
-    "providers_count": 11,
-    "total_skus": 101,
+    "providers_count": 12,
+    "total_skus": 111,
     "live_providers": [
+      "Azure",
       "Vast.ai",
       "RunPod",
       "Lambda"
@@ -20,7 +21,7 @@
       "Fluidstack",
       "Paperspace"
     ],
-    "methodology": "3 providers via live API; 8 curated monthly from official pricing pages",
+    "methodology": "4 providers via live API; 8 curated monthly from official pricing pages",
     "last_curated": "2026-02",
     "pricing_sources": {
       "Azure": "https://prices.azure.com/api/retail/prices",
@@ -38,15 +39,89 @@
     }
   },
   "providers": {
+    "Azure": [
+      {
+        "gpu": "H100 SXM",
+        "cnt": 2,
+        "mem": 160,
+        "on_demand": 2.79,
+        "region": "eastus2",
+        "sku": "Standard_NC80adis_H100_v5"
+      },
+      {
+        "gpu": "A100 SXM",
+        "cnt": 2,
+        "mem": 160,
+        "on_demand": 1.47,
+        "region": "eastus",
+        "sku": "Standard_NC48ads_A100_v4"
+      },
+      {
+        "gpu": "A10",
+        "cnt": 2,
+        "mem": 48,
+        "on_demand": 1.3,
+        "region": "westus2",
+        "sku": "Standard_NV72ads_A10_v5"
+      },
+      {
+        "gpu": "A10",
+        "cnt": 1,
+        "mem": 24,
+        "on_demand": 0.64,
+        "region": "eastus",
+        "sku": "Standard_NV36ads_A10_v5"
+      },
+      {
+        "gpu": "H100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 1.4,
+        "region": "westus3",
+        "sku": "Standard_NC40ads_H100_v5"
+      },
+      {
+        "gpu": "A100 SXM",
+        "cnt": 4,
+        "mem": 320,
+        "on_demand": 2.94,
+        "region": "eastus2",
+        "sku": "Standard_NC96ads_A100_v4"
+      },
+      {
+        "gpu": "H100 SXM",
+        "cnt": 8,
+        "mem": 640,
+        "on_demand": 19.66,
+        "region": "eastus2",
+        "sku": "Standard_ND96isr_H100_v5"
+      },
+      {
+        "gpu": "A100 SXM",
+        "cnt": 1,
+        "mem": 80,
+        "on_demand": 0.73,
+        "region": "westus2",
+        "sku": "Standard_NC24ads_A100_v4"
+      },
+      {
+        "gpu": "A100 SXM",
+        "cnt": 8,
+        "mem": 640,
+        "on_demand": 5.44,
+        "region": "westus2",
+        "sku": "Standard_ND96asr_v4"
+      }
+    ],
     "Vast.ai": [
       {
         "gpu": "A100 SXM",
         "cnt": 1,
         "mem": 80,
-        "on_demand": 0.85,
+        "on_demand": 0.69,
         "offers_sampled": 4,
-        "price_min": 0.67,
-        "price_max": 1.25
+        "price_min": 0.66,
+        "price_max": 1.07
       },
       {
         "gpu": "H100 SXM",
@@ -61,10 +136,10 @@
         "gpu": "H200",
         "cnt": 1,
         "mem": 141,
-        "on_demand": 1.99,
+        "on_demand": 2.29,
         "offers_sampled": 3,
-        "price_min": 1.94,
-        "price_max": 2.27
+        "price_min": 1.78,
+        "price_max": 2.33
       },
       {
         "gpu": "L40",
@@ -89,18 +164,27 @@
         "cnt": 1,
         "mem": 24,
         "on_demand": 0.14,
-        "offers_sampled": 3,
-        "price_min": 0.12,
-        "price_max": 0.2
+        "offers_sampled": 2,
+        "price_min": 0.14,
+        "price_max": 0.14
       },
       {
         "gpu": "RTX 4090",
         "cnt": 1,
         "mem": 24,
-        "on_demand": 0.38,
+        "on_demand": 0.43,
         "offers_sampled": 4,
-        "price_min": 0.3,
-        "price_max": 0.47
+        "price_min": 0.2,
+        "price_max": 0.67
+      },
+      {
+        "gpu": "RTX A5000",
+        "cnt": 1,
+        "mem": 24,
+        "on_demand": 0.17,
+        "offers_sampled": 1,
+        "price_min": 0.17,
+        "price_max": 0.17
       },
       {
         "gpu": "RTX A6000",
